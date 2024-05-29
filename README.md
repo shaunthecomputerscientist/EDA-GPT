@@ -281,3 +281,7 @@ graph TB
 
 ### Feedback and Support
 We value your feedback and are constantly working to improve EDA GPT. If you encounter any issues or have suggestions for improvement, please don't hesitate to reach out to our support team. developer contact : mrpolymathematica@gmail.com
+
+
+
+# Key Note : This project was made as part of ineuron internship project within a month.
