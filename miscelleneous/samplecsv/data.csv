@@ -1,0 +1,1128 @@
+text,label
+"Please analyze the sales data for the past quarter and provide insights on the trends.",analysis
+"I need you to analyze the customer feedback from the survey and identify common themes.",analysis
+"Could you analyze the financial statements and highlight any areas of concern?",analysis
+"Analyzing the market trends for our new product launch is crucial. Please provide a detailed report.",analysis
+"I want you to analyze the performance metrics of our advertising campaigns and suggest optimizations.",analysis
+"Can you analyze the inventory data to optimize our supply chain management?",analysis
+"Analyzing the user engagement metrics of our website is necessary. Please generate a comprehensive report.",analysis
+"I need you to analyze the data from the employee satisfaction survey and identify areas for improvement.",analysis
+"Please analyze the data from the customer support tickets to identify recurring issues.",analysis
+"Analyzing the feedback from beta testers will help us improve our product. Please start the analysis.",analysis
+"What is the data about?",analysis
+"Can you provide key insights from the data/document?",analysis
+"Are there tables in the data?",analysis
+"Give detailed report",analysis
+"Provide a summary with key findings",analysis
+"How many tables are there in the data/pdf?",analysis
+"Extract all tables from the data.",analysis
+"Extract structured data from the given unstructured data.",analysis
+"How does this data talk about ML research at MIT?",analysis
+"do not make up data, analyze the words in the context seperately",analysis
+"find the areas where there are bullet points in the image/picture",vision
+"find the areas where there are picture in the picture/image",vision
+"Identify trends and patterns in the data.",analysis
+"Analyze the data set provided and generate...",analysis
+"is there any table in the pdf?",analysis
+"Analyze the data for anomalies or irregularities.",analysis
+"Generate statistical summaries for the data.",analysis
+"Explore correlations between different variables in the data.",analysis
+"what does the pdf talk about? does it have tables?",analysis
+"Provide recommendations based on the analysis of the data.",analysis
+"Summarize the findings from the data analysis report.",analysis
+"Visualize the data for easier interpretation.",analysis
+"can you search for the word "ML" in the document and list it's occurences and context?",analysis
+"do you have the reference of the word ML in the document.",analysis
+"From the given pdf extract the necessary data",analysis
+"Find related data from the document given",analysis
+"Perform sentiment analysis on textual data.",analysis
+"what does the table show?",analysis
+"what does the table show in the image?",vision
+"Cluster similar data points together for further analysis.",analysis
+"Apply machine learning algorithms to predict future trends.",analysis
+"Identify outliers in the data and investigate their causes.",analysis
+"Examine the data for any missing or incomplete values.",analysis
+"Can you perform text mining on the data to extract useful information?",analysis
+"Analyze the distribution of data across different categories.",analysis
+"Explore the geographical patterns in the data.",analysis
+"Detect any seasonality or periodicity in the data.",analysis
+"Identify potential opportunities or risks based on the data analysis.",analysis
+"Examine the data for any biases or prejudices.",analysis
+"Conduct regression analysis to understand the relationship between variables.",analysis
+"Cluster similar data points to identify distinct groups or segments.",analysis
+"Perform time series analysis to forecast future trends.",analysis
+"Apply natural language processing techniques to analyze textual data.",analysis
+"Visualize the data using various charts, graphs, and plots.",analysis
+"Analyze the data to understand user behavior or preferences.",analysis
+"Identify any outliers or anomalies that require further investigation.",analysis
+"Assess the reliability and accuracy of the data sources.",analysis
+"Perform network analysis to understand connections between entities.",analysis
+"Evaluate the performance of different machine learning models on the data.",analysis
+"Conduct A/B testing to compare different strategies or interventions.",analysis
+"Examine the impact of external factors on the data trends.",analysis
+"Analyze the sentiment of customer reviews or social media posts.",analysis
+"Identify any patterns or trends that could be indicative of fraud.",analysis
+"Can you extract trends in consumer spending from the sales data?",analysis
+"Provide a brief summary of the demographic trends in the population data.",analysis
+"Help me understand the key patterns in the stock market data.",analysis
+"Extract trends in climate change from the environmental data.",analysis
+"Give a summary of the main findings in the healthcare data analysis.",analysis
+"What are the emerging trends in the technology sector based on the industry reports?",analysis
+"Provide insights into the trends in educational attainment from the academic data.",analysis
+"Can you summarize the main drivers of economic growth from the GDP data?",analysis
+"Help me understand the trends in crime rates from the law enforcement data.",analysis
+"Extract key patterns in customer behavior from the marketing data.",analysis
+"What are the main trends in user engagement based on the social media analytics?",analysis
+"Give a summary of the trends in energy consumption from the utility data.",analysis
+"Help me understand the patterns in website traffic from the web analytics data.",analysis
+"Can you extract trends in patient outcomes from the healthcare records?",analysis
+"Provide insights into the trends in housing prices from the real estate data.",analysis
+"What are the main trends in agricultural production based on the farming data?",analysis
+"Give a summary of the trends in air travel from the transportation data.",analysis
+"I uploaded a pdf",analysis
+"Explain in over 10000 words the document which i provided",analysis
+"what is the pdf about",analysis
+"what does this pdf talk about",analysis
+"Can you find the trends in given data",analysis
+"What is present in the given pdf",analysis
+"i have pdf data. Analyze what it talks about and find similar articles over the internet that talks about the same topic.",search
+"Help me understand the patterns in customer satisfaction from the survey data.",analysis
+"Extract key trends in project management from the business performance data.",analysis
+"What are the emerging trends in talent acquisition based on the HR analytics?",analysis
+"Can you analyze the text in the image to extract key points?",vision
+"Identify and extract relevant features from the image data.",vision
+"Perform object detection to recognize specific items in the image.",vision
+"Generate a summary of the information presented in the image.",vision
+"Analyze the layout and structure of the image to understand its organization.",vision
+"Extract tabular data from images containing relational data.",vision
+"Perform optical character recognition (OCR) to convert text in the image into editable text.",vision
+"Identify any logos or trademarks present in the image.",vision
+"use vision to analyze the image given to you",vision
+"use analyzer to analyze the data given",analysis
+"use agent to extract data from the web similar to the given pdf file and analyze that data",search
+"Analyze the colors and patterns in the image to derive insights.",vision
+"Detect any anomalies or irregularities in the image/picture data.",vision
+"Segment the image/picture into different regions for further analysis.",vision
+"Extract numerical data from charts or graphs in the image/picture.",vision
+"Identify faces and perform facial recognition in the image/picture.",vision
+"Analyze the spatial relationships between objects in the image/picture.",vision
+"Generate descriptive metadata for the image/picture based on its content.",vision
+"Perform image/picture classification to categorize the image/picture into predefined classes.",vision
+"Extract handwritten text from image/pictures containing handwritten notes or documents.",vision
+"Analyze the quality and resolution of the image for potential enhancements.",vision
+"Identify any sensitive information present in the image for privacy protection.",vision
+"Analyze the sentiment or emotions conveyed by people in the image.",vision
+"Can you analyze the visual content to extract key insights?",vision
+"Identify and extract features from the visual data for analysis.",vision
+"Perform object detection to recognize elements within the visual content.",vision
+"Generate a summary of the visual information presented.",vision
+"Analyze the layout and structure of the visual data for organization.",vision
+"analyze the image given to you",vision
+"what is present in the image",vision
+"Extract tabular data from visual representations of relational data.",vision
+"Perform optical character recognition (OCR) on textual elements within the visual content.",vision
+"Identify any visual elements such as logos or trademarks.",vision
+"Analyze the colors, shapes, and patterns within the visual data.",vision
+"Detect anomalies or irregularities within the visual representation.",vision
+"Segment the visual data into distinct regions for further analysis.",vision
+"Extract numerical data from visualizations such as charts or graphs.",vision
+"Identify and recognize faces within the visual content.",vision
+"Analyze the spatial relationships between objects within the visual data.",vision
+"Generate descriptive metadata based on the visual content.",vision
+"Perform visual classification to categorize the content into predefined classes.",vision
+"Extract handwritten text from visual representations containing handwritten elements.",vision
+"Analyze the quality and resolution of the visual data for improvements.",vision
+"Identify sensitive information within the visual content for privacy considerations.",vision
+"Analyze the sentiment or emotions conveyed by the visual elements.",vision
+"Is there any structured data present in the provided data?",vision
+"Is there any structured data present in the data?",vision
+"Is there any structured data present in the content?",vision
+"Can you identify any structured information in the provided data?",vision
+"Can you identify any structured information in the data?",vision
+"Can you identify any structured information in the content?",vision
+"Are there any patterns or structures discernible in the provided data?",vision
+"Are there any patterns or structures discernible in the data?",vision
+"Are there any patterns or structures discernible in the content?",vision
+"Can you recognize any familiar elements within the provided data?",vision
+"Can you recognize any familiar elements within the data?",vision
+"Can you recognize any familiar elements within the content?",vision
+"Does the provided data contain any organized information?",vision
+"Does the data contain any organized information?",vision
+"Does the content contain any organized information?",vision
+"Can you discern any data tables within the provided data?",vision
+"Can you discern any data tables within the data?",vision
+"Can you discern any data tables within the content?",vision
+"Identify any tabular structures within the provided data.",vision
+"Identify any tabular structures within the data.",vision
+"Identify any tabular structures within the content.",vision
+"What are the best practices for SEO optimization?",search
+"How can I improve my website's visibility on search engines?",search
+"What are some effective strategies for keyword research?",search
+"Where can I find reliable sources for market research data?",search
+"What are the latest trends in digital marketing?",search
+"Where can I find tutorials on machine learning algorithms?",search
+"What are the top programming languages for web development?",search
+"How do I troubleshoot common computer issues?",search
+"Where can I find reputable online courses for graphic design?",search
+"What are the most popular social media platforms for businesses?",search
+"Where can I read reviews for the latest smartphones?",search
+"How do I create a budget for personal finance management?",search
+"Where can I find templates for business proposals?",search
+"What are some strategies for effective time management?",search
+"How do I improve my presentation skills?",search
+"Where can I find free resources for learning Spanish?",search
+"What are the best practices for remote team collaboration?",search
+"How do I start a blog and attract more readers?",search
+"Where can I find templates for resume writing?",search
+"What are the health benefits of practicing yoga?",search
+"How do I choose the right workout routine for weight loss?",search
+"Where can I find healthy recipes for meal planning?",search
+"What are the latest fashion trends for spring/summer?",search
+"How do I improve my photography skills?",search
+"Where can I find tips for traveling on a budget?",search
+"What are some must-visit destinations for solo travelers?",search
+"How do I negotiate a salary during a job interview?",search
+"Where can I find reviews for popular books and movies?",search
+"What are the best practices for creating engaging social media content?",search
+"Where can I find resources for learning meditation techniques?",search
+"How do I tie a tie?",search
+"What is the capital of France?",search
+"Who is the author of 'To Kill a Mockingbird'?",search
+"What is the weather forecast for New York tomorrow?",search
+"How many ounces are in a pound?",search
+"What is the population of Tokyo?",search
+"Where can I buy tickets for a concert near me?",search
+"How do I cook spaghetti al dente?",search
+"What are the symptoms of COVID-19?",search
+"Where is the nearest coffee shop?",search
+"What time does the supermarket close today?",search
+"How do I reset my password?",search
+"What is the distance between Earth and Mars?",search
+"Where can I find the lyrics to 'Bohemian Rhapsody'?",search
+"How do I change a flat tire?",search
+"What are the health benefits of green tea?",search
+"Where can I find the best pizza in town?",search
+"How do I plant tomatoes in my garden?",search
+"What are the top tourist attractions in London?",search
+"Where can I watch the latest episode of my favorite TV show?",search
+"Where can I find affordable furniture for my apartment?",search
+"What are the symptoms of a migraine headache?",search
+"How do I clean a stainless steel sink?",search
+"What are the benefits of practicing mindfulness meditation?",search
+"What are the top 10 search engines and their market share?",search
+"How does Google's search algorithm work?",search
+"Can you analyze the effectiveness of different search engine marketing strategies?",search
+"What are the most searched keywords in the past month?",search
+"How do search engine rankings impact website traffic?",search
+"Where can I find case studies on successful SEO campaigns?",search
+"Can you analyze user behavior patterns in search engine results?",search
+"What are the current trends in voice search technology?",search
+"How do I interpret search analytics data to improve my website's performance?",search
+"Where can I find data on search engine market trends?",search
+"Can you analyze the impact of voice search on SEO?",search
+"How do I perform keyword research for a new product launch?",search
+"Where can I find search trends related to sustainable living?",search
+"What are the best practices for optimizing content for search engines?",search
+"Can you analyze the search intent behind specific keywords?",search
+"How do I use Google Trends to identify trending topics?",search
+"Where can I find studies on the relationship between search behavior and demographics?",search
+"What are the top 10 search engines and their market share?",search
+"How does Google's search algorithm work?",search
+"What are the common search queries related to 'healthy recipes'?",search
+"Can you provide key insights from the data?",analysis
+"Are there tables in the data?",analysis
+"How many tables are there in the data?",analysis
+"Extract all tables from the data.",analysis
+"Extract structured data from the given unstructured data.",analysis
+"How does this data talk about ML research at MIT?",analysis
+"Identify trends and patterns in the data.",analysis
+"Analyze the data for anomalies or irregularities.",analysis
+"Where can I find statistics on global internet usage?",search
+"Can you analyze the effectiveness of different search engine marketing strategies?",search
+"What are the most searched keywords in the past month?",search
+"How do I perform keyword research for a new product launch?",search
+"Where can I find search trends related to sustainable living?",search
+"What are the best practices for optimizing content for search engines?",search
+"Can you analyze the search intent behind specific keywords?",search
+"How do I use Google Trends to identify trending topics?",search
+"Where can I find studies on the relationship between search behavior and demographics?",search
+"i want to know the parts of document where the word hello is mentioned",analysis
+"Can you help me search for a context present in the provided document and find similar article on the internet?",search
+"I want to analyze the image provided, help me extract information from it.",vision
+"Which words appear more frequently in the document?",analysis
+"provide me details about the following topic through the internet",search
+"provide me details about the following topic from the data provided",analysis
+"write details about the data provided",analysis
+"the method mentioned in the document, is it widely used?",search
+"the library used in the document, is it famous or are there better alternatives?",search
+"what is the data about?",analysis
+"what is the docu about?",analysis
+"what is the file about",analysis
+"i provided a folder, analyze it",analysis
+"What are the best practices for SEO optimization?",search
+"How can I improve my website's visibility on search engines?",search
+"Please analyze the sales data for the past quarter and provide insights on the trends in the given data.",analysis
+"I need you to analyze the customer feedback from the survey and identify common themes. The file is given.",analysis
+"Could you analyze the financial statements and highlight any areas of concern?",analysis
+"Please analyze the sales data for the past quarter and provide insights on the trends.",search
+"I need you to analyze the customer feedback from the survey and identify common themes from the given pdf/document",analysis
+"Could you analyze the financial statements and highlight any areas of concern?",search
+"Extract the customer names and their purchase amounts from the provided spreadsheet.",analysis
+"Identify the top 10 products based on sales volume in the given dataset.",analysis
+"Analyze the trends in website traffic over the past year using the provided web analytics data.",analysis
+"Examine the employee performance reviews and identify areas for improvement.",analysis
+"Analyze the survey results to understand customer satisfaction levels with our new product.",analysis
+"Compare the financial performance of the company over the last two quarters using the provided reports.",analysis
+"Identify any recurring patterns in the customer complaints data.",analysis
+"Calculate the average resolution time for customer support tickets based on the provided data.",analysis
+"Analyze the results of the A/B test and determine the most effective design for our website.",analysis
+"Extract key information from the research paper and summarize the findings.",analysis
+"Count the number of people in the image.",vision
+"Describe the scene and the objects present in the picture.",vision
+"Is there a logo in the image? If so, identify the brand.",vision
+"Extract the text from the scanned document using OCR.",vision
+"Analyze the emotions expressed by the people in the photo.",vision
+"Compare the two product images and highlight the differences.",vision
+"Is the image suitable for a marketing campaign? Why or why not?",vision
+"Detect any objects in the image that are out of place or unusual.",vision
+"Estimate the age and gender of the person in the picture.",vision
+"Generate a caption for the image based on its content.",vision
+"Research the current market trends for electric vehicles.",search
+"Find information about the history of artificial intelligence.",search
+"What are the most popular tourist destinations in Europe?",search
+"Look up the definition of 'quantum computing'.",search
+"Search for recipes that are suitable for vegans.",search
+"Find the latest news articles about climate change.",search
+"Explore different investment options for retirement planning.",search
+"Investigate the causes of the recent stock market volatility.",search
+"Where can I find information about the company's environmental policies?",search
+"Search for online courses on data analysis using Python.",search
+"Summarize the main arguments presented in the research paper.", analysis
+"Identify the strengths and weaknesses of the proposed business plan.", analysis
+"Extract the key findings from the market research report.", analysis
+"Analyze the customer reviews and categorize them based on sentiment.", analysis
+"Compare the performance of different marketing campaigns and identify the most effective strategies.", analysis
+"Calculate the ROI for each investment option based on the provided data.", analysis
+"Analyze the user behavior on our website and suggest improvements to the user interface.", analysis
+"Extract the contact information of potential clients from the provided list of leads.", analysis
+"Analyze the competitor's product and identify its key features and advantages.", analysis
+"Generate a report on the company's financial health, including key ratios and metrics.", analysis
+"Identify the breed of the dog in the picture.", vision
+"Estimate the size and dimensions of the object in the image.", vision
+"Is the image a photograph or a computer-generated graphic?", vision
+"Extract the color palette used in the image.", vision
+"Describe the architectural style of the building in the picture.", vision
+"Is the person in the image wearing glasses? Describe their clothing.", vision
+"Detect any signs of damage or wear and tear on the object in the picture.", vision
+"Identify the emotions displayed on the faces of the people in the image.", vision
+"Is the image suitable for use on a social media platform? Explain why or why not.", vision
+"Generate a 3D model of the object based on the provided image.", vision
+"What are the health benefits of a plant-based diet?", search
+"Find the latest research on renewable energy sources.", search
+"Explore different travel destinations for a family vacation.", search
+"Look up the history and cultural significance of the Eiffel Tower.", search
+"Search for DIY projects for home improvement.", search
+"Find reviews and ratings for local restaurants.", search
+"Investigate the current political landscape in the United States.", search
+"Research different career paths in the field of data science.", search
+"What are the ethical considerations of artificial intelligence?", search
+"Search for information about upcoming cultural events in my city.", search
+"Give a detailed explanation of the contents of the uploaded PDF.",analysis
+"Can you summarize the key points from the market research report I just uploaded?",analysis
+"Analyze the sales figures for the last quarter and identify any trends or patterns.",analysis
+"Extract all the email addresses from the contact list I provided.",analysis
+"Is there a table in the document that shows the population growth over time?",analysis
+"Analyze the sentiment of the customer reviews to understand their overall satisfaction.",analysis
+"Can you identify the objects present in this image?",vision
+"Extract the text from this scanned document using OCR.",vision
+"Describe the scene and the people in this photograph.",vision
+"Is there a cat in this picture?",vision
+"Analyze the emotions expressed by the person in this image.",vision
+"What is the capital of Australia?",search
+"Who wrote the Harry Potter series?",search
+"Find the latest news on the COVID-19 pandemic.",search
+"What is the weather forecast for London tomorrow?",search
+"Search for recipes for gluten-free desserts.",search
+"What are the best restaurants in New York City?",search
+"Find information on the history of the Roman Empire.",search
+"What are the symptoms of the flu?",search
+"Can you translate this sentence into Spanish?",search
+"Search for online courses on digital marketing.",search
+"How can I improve my credit score?",search
+"What are the benefits of meditation?",search
+"Find the lyrics to the song 'Imagine' by John Lennon.",search
+"What is the meaning of life?",search
+"Can you tell me a joke?",search
+"What is the airspeed velocity of an unladen swallow?",search
+"Analyze the data in this spreadsheet and tell me the average sales per month.",analysis
+"Extract the phone numbers from this list of contacts.",analysis
+"Summarize the key findings of this research paper.",analysis
+"Can you identify any outliers in this dataset?",analysis
+"Compare the two graphs and tell me the main differences.",vision
+"Describe the colors and shapes in this abstract painting.",vision
+"Is this image suitable for a children's book? Why or why not?",vision
+"Generate a caption for this image based on its content.",vision
+"What is the architectural style of this building?",vision
+"Find information about the life of Albert Einstein.",search
+"What are the different types of renewable energy?",search
+"Search for reviews of the latest iPhone model.",search
+"How do I make a reservation at this restaurant?",search
+"Can you book a flight from London to Paris for next week?",search
+"What are the best places to visit in Tokyo?",search
+"Find information on the history of the French Revolution.",search
+"What are the side effects of this medication?",search
+"Can you convert US dollars to euros?",search
+"Search for images of the Great Wall of China.",search
+"What are the benefits of yoga?",search
+"Find the opening hours of the local library.",search
+"Analyze the data in this chart and tell me the main trends.",analysis
+"Extract the names of the participants from this attendance sheet.",analysis
+"Can you create a summary of this meeting transcript?",analysis
+"Is there a significant correlation between these two variables?",analysis
+"Compare the performance of these two investment portfolios.",analysis
+"Describe the objects and their spatial relationships in this image.",vision
+"Is there a stop sign in this picture?",vision
+"Analyze the demographics of the people in this image.",vision
+"Can you identify the breed of this cat?",vision
+"Generate a 3D model of this object based on the image.",vision
+"What are the causes of climate change?",search
+"Find information on the latest advancements in artificial intelligence.",search
+"Search for DIY projects for building a bookshelf.",search
+"How do I change a tire on a car?",search
+"What are the best ways to save money on groceries?",search
+"Find the definition of the word 'serendipity'.",search
+"Search for quotes about happiness.",search
+"What are the health benefits of drinking water?",search
+"Find information on the history of the Olympics.",search
+"Can you tell me a story?",search
+"Analyze the sales data and identify the top-selling products.",analysis
+"Extract the dates and times from these appointment reminders.",analysis
+"Summarize the main points of this news article.",analysis
+"Is there a pattern in the customer complaints data?",analysis
+"Compare the performance of our marketing campaigns on different social media platforms.",analysis
+"Describe the landscape in this photograph.",vision
+"Is there a river in this image?",vision
+"Analyze the colors and textures in this piece of art.",vision
+"Can you identify the make and model of this car?",vision
+"Estimate the height of the mountain in this picture.",vision
+"What are the benefits of mindfulness meditation?",search
+"Find information on the history of the internet.",search
+"Search for online tutorials on how to play the guitar.",search
+"How do I get a passport?",search
+"What are the best places to go hiking near me?",search
+"Find the lyrics to the song 'Bohemian Rhapsody' by Queen.",search
+"Search for information on the life of Nelson Mandela.",search
+"What are the different types of clouds?",search
+"Can you tell me a riddle?",search
+"What is the meaning of the universe?",search
+"Analyze the customer feedback and identify areas for improvement.",analysis
+"Extract the key performance indicators from this business report.",analysis
+"Can you generate a chart that shows the sales trends over time?",analysis
+"Identify any duplicate entries in this database.",analysis
+"Compare the two versions of this document and highlight the changes.",analysis
+"Describe the clothing and accessories worn by the people in this image.",vision
+"Is there a dog in this picture?",vision
+"Analyze the body language of the person in this photo.",vision
+"Can you identify the type of flower in this image?",vision
+"Estimate the age of the person in this picture.",vision
+"What are the causes of poverty?",search
+"Find information on the latest technological advancements.",search
+"Search for tips on how to improve my sleep quality.",search
+"How do I make a pizza from scratch?",search
+"What are the best books to read on personal finance?",search
+"Find the definition of the word 'epiphany'.",search
+"Search for quotes about love.",search
+"What are the health benefits of exercise?",search
+"Find information on the history of the United States.",search
+"Can you tell me a poem?",search
+"Analyze the data from this experiment and draw conclusions.",analysis
+"Extract the names and addresses of the customers from this invoice.",analysis
+"Summarize the main points of this contract.",analysis
+"Is there a statistically significant difference between these two groups?",analysis
+"Compare the financial performance of these two companies.",analysis
+"Describe the setting and atmosphere of this scene.",vision
+"Is there a bird in this image?",vision
+"Analyze the facial expressions of the people in this photo.",vision
+"Can you identify the brand of this logo?",vision
+"Generate a sketch of this object based on the image.",vision
+"What are the benefits of a healthy diet?",search
+"Find information on the latest medical research.",search
+"Search for tips on how to reduce stress.",search
+"How do I fix a leaky faucet?",search
+"What are the best places to travel on a budget?",search
+"Find the definition of the word 'sonder'.",search
+"Search for quotes about friendship.",search
+"What are the health benefits of laughter?",search
+"Find information on the history of the Earth.",search
+"Can you tell me a joke?",search
+"Analyze the data and identify any seasonal trends.",analysis
+"Extract the product names and their prices from this online store page.",analysis
+"Summarize the key points of this academic paper.",analysis
+"Is there a correlation between the amount of sleep and productivity?",analysis
+"Compare the nutritional value of these two food products.",analysis
+"Describe the emotions conveyed by the person in this image.",vision
+"Is there a bicycle in this picture?",vision
+"Analyze the fashion style of the people in this photo.",vision
+"Can you identify the species of this bird?",vision
+"Estimate the weight of the object in this image.",vision
+"What are the causes of air pollution?",search
+"Find information on the latest developments in space exploration.",search
+"Search for online courses on how to learn a new language.",search
+"How do I bake a cake?",search
+"What are the best places to go camping?",search
+"Find the definition of the word 'ubiquitous'.",search
+"Search for quotes about perseverance.",search
+"What are the health benefits of yoga?",search
+"Find information on the history of music.",search
+"Can you write a poem?",search
+"Analyze the customer survey results and identify areas for improvement.",analysis
+"Extract the contact information from these business cards.",analysis
+"Summarize the key findings of this marketing report.",analysis
+"Is there a statistically significant difference between the two treatment groups?",analysis
+"Compare the performance of these two investment strategies.",analysis
+"Describe the scene and the objects present in this image.",vision
+"Is there a boat in this picture?",vision
+"Analyze the lighting and shadows in this photograph.",vision
+"Can you identify the type of fruit in this image?",vision
+"Estimate the distance between the camera and the object in this picture.",vision
+"What are the effects of climate change?",search
+"Find information on the latest scientific discoveries.",search
+"Search for DIY projects for home decoration.",search
+"How do I change a flat tire?",search
+"What are the best ways to invest money?",search
+"Find the definition of the word 'sonder'.",search
+"Search for quotes about kindness.",search
+"What are the health benefits of meditation?",search
+"Find information on the history of art.",search
+"Can you tell me a story?",search
+"Analyze the financial data and identify any areas of concern.",analysis
+"Extract the dates and events from this calendar.",analysis
+"Summarize the main arguments of this legal document.",analysis
+"Is there a trend in the stock market data?",analysis
+"Compare the features of these two software programs.",analysis
+"Describe the architectural style of this building.",vision
+"Is there a bridge in this picture?",vision
+"Analyze the composition of this painting.",vision
+"Can you identify the brand of this watch?",vision
+"Generate a 3D model of this piece of furniture based on the image.",vision
+"What are the causes of inflation?",search
+"Find information on the latest advancements in robotics.",search
+"Search for online tutorials on how to play the piano.",search
+"How do I create a website?",search
+"What are the best places to go stargazing?",search
+"Find the definition of the word 'serendipity'.",search
+"Search for quotes about courage.",search
+"What are the health benefits of running?",search
+"Find information on the history of literature.",search
+"Can you write a song?",search
+"Analyze the sales data and identify the most profitable products.",analysis
+"Extract the names and email addresses from this list of contacts.",analysis
+"Summarize the key points of this business proposal.",analysis
+"Is there a relationship between exercise and mental health?",analysis
+"Compare the fuel efficiency of these two cars.",analysis
+"Describe the facial expressions of the people in this image.",vision
+"Is there a cat in this picture?",vision
+"Analyze the use of color in this advertisement.",vision
+"Can you identify the type of animal in this image?",vision
+"Estimate the speed of the car in this picture.",vision
+"What are the effects of social media?",search
+"Find information on the latest trends in fashion.",search
+"Search for DIY projects for gardening.",search
+"How do I make a reservation at a hotel?",search
+"What are the best places to visit in Europe?",search
+"Find the definition of the word 'nostalgia'.",search
+"Search for quotes about success.",search
+"What are the health benefits of sleep?",search
+"Find information on the history of science.",search
+"Can you tell me a bedtime story?",search
+"Analyze the data from this survey and identify the main demographics of the respondents.",analysis
+"Extract the key dates and deadlines from this project plan.",analysis
+"Summarize the main findings of this scientific study.",analysis
+"Is there a difference in academic performance between boys and girls?",analysis
+"Compare the effectiveness of these two teaching methods.",analysis
+"Describe the landscape and the natural features in this image.",vision
+"Is there a mountain in this picture?",vision
+"Analyze the perspective and depth of field in this photograph.",vision
+"Can you identify the type of plant in this image?",vision
+"Estimate the time of day based on the lighting in this picture.",vision
+"What are the causes of homelessness?",search
+"Find information on the latest developments in technology.",search
+"Search for online tutorials on how to play the violin.",search
+"How do I write a resume?",search
+"What are the best places to volunteer?",search
+"Find the definition of the word 'epiphany'.",search
+"Search for quotes about hope.",search
+"What are the health benefits of a vegetarian diet?",search
+"Find information on the history of philosophy.",search
+"Can you create a piece of music?",search
+"Analyze the data and identify any outliers or anomalies.",analysis
+"Extract the names and job titles of the employees from this company directory.",analysis
+"Summarize the main points of this news report.",analysis
+"Is there a correlation between income and happiness?",analysis
+"Compare the environmental impact of these two modes of transportation.",analysis
+"Describe the clothing and hairstyles of the people in this image.",vision
+"Is there a dog in this picture?",vision
+"Analyze the use of symbolism in this painting.",vision
+"Can you identify the type of food in this image?",vision
+"Estimate the age of the tree in this picture.",vision
+"What are the effects of globalization?",search
+"Find information on the latest trends in education.",search
+"Search for DIY projects for woodworking.",search
+"How do I change the oil in my car?",search
+"What are the best ways to learn a new skill?",search
+"Find the definition of the word 'sonder'.",search
+"Search for quotes about creativity.",search
+"What are the health benefits of laughter?",search
+"Find information on the history of mathematics.",search
+"Can you tell me a joke?",search
+"Analyze the data and identify any patterns or trends.",analysis
+"Extract the product descriptions from this online shopping website.",analysis
+"Summarize the main arguments presented in this essay.",analysis
+"Is there a statistically significant difference between the two groups of students?",analysis
+"Compare the effectiveness of these two marketing strategies.",analysis
+"Describe the setting and atmosphere of this scene.",vision
+"Is there a cat in this picture?",vision
+"Analyze the body language of the people in this image.",vision
+"Can you identify the type of flower in this picture?",vision
+"Estimate the height of the building in this image.",vision
+"What are the causes of poverty?",search
+"Find information on the latest developments in artificial intelligence.",search
+"Search for online tutorials on how to play the guitar.",search
+"How do I get a passport?",search
+"What are the best places to go hiking near me?",search
+"Find the lyrics to the song 'Imagine' by John Lennon.",search
+"Search for information on the life of Nelson Mandela.",search
+"What are the different types of clouds?",search
+"Can you tell me a riddle?",search
+"What is the meaning of the universe?",search
+"Analyze the customer feedback and identify areas for improvement.",analysis
+"Extract the key performance indicators from this business report.",analysis
+"Can you generate a chart that shows the sales trends over time?",analysis
+"Identify any duplicate entries in this database.",analysis
+"Compare the two versions of this document and highlight the changes.",analysis
+"Describe the clothing and accessories worn by the people in this image.",vision
+"Is there a dog in this picture?",vision
+"Analyze the body language of the person in this photo.",vision
+"Can you identify the breed of this cat?",vision
+"Generate a 3D model of this object based on the image.",vision
+"What are the causes of climate change?",search
+"Find information on the latest advancements in artificial intelligence.",search
+"Search for DIY projects for building a bookshelf.",search
+"How do I change a tire on a car?",search
+"What are the best ways to save money on groceries?",search
+"Find the definition of the word 'serendipity'.",search
+"Search for quotes about kindness.",search
+"What are the health benefits of meditation?",search
+"Find information on the history of art.",search
+"Can you tell me a story?",search
+"Analyze the financial data and identify any areas of concern.",analysis
+"Extract the dates and events from this calendar.",analysis
+"Summarize the main arguments of this legal document.",analysis
+"Is there a trend in the stock market data?",analysis
+"Compare the features of these two software programs.",analysis
+"Describe the architectural style of this building.",vision
+"Is there a bridge in this picture?",vision
+"Analyze the composition of this painting.",vision
+"Can you identify the brand of this watch?",vision
+"Generate a 3D model of this piece of furniture based on the image.",vision
+"What are the causes of inflation?",search
+"Find information on the latest advancements in robotics.",search
+"Search for online tutorials on how to play the piano.",search
+"How do I create a website?",search
+"What are the best places to go stargazing?",search
+"Find the definition of the word 'serendipity'.",search
+"Search for quotes about courage.",search
+"What are the health benefits of running?",search
+"Find information on the history of literature.",search
+"Can you write a song?",search
+"Analyze the sales data and identify the most profitable products.",analysis
+"Extract the names and email addresses from this list of contacts.",analysis
+"Summarize the key points of this business proposal.",analysis
+"Is there a relationship between exercise and mental health?",analysis
+"Compare the fuel efficiency of these two cars.",analysis
+"Describe the facial expressions of the people in this image.",vision
+"Is there a cat in this picture?",vision
+"Analyze the use of color in this advertisement.",vision
+"Can you identify the type of animal in this image?",vision
+"Estimate the speed of the car in this picture.",vision
+"What are the effects of social media?",search
+"Find information on the latest trends in fashion.",search
+"Search for DIY projects for gardening.",search
+"How do I make a reservation at a hotel?",search
+"What are the best places to visit in Europe?",search
+"Find the definition of the word 'nostalgia'.",search
+"Search for quotes about success.",search
+"What are the health benefits of sleep?",search
+"Find information on the history of science.",search
+"Can you tell me a bedtime story?",search
+"Analyze the data from this experiment and draw conclusions.",analysis
+"Extract the names and addresses of the customers from this invoice.",analysis
+"Summarize the main points of this contract.",analysis
+"Is there a statistically significant difference between these two groups?",analysis
+"Compare the performance of these two investment portfolios.",analysis
+"Analyze the data and identify any seasonal trends.",analysis
+"Extract the product names and their prices from this online store page.",analysis
+"Summarize the key points of this academic paper.",analysis
+"Is there a correlation between the amount of sleep and productivity?",analysis
+"Compare the nutritional value of these two food products.",analysis
+"Analyze the customer survey results and identify areas for improvement.",analysis
+"Extract the contact information from these business cards.",analysis
+"Summarize the key findings of this marketing report.",analysis
+"Is there a statistically significant difference between the two treatment groups?",analysis
+"Compare the performance of these two investment strategies.",analysis
+"Analyze the financial data and identify any areas of concern.",analysis
+"Extract the dates and events from this calendar.",analysis
+"Summarize the main arguments of this legal document.",analysis
+"Is there a trend in the stock market data?",analysis
+"Compare the features of these two software programs.",analysis
+"Analyze the sales data and identify the most profitable products.",analysis
+"Extract the names and email addresses from this list of contacts.",analysis
+"Summarize the key points of this business proposal.",analysis
+"Is there a relationship between exercise and mental health?",analysis
+"Compare the fuel efficiency of these two cars.",analysis
+"Analyze the data from this survey and identify the main demographics of the respondents.",analysis
+"Extract the key dates and deadlines from this project plan.",analysis
+"Summarize the main findings of this scientific study.",analysis
+"Is there a difference in academic performance between boys and girls?",analysis
+"Compare the effectiveness of these two teaching methods.",analysis
+"Analyze the data and identify any outliers or anomalies.",analysis
+"Extract the names and job titles of the employees from this company directory.",analysis
+"Summarize the main points of this news report.",analysis
+"Is there a correlation between income and happiness?",analysis
+"Compare the environmental impact of these two modes of transportation.",analysis
+"Analyze the data and identify any patterns or trends.",analysis
+"Extract the product descriptions from this online shopping website.",analysis
+"Summarize the main arguments presented in this essay.",analysis
+"Is there a statistically significant difference between the two groups of students?",analysis
+"Compare the effectiveness of these two marketing strategies.",analysis
+"Analyze the sales figures for the last quarter and identify any trends or patterns.",analysis
+"Extract all the email addresses from the contact list I provided.",analysis
+"Is there a table in the document that shows the population growth over time?",analysis
+"Analyze the sentiment of the customer reviews to understand their overall satisfaction.",analysis
+"Analyze the data in this spreadsheet and tell me the average sales per month.",analysis
+"Extract the phone numbers from this list of contacts.",analysis
+"Summarize the key findings of this research paper.",analysis
+"Can you identify any outliers in this dataset?",analysis
+"Analyze the data in this chart and tell me the main trends.",analysis
+"Extract the names of the participants from this attendance sheet.",analysis
+"Can you create a summary of this meeting transcript?",analysis
+"Is there a significant correlation between these two variables?",analysis
+"Compare the performance of these two investment portfolios.",analysis
+"Analyze the customer feedback and identify areas for improvement.",analysis
+"Extract the key performance indicators from this business report.",analysis
+"Can you generate a chart that shows the sales trends over time?",analysis
+"Identify any duplicate entries in this database.",analysis
+"Compare the two versions of this document and highlight the changes.",analysis
+"Analyze the data and identify any recurring patterns or anomalies.",analysis
+"Extract the key dates and events from this historical timeline.",analysis
+"Summarize the main findings of this economic report.",analysis
+"Is there a correlation between education level and income?",analysis
+"Compare the performance of these two athletes based on the provided statistics.",analysis
+"Analyze the data and identify any potential risks or opportunities.",analysis
+"Extract the names and contact information of potential clients from this list.",analysis
+"Summarize the key points of this political speech.",analysis
+"Is there a difference in voter turnout between different age groups?",analysis
+"Compare the effectiveness of these two advertising campaigns.",analysis
+"Analyze the data and identify any emerging trends in consumer behavior.",analysis
+"Extract the product features and specifications from this technical document.",analysis
+"Summarize the main conclusions of this scientific research paper.",analysis
+"Is there a correlation between exercise and weight loss?",analysis
+"Compare the safety ratings of these two car models.",analysis
+"Analyze the data and identify any potential areas for cost savings.",analysis
+"Extract the key financial metrics from this company's annual report.",analysis
+"Summarize the main points of this legal contract.",analysis
+"Is there a difference in customer satisfaction between different service providers?",analysis
+"Compare the effectiveness of these two marketing campaigns.",analysis
+"Analyze the data and identify any potential fraud or suspicious activity.",analysis
+"Extract the customer names and their order details from this sales report.",analysis
+"Summarize the key findings of this market research study.",analysis
+"Is there a correlation between social media usage and mental health?",analysis
+"Compare the environmental impact of these two energy sources.",analysis
+"Analyze the data and identify any factors that contribute to employee turnover.",analysis
+"Extract the employee names and their performance ratings from this HR report.",analysis
+"Summarize the main recommendations of this consulting report.",analysis
+"Is there a difference in student outcomes between different schools?",analysis
+"Compare the effectiveness of these two teaching methods.",analysis
+"Analyze the data and identify any potential areas for business growth.",analysis
+"Extract the key financial ratios from this company's balance sheet.",analysis
+"Summarize the main points of this government policy document.",analysis
+"Is there a correlation between economic growth and unemployment rates?",analysis
+"Compare the healthcare systems of these two countries.",analysis
+"Analyze the data and identify any potential public health risks.",analysis
+"Extract the patient names and their medical diagnoses from this hospital database.",analysis
+"Summarize the main findings of this medical research study.",analysis
+"Is there a difference in life expectancy between men and women?",analysis
+"Compare the effectiveness of these two treatments for cancer.",analysis
+"Describe the scene and the objects present in this image.",vision
+"Is there a boat in this picture?",vision
+"Analyze the lighting and shadows in this photograph.",vision
+"Can you identify the type of fruit in this image?",vision
+"Estimate the distance between the camera and the object in this picture.",vision
+"Describe the emotions conveyed by the person in this image.",vision
+"Is there a bicycle in this picture?",vision
+"Analyze the fashion style of the people in this photo.",vision
+"Can you identify the species of this bird?",vision
+"Estimate the weight of the object in this image.",vision
+"Describe the architectural style of this building.",vision
+"Is there a bridge in this picture?",vision
+"Analyze the composition of this painting.",vision
+"Can you identify the brand of this watch?",vision
+"Generate a 3D model of this piece of furniture based on the image.",vision
+"Describe the clothing and hairstyles of the people in this image.",vision
+"Is there a dog in this picture?",vision
+"Analyze the use of symbolism in this painting.",vision
+"Can you identify the type of food in this image?",vision
+"Estimate the age of the tree in this picture.",vision
+"Describe the landscape and the natural features in this image.",vision
+"Is there a mountain in this picture?",vision
+"Analyze the perspective and depth of field in this photograph.",vision
+"Can you identify the type of plant in this image?",vision
+"Estimate the time of day based on the lighting in this picture.",vision
+"Describe the facial expressions of the people in this image.",vision
+"Is there a cat in this picture?",vision
+"Analyze the use of color in this advertisement.",vision
+"Can you identify the type of animal in this image?",vision
+"Estimate the speed of the car in this picture.",vision
+"What are the causes of air pollution?",search
+"Find information on the latest developments in space exploration.",search
+"Search for online courses on how to learn a new language.",search
+"How do I bake a cake?",search
+"What are the best places to go camping?",search
+"Find the definition of the word 'ubiquitous'.",search
+"Search for quotes about perseverance.",search
+"What are the health benefits of yoga?",search
+"Find information on the history of music.",search
+"Can you write a poem?",search
+"What are the effects of climate change?",search
+"Find information on the latest scientific discoveries.",search
+"Search for DIY projects for home decoration.",search
+"How do I change a flat tire?",search
+"What are the best ways to invest money?",search
+"Find the definition of the word 'sonder'.",search
+"Search for quotes about kindness.",search
+"What are the health benefits of meditation?",search
+"Find information on the history of art.",search
+"Can you tell me a story?",search
+"What are the causes of inflation?",search
+"Find information on the latest advancements in robotics.",search
+"Search for online tutorials on how to play the piano.",search
+"How do I create a website?",search
+"What are the best places to go stargazing?",search
+"Find the definition of the word 'serendipity'.",search
+"Search for quotes about courage.",search
+"What are the health benefits of running?",search
+"Find information on the history of literature.",search
+"Can you write a song?",search
+"What are the effects of social media?",search
+"Find information on the latest trends in fashion.",search
+"Search for DIY projects for gardening.",search
+"How do I make a reservation at a hotel?",search
+"What are the best places to visit in Europe?",search
+"Find the definition of the word 'nostalgia'.",search
+"Search for quotes about success.",search
+"What are the health benefits of sleep?",search
+"Find information on the history of science.",search
+"Can you tell me a bedtime story?",search
+"What are the causes of homelessness?",search
+"Find information on the latest developments in technology.",search
+"Search for online tutorials on how to play the violin.",search
+"How do I write a resume?",search
+"What are the best places to volunteer?",search
+"Find the definition of the word 'epiphany'.",search
+"Search for quotes about hope.",search
+"What are the health benefits of a vegetarian diet?",search
+"Find information on the history of philosophy.",search
+"Can you create a piece of music?",search
+"What are the effects of globalization?",search
+"Find information on the latest trends in education.",search
+"Search for DIY projects for woodworking.",search
+"How do I change the oil in my car?",search
+"What are the best ways to learn a new skill?",search
+"Find the definition of the word 'sonder'.",search
+"Search for quotes about creativity.",search
+"What are the health benefits of laughter?",search
+"Find information on the history of mathematics.",search
+"Can you tell me a joke?",search
+"Find the latest news on the COVID-19 pandemic.",search
+"What is the weather forecast for London tomorrow?",search
+"Search for recipes for gluten-free desserts.",search
+"What are the best restaurants in New York City?",search
+"Find information on the history of the Roman Empire.",search
+"What are the symptoms of the flu?",search
+"Can you translate this sentence into Spanish?",search
+"Search for online courses on digital marketing.",search
+"How can I improve my credit score?",search
+"What are the benefits of meditation?",search
+"Find the lyrics to the song 'Imagine' by John Lennon.",search
+"What is the meaning of life?",search
+"Can you tell me a joke?",search
+"What is the airspeed velocity of an unladen swallow?",search
+"Find information about the life of Albert Einstein.",search
+"What are the different types of renewable energy?",search
+"Search for reviews of the latest iPhone model.",search
+"How do I make a reservation at this restaurant?",search
+"Can you book a flight from London to Paris for next week?",search
+"What are the best places to visit in Tokyo?",search
+"Find information on the history of the French Revolution.",search
+"What are the side effects of this medication?",search
+"Can you convert US dollars to euros?",search
+"Search for images of the Great Wall of China.",search
+"What are the benefits of yoga?",search
+"Find the opening hours of the local library.",search
+"What are the benefits of mindfulness meditation?",search
+"Find information on the history of the internet.",search
+"Search for online tutorials on how to play the guitar.",search
+"How do I get a passport?",search
+"What are the best places to go hiking near me?",search
+"Find the lyrics to the song 'Bohemian Rhapsody' by Queen.",search
+"Search for information on the life of Nelson Mandela.",search
+"What are the different types of clouds?",search
+"Can you tell me a riddle?",search
+"What is the meaning of the universe?",search
+"What are the health benefits of a plant-based diet?", search
+"Find the latest research on renewable energy sources.", search
+"Explore different travel destinations for a family vacation.", search
+"Look up the history and cultural significance of the Eiffel Tower.", search
+"Search for DIY projects for home improvement.", search
+"Find reviews and ratings for local restaurants.", search
+"Investigate the current political landscape in the United States.", search
+"Research different career paths in the field of data science.", search
+"What are the ethical considerations of artificial intelligence?", search
+"Search for information about upcoming cultural events in my city.", search
+"What are the best practices for SEO optimization?",search
+"How can I improve my website's visibility on search engines?",search
+"What are some effective strategies for keyword research?",search
+"Where can I find reliable sources for market research data?",search
+"What are the latest trends in digital marketing?",search
+"Where can I find tutorials on machine learning algorithms?",search
+"What are the top programming languages for web development?",search
+"How do I troubleshoot common computer issues?",search
+"Where can I find reputable online courses for graphic design?",search
+"What are the most popular social media platforms for businesses?",search
+"Where can I read reviews for the latest smartphones?",search
+"How do I create a budget for personal finance management?",search
+"Where can I find templates for business proposals?",search
+"What are some strategies for effective time management?",search
+"How do I improve my presentation skills?",search
+"Where can I find free resources for learning Spanish?",search
+"What are the best practices for remote team collaboration?",search
+"How do I start a blog and attract more readers?",search
+"Where can I find templates for resume writing?",search
+"What are the health benefits of practicing yoga?",search
+"How do I choose the right workout routine for weight loss?",search
+"Where can I find healthy recipes for meal planning?",search
+"What are the latest fashion trends for spring/summer?",search
+"How do I improve my photography skills?",search
+"Where can I find tips for traveling on a budget?",search
+"What are some must-visit destinations for solo travelers?",search
+"How do I negotiate a salary during a job interview?",search
+"Where can I find reviews for popular books and movies?",search
+"What are the best practices for creating engaging social media content?",search
+"Where can I find resources for learning meditation techniques?",search
+"How do I tie a tie?",search
+"What is the capital of France?",search
+"Who is the author of 'To Kill a Mockingbird'?",search
+"What is the weather forecast for New York tomorrow?",search
+"How many ounces are in a pound?",search
+"What is the population of Tokyo?",search
+"Where can I buy tickets for a concert near me?",search
+"How do I cook spaghetti al dente?",search
+"What are the symptoms of COVID-19?",search
+"Where is the nearest coffee shop?",search
+"What time does the supermarket close today?",search
+"How do I reset my password?",search
+"What is the distance between Earth and Mars?",search
+"Where can I find the lyrics to 'Bohemian Rhapsody'?",search
+"How do I change a flat tire?",search
+"What are the health benefits of green tea?",search
+"Where can I find the best pizza in town?",search
+"How do I plant tomatoes in my garden?",search
+"What are the top tourist attractions in London?",search
+"Where can I watch the latest episode of my favorite TV show?",search
+"Where can I find affordable furniture for my apartment?",search
+"What are the symptoms of a migraine headache?",search
+"How do I clean a stainless steel sink?",search
+"What are the benefits of practicing mindfulness meditation?",search
+"What are the top 10 search engines and their market share?",search
+"How does Google's search algorithm work?",search
+"Can you analyze the effectiveness of different search engine marketing strategies?",search
+"What are the most searched keywords in the past month?",search
+"How do search engine rankings impact website traffic?",search
+"Where can I find case studies on successful SEO campaigns?",search
+"Can you analyze user behavior patterns in search engine results?",search
+"What are the current trends in voice search technology?",search
+"How do I interpret search analytics data to improve my website's performance?",search
+"Where can I find data on search engine market trends?",search
+"Can you analyze the impact of voice search on SEO?",search
+"How do I perform keyword research for a new product launch?",search
+"Where can I find search trends related to sustainable living?",search
+"What are the best practices for optimizing content for search engines?",search
+"Can you analyze the search intent behind specific keywords?",search
+"How do I use Google Trends to identify trending topics?",search
+"Where can I find studies on the relationship between search behavior and demographics?",search
+"What are the top 10 search engines and their market share?",search
+"How does Google's search algorithm work?",search
+"What are the common search queries related to 'healthy recipes'?",search
+"Where can I find statistics on global internet usage?",search
+"Can you analyze the effectiveness of different search engine marketing strategies?",search
+"What are the most searched keywords in the past month?",search
+"How do I perform keyword research for a new product launch?",search
+"Where can I find search trends related to sustainable living?",search
+"What are the best practices for optimizing content for search engines?",search
+"Can you analyze the search intent behind specific keywords?",search
+"How do I use Google Trends to identify trending topics?",search
+"Where can I find studies on the relationship between search behavior and demographics?",search
+"Analyze the customer purchase history and identify any patterns in their buying behavior.",analysis
+"Extract the names of the characters and their relationships from this novel.",analysis
+"Summarize the main points of this historical document.",analysis
+"Is there a correlation between air quality and respiratory illnesses?",analysis
+"Compare the economic performance of different countries.",analysis
+"Analyze the data from this clinical trial and evaluate the effectiveness of the new drug.",analysis
+"Extract the gene sequences from this DNA sample.",analysis
+"Summarize the main arguments presented in this philosophical text.",analysis
+"Is there a difference in language development between bilingual and monolingual children?",analysis
+"Compare the nutritional content of different food groups.",analysis
+"Analyze the data from this social media campaign and identify the most engaging posts.",analysis
+"Extract the hashtags and mentions from these tweets.",analysis
+"Summarize the main findings of this environmental impact assessment.",analysis
+"Is there a correlation between deforestation and climate change?",analysis
+"Compare the energy consumption of different household appliances.",analysis
+"Analyze the data from this psychological study and identify the factors that influence human behavior.",analysis
+"Extract the names and contact information of potential investors from this list.",analysis
+"Summarize the key points of this business plan.",analysis
+"Is there a trend in the real estate market?",analysis
+"Compare the architectural styles of different historical periods.",analysis
+"analyze this pdf using internet",search
+"analyze this pdf data by searching internet for context",search
+"analyze the given document and find similar sources that talks about the same topic",search
+what are the types of foods which cause diabetes,search
+analysze choice of a particular customer to find the trend of his/her favoutite items,analysis
+analyze movie choice of a customer,analysis
+How to prepare a recipe,search
+How to optimize performance of a code,search
+How to build a website from scratch,search
+analyze sales trend of a shop,analysis
+Does handwriting of a specific person match?,analysis
+can you analyze which batsman is best in powerplay on the basis of strike rate,analysis
+Which player is suitable for a particular position in a team,analysis
+Which batsman has the best record against Bumrah,analysis
+Which batsman struggles against spinners,analysis
+Where can I learn web development,search
+Which online coaching is best for jee,search
+Is the review positive or negative,analyze
+Which state has the most number of tourist spots in India,search
+Which country has the strongest defence system,analyze
+Which team has the strongest batting lineup,analyze
+Which team has the strongest bowling lineup,analyze
+What are the effects of global warming,search
+What is glucose level in blood in a normal human being,search
+are there stairs in the picture,vision
+Which book is best for learning calculas,analyze
+What is the shortcut way to reach a place from my house,search
+Benefits of coffee,search
+What is amount of calories in a potato ,search
+How does youtube algorithm work,search
+What is normal rbc level in human blood,search
+What are causes of air pollution,search
+What are causes of water pollution,search
+side effects of covid vaccines,search
+which age groups have increased risk of heart disease ,analyze
+Can you identify breed of cats in the picture,vision
+Can you identify breed of dogs in the picture,vision
+Can you identify breed of parrots in the picture,vision
+Can you identify breed of lions in the picture,vision
+Can you identify species of the tree in the picture,vision
+Can you identify types of snakes in the picture,vision
+Can you identify brand of the car in the picture,vision
+Can you identify type of flower in the picture,vision
+Is there any electric bike in the picture,vision
+Extract all details of employees from company database,search
+Find favourite genre of songs of a particular listener,analyze
+Which batsman has most number of centuries in odi,search
+Which batsman has most number of centuries in Test,search
+Which batsman has most number of centuries in T20,search
+Is there a ship in the picture,vision
+Can you see stairs in the picture,vision
+How can I learn stand up ,search
+How can I get fund for start up,search
+Which courses can be done to learn graphic designing,search
+How can I learn video editing,search
+How can I learn cooking,search
+How can I learn driving,search
+How can I learn swimming,search
+How can I learn coding,search
+How can I learn playing cricket,search
+How can I learn self defence,search
+How can I learn drawing,search
+How can I learn music,search
+Can you see tiger in the picture,vision
+Can you see lion in the picture,vision
+Can you see cat in the picture,vision
+Can you see dog in the picture,vision
+Can you see sheep in the picture,vision
+Can you see fox in the picture,vision
+Can you see frog in the picture,vision
+Can you see wolf in the picture,vision
+Can you see differences between two pictures,vision
+Can you see human  in the picture,vision
+Can you see elephant in the picture,vision
+Can you see river in the picture,vision
+Can you see letterbox in the picture,vision
+Can you see cycle in the picture,vision
+Can you see tanker in the picture,vision
+Can you see aeroplane in the picture,vision
+Can you see helicopter in the picture,vision
+Can you see robot in the picture,vision
+Can you see table in the picture,vision
+Can you see chair in the picture,vision
+Can you see box in the picture,vision
+Can you see books in the picture,vision
+Can you see pencil in the picture,vision
+Can you see pen in the picture,vision
+Can you see bottle in the picture,vision
+Can you see computer in the picture,vision
+Can you see key in the picture,vision
+Can you see mobile in the picture,vision
+Can you see bird in the picture,vision
+Can you see crow in the picture,vision
+Can you see earphone in the picture,vision
+Can you see lock in the picture,vision
+Can you see door in the picture,vision
+Can you see bed in the picture,vision
+Can you see bags in the picture,vision
+Can you see tortoise in the picture,vision
+Can you see goat in the picture,vision
+Can you see penguin in the picture,vision
+Can you see chicken in the picture,vision
+Can you see waterfall in the picture,vision
+Can you see bookshelf in the picture,vision
+Can you see building in the picture,vision
+Can you see mountain in the picture,vision
+Show the shortest path from Kolkata to Madras,search
+What is the average of Virat Kohli in odi,search
+What is the average of Axar Patel in odi,search
+What is the average of Viv Richards in odi,search
+What is the average of Williamson in odi,search
+What is the average of Root in test,search
+What is the average of Williamson in test,search
+What is the average of Hardik in odi,search
+What is the average of Dhawan in odi,search
+Analyze performance of a cricketer,analysis
+Analyze performance of a basketball player,analysis
+Analyze performance of a footballer,analysis
+Analyze performance of a javlin thrower,analysis
+Analyze performance of a swimmer,analysis
+Analyze question papers of neet,analysis
+Analyze question papers of gate,analysis
+Analyze question papers of cat,analysis
+Analyze placement trend of IIT Madras,analysis
+Analyze placement trend of IIT Bombay,analysis
+Analyze placement trend of IIT Roorkee,analysis
+Analyze placement trend of IIT Kanpur,analysis
+Analyze placement trend of IIT Patna,analysis
+Analyze placement trend of IIT Gandhinagar,analysis
+Analyze placement trend of IIT Delhi,analysis
+Analyze placement trend of IIT Hydrabad,analysis
+Analyze placement trend of NIT Suratkal,analysis
+Analyze placement trend of VIT Vellore,analysis
+Analyze placement trend of IIIT Bangalore,analysis

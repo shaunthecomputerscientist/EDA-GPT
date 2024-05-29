@@ -1,0 +1,368 @@
+
+VISUALIZATIONS (REFERENCE FOR SYNTAX):
+
+Here is a list of common plot usage using seaborn and pandas. Use these when asked to plot data.
+[PLOTS] NOTE: THESE ARE EXAMPLES. THE COLUMNS USED IN THESE EXAMPLES ARE FROM SAMPLE DATA AND DOES NOT REFLECT THE SAME DATA AS UPLOADED BY USER. CHOOSE COLUMN NAME FROM USER DATA.
+Line plot with specified x_vars:import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Generate a line plot for {column_name} with specified x_vars
+sns.lineplot(data=df, x=df.index, y={column_name}, hue={column_name})
+plt.savefig(os.path.join('pages','src', 'Database', 'Plots', 'line_plot.png'))
+result = ('graphed',)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------tter plot with specified x_vars and y_vars:import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Show a scatter plot with specified x_vars and y_vars
+sns.scatterplot(data=df, x={column_name}, y={column_name}, hue={column_name})
+plt.savefig(os.path.join('pages','src', 'Database', 'Plots', 'scatter_plot.png'))
+result = ('graphed',)
+
+NOTE: THESE ARE EXAMPLES. THE COLUMNS USED IN THESE EXAMPLES ARE FROM SAMPLE DATA AND DOES NOT REFLECT THE SAME DATA AS UPLOADED BY USER. CHOOSE COLUMN NAME FROM USER DATA.
+Scatter plot between two columns with specified x_vars and y_vars:import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Create a scatter plot between {column_name} and {column_name} with specified x_vars and y_vars
+sns.scatterplot(data=df, x={column_name}, y={column_name}, hue={column_name})
+plt.legend(loc='best')
+plt.savefig(os.path.join('pages','src', 'Database', 'Plots', 'scatter_plot_{column_name}_{column_name}.png'))
+result = ('graphed',)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Histogram for {column_name} with specified x_vars:import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Generate a histogram for {column_name} with specified x_vars
+sns.histplot(data=df, x={column_name}, hue={column_name})
+plt.savefig(os.path.join('pages','src', 'Database', 'Plots', 'histogram_{column_name}.png'))
+result = ('graphed',)
+
+Bar plot for {column_name} with specified x_vars:import seaborn as sns
+NOTE: THESE ARE EXAMPLES. THE COLUMNS USED IN THESE EXAMPLES ARE FROM SAMPLE DATA AND DOES NOT REFLECT THE SAME DATA AS UPLOADED BY USER. CHOOSE COLUMN NAME FROM USER DATA.
+import matplotlib.pyplot as plt
+# Show a bar plot for {column_name} with specified x_vars
+sns.barplot(data=df, x=df.index, y={column_name}, hue={column_name})
+plt.savefig(os.path.join('pages','src', 'Database', 'Plots', 'bar_plot_{column_name}.png'))
+result = ('graphed',)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HEATMAPS: CATEGORICAL AND NUMERICAL COLUMNS BOTH NEED SEPERATE HEATMAP STRUCTURE.
+Heatmap for the correlation matrix with specified x_vars and y_vars if columns are numeric datatype:import seaborn as sns
+NOTE: THESE ARE EXAMPLES. THE COLUMNS USED IN THESE EXAMPLES ARE FROM SAMPLE DATA AND DOES NOT REFLECT THE SAME DATA AS UPLOADED BY USER. CHOOSE COLUMN NAME FROM USER DATA.
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+# Generate a heatmap for the correlation matrix with specified x_vars and y_vars
+#USE NUMERICAL COLUMNS IN THIS NOT CATEGORICAL
+sns.heatmap(data=df.corr(), annot=True, cmap='coolwarm', xticklabels=df.columns, yticklabels=df.columns)
+plt.savefig(os.path.join('pages','src', 'Database', 'Plots', 'heatmap.png'))
+result = ('graphed',)
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+1. **Box Plot**: A box plot (or box-and-whisker plot) is useful for visualizing the distribution of numerical data and detecting outliers.
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+import os
+# Generate a box plot for a numerical column
+sns.boxplot(data=df, x={column_name})
+plt.savefig(os.path.join('pages','src', 'Database', 'Plots', 'box_plot.png'))
+result = ('graphed',)
+
+2. **Violin Plot**: Similar to a box plot, a violin plot also shows the distribution of numerical data but provides a more detailed representation by including a kernel density estimation.
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+import os
+# Generate a violin plot for a numerical column
+sns.violinplot(data=df, x={column_name})
+plt.savefig(os.path.join('pages','src', 'Database', 'Plots', 'violin_plot.png'))
+result = ('graphed',)
+
+3. **Pair Plot**: A pair plot is a grid of scatterplots showing the relationship between pairs of numerical columns, along with histograms along the diagonal.
+import seaborn as sns
+import matplotlib.pyplot as plt
+import os
+# Generate a pair plot for numerical columns
+sns.pairplot(df)
+plt.savefig(os.path.join('pages','src', 'Database', 'Plots', 'pair_plot.png'))
+result = ('graphed',)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+GENERAL SEABORN DOCUMENTATION:
+
+# Import seaborn
+import seaborn as sns
+
+# Apply the default theme
+sns.set_theme()
+
+# Load an example dataset
+tips = sns.load_dataset("tips")
+
+# Create a visualization
+sns.relplot(
+    data=tips,
+    x="total_bill", y="tip", col="time",
+    hue="smoker", style="smoker", size="size",
+)
+
+dots = sns.load_dataset("dots")
+sns.relplot(
+    data=dots, kind="line",
+    x="time", y="firing_rate", col="align",
+    hue="choice", size="coherence", style="choice",
+    facet_kws=dict(sharex=False),
+)
+
+Statistical estimation in seaborn goes beyond descriptive statistics. For example, it is possible to enhance a scatterplot by including a linear regression model (and its uncertainty) using lmplot():
+sns.lmplot(data=tips, x="total_bill", y="tip", col="time", hue="smoker")
+
+Distributional representations
+Statistical analyses require knowledge about the distribution of variables in your dataset. The seaborn function displot() supports several approaches to visualizing distributions. These include classic techniques like histograms and computationally-intensive approaches like kernel density estimation:
+
+sns.displot(data=tips, x="total_bill", col="time", kde=True)
+Seaborn also tries to promote techniques that are powerful but less familiar, such as calculating and plotting the empirical cumulative distribution function of the data:
+
+sns.displot(data=tips, kind="ecdf", x="total_bill", col="time", hue="smoker", rug=True)
+
+
+Plots for categorical data
+Several specialized plot types in seaborn are oriented towards visualizing categorical data. They can be accessed through catplot(). These plots offer different levels of granularity. At the finest level, you may wish to see every observation by drawing a “swarm” plot: a scatter plot that adjusts the positions of the points along the categorical axis so that they don’t overlap:
+
+sns.catplot(data=tips, kind="swarm", x="day", y="total_bill", hue="smoker")
+
+Alternately, you could use kernel density estimation to represent the underlying distribution that the points are sampled from:
+
+sns.catplot(data=tips, kind="violin", x="day", y="total_bill", hue="smoker", split=True)
+
+sns.catplot(data=tips, kind="bar", x="day", y="total_bill", hue="smoker")
+
+Multivariate views on complex datasets
+Some seaborn functions combine multiple kinds of plots to quickly give informative summaries of a dataset. One, jointplot(), focuses on a single relationship. It plots the joint distribution between two variables along with each variable’s marginal distribution:
+
+penguins = sns.load_dataset("penguins")
+sns.jointplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
+
+
+The other, pairplot(), takes a broader view: it shows joint and marginal distributions for all pairwise relationships and for each variable, respectively:
+
+sns.pairplot(data=penguins, hue="species")
+
+
+Visualizing distributions of data
+An early step in any effort to analyze or model data should be to understand how the variables are distributed. Techniques for distribution visualization can provide quick answers to many important questions. What range do the observations cover? What is their central tendency? Are they heavily skewed in one direction? Is there evidence for bimodality? Are there significant outliers? Do the answers to these questions vary across subsets defined by other variables?
+
+The distributions module contains several functions designed to answer questions such as these. The axes-level functions are histplot(), kdeplot(), ecdfplot(), and rugplot(). They are grouped together within the figure-level displot(), jointplot(), and pairplot() functions.
+
+There are several different approaches to visualizing a distribution, and each has its relative advantages and drawbacks. It is important to understand these factors so that you can choose the best approach for your particular aim.
+
+Plotting univariate histograms
+Perhaps the most common approach to visualizing a distribution is the histogram. This is the default approach in displot(), which uses the same underlying code as histplot(). A histogram is a bar plot where the axis representing the data variable is divided into a set of discrete bins and the count of observations falling within each bin is shown using the height of the corresponding bar:
+
+penguins = sns.load_dataset("penguins")
+sns.displot(penguins, x="flipper_length_mm")
+
+This plot immediately affords a few insights about the flipper_length_mm variable. For instance, we can see that the most common flipper length is about 195 mm, but the distribution appears bimodal, so this one number does not represent the data well.
+
+Choosing the bin size
+The size of the bins is an important parameter, and using the wrong bin size can mislead by obscuring important features of the data or by creating apparent features out of random variability. By default, displot()/histplot() choose a default bin size based on the variance of the data and the number of observations. But you should not be over-reliant on such automatic approaches, because they depend on particular assumptions about the structure of your data. It is always advisable to check that your impressions of the distribution are consistent across different bin sizes. To choose the size directly, set the binwidth parameter:
+
+sns.displot(penguins, x="flipper_length_mm", binwidth=3)
+
+In other circumstances, it may make more sense to specify the number of bins, rather than their size:
+
+sns.displot(penguins, x="flipper_length_mm", bins=20)
+
+One example of a situation where defaults fail is when the variable takes a relatively small number of integer values. In that case, the default bin width may be too small, creating awkward gaps in the distribution:
+
+tips = sns.load_dataset("tips")
+sns.displot(tips, x="size")
+
+sns.displot(tips, x="size", bins=[1, 2, 3, 4, 5, 6, 7])
+
+
+
+This can also be accomplished by setting discrete=True, which chooses bin breaks that represent the unique values in a dataset with bars that are centered on their corresponding value.
+
+sns.displot(tips, x="size", discrete=True)
+
+
+
+It’s also possible to visualize the distribution of a categorical variable using the logic of a histogram. Discrete bins are automatically set for categorical variables, but it may also be helpful to “shrink” the bars slightly to emphasize the categorical nature of the axis:
+
+sns.displot(tips, x="day", shrink=.8)
+
+Conditioning on other variables
+Once you understand the distribution of a variable, the next step is often to ask whether features of that distribution differ across other variables in the dataset. For example, what accounts for the bimodal distribution of flipper lengths that we saw above? displot() and histplot() provide support for conditional subsetting via the hue semantic. Assigning a variable to hue will draw a separate histogram for each of its unique values and distinguish them by color:
+
+sns.displot(penguins, x="flipper_length_mm", hue="species")
+
+
+
+By default, the different histograms are “layered” on top of each other and, in some cases, they may be difficult to distinguish. One option is to change the visual representation of the histogram from a bar plot to a “step” plot:
+
+sns.displot(penguins, x="flipper_length_mm", hue="species", element="step")
+
+
+
+Alternatively, instead of layering each bar, they can be “stacked”, or moved vertically. In this plot, the outline of the full histogram will match the plot with only a single variable:
+
+sns.displot(penguins, x="flipper_length_mm", hue="species", multiple="stack")
+
+The stacked histogram emphasizes the part-whole relationship between the variables, but it can obscure other features (for example, it is difficult to determine the mode of the Adelie distribution. Another option is “dodge” the bars, which moves them horizontally and reduces their width. This ensures that there are no overlaps and that the bars remain comparable in terms of height. But it only works well when the categorical variable has a small number of levels:
+
+sns.displot(penguins, x="flipper_length_mm", hue="sex", multiple="dodge")
+
+Because displot() is a figure-level function and is drawn onto a FacetGrid, it is also possible to draw each individual distribution in a separate subplot by assigning the second variable to col or row rather than (or in addition to) hue. This represents the distribution of each subset well, but it makes it more difficult to draw direct comparisons:
+
+sns.displot(penguins, x="flipper_length_mm", col="sex")
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Categorical scatterplots
+The default representation of the data in catplot() uses a scatterplot. There are actually two different categorical scatter plots in seaborn. They take different approaches to resolving the main challenge in representing categorical data with a scatter plot, which is that all of the points belonging to one category would fall on the same position along the axis corresponding to the categorical variable. The approach used by stripplot(), which is the default “kind” in catplot() is to adjust the positions of points on the categorical axis with a small amount of random “jitter”:
+
+tips = sns.load_dataset("tips")
+sns.catplot(data=tips, x="day", y="total_bill")
+
+The jitter parameter controls the magnitude of jitter or disables it altogether:
+
+sns.catplot(data=tips, x="day", y="total_bill", jitter=False)
+
+he second approach adjusts the points along the categorical axis using an algorithm that prevents them from overlapping. It can give a better representation of the distribution of observations, although it only works well for relatively small datasets. This kind of plot is sometimes called a “beeswarm” and is drawn in seaborn by swarmplot(), which is activated by setting kind="swarm" in catplot():
+
+sns.catplot(data=tips, x="day", y="total_bill", kind="swarm")
+
+Similar to the relational plots, it’s possible to add another dimension to a categorical plot by using a hue semantic. (The categorical plots do not currently support size or style semantics). Each different categorical plotting function handles the hue semantic differently. For the scatter plots, it is only necessary to change the color of the points:
+
+sns.catplot(data=tips, x="day", y="total_bill", hue="sex", kind="swarm")
+
+Unlike with numerical data, it is not always obvious how to order the levels of the categorical variable along its axis. In general, the seaborn categorical plotting functions try to infer the order of categories from the data. If your data have a pandas Categorical datatype, then the default order of the categories can be set there. If the variable passed to the categorical axis looks numerical, the levels will be sorted. But, by default, the data are still treated as categorical and drawn at ordinal positions on the categorical axes (specifically, at 0, 1, …) even when numbers are used to label them:
+
+sns.catplot(data=tips.query("size != 3"), x="size", y="total_bill")
+
+The other option for choosing a default ordering is to take the levels of the category as they appear in the dataset. The ordering can also be controlled on a plot-specific basis using the order parameter. This can be important when drawing multiple categorical plots in the same figure, which we’ll see more of below:
+
+sns.catplot(data=tips, x="smoker", y="tip", order=["No", "Yes"])
+
+
+
+We’ve referred to the idea of “categorical axis”. In these examples, that’s always corresponded to the horizontal axis. But it’s often helpful to put the categorical variable on the vertical axis (particularly when the category names are relatively long or there are many categories). To do this, swap the assignment of variables to axes:
+
+sns.catplot(data=tips, x="total_bill", y="day", hue="time", kind="swarm")
+
+
+
+As the size of the dataset grows, categorical scatter plots become limited in the information they can provide about the distribution of values within each category. When this happens, there are several approaches for summarizing the distributional information in ways that facilitate easy comparisons across the category levels.
+
+Boxplots
+The first is the familiar boxplot(). This kind of plot shows the three quartile values of the distribution along with extreme values. The “whiskers” extend to points that lie within 1.5 IQRs of the lower and upper quartile, and then observations that fall outside this range are displayed independently. This means that each value in the boxplot corresponds to an actual observation in the data.
+
+sns.catplot(data=tips, x="day", y="total_bill", kind="box")
+
+
+
+When adding a hue semantic, the box for each level of the semantic variable is made narrower and shifted along the categorical axis:
+
+sns.catplot(data=tips, x="day", y="total_bill", hue="smoker", kind="box")
+
+
+This behavior is called “dodging”, and it is controlled by the dodge parameter. By default (as of v0.13.0), elements dodge only if they would otherwise overlap:
+
+tips["weekend"] = tips["day"].isin(["Sat", "Sun"])
+
+A related function, boxenplot(), draws a plot that is similar to a box plot but optimized for showing more information about the shape of the distribution. It is best suited for larger datasets:
+
+diamonds = sns.load_dataset("diamonds")
+sns.catplot(
+    data=diamonds.sort_values("color"),
+    x="color", y="price", kind="boxen",
+)
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Violinplots
+A different approach is a violinplot(), which combines a boxplot with the kernel density estimation procedure described in the distributions tutorial:
+
+sns.catplot(
+    data=tips, x="total_bill", y="day", hue="sex", kind="violin",)
+
+This approach uses the kernel density estimate to provide a richer description of the distribution of values. Additionally, the quartile and whisker values from the boxplot are shown inside the violin. The downside is that, because the violinplot uses a KDE, there are some other parameters that may need tweaking, adding some complexity relative to the straightforward boxplot:
+
+sns.catplot(
+    data=tips, x="total_bill", y="day", hue="sex",
+    kind="violin", bw_adjust=.5, cut=0,
+)
+
+It’s also possible to “split” the violins, which can allow for a more efficient use of space:
+
+sns.catplot(
+    data=tips, x="day", y="total_bill", hue="sex",
+    kind="violin", split=True,
+)
+
+
+Finally, there are several options for the plot that is drawn on the interior of the violins, including ways to show each individual observation instead of the summary boxplot values:
+
+sns.catplot(
+    data=tips, x="day", y="total_bill", hue="sex",
+    kind="violin", inner="stick", split=True, palette="pastel",
+)
+
+
+g = sns.catplot(data=tips, x="day", y="total_bill", kind="violin", inner=None)
+sns.swarmplot(data=tips, x="day", y="total_bill", color="k", size=3, ax=g.ax)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Estimating central tendency
+For other applications, rather than showing the distribution within each category, you might want to show an estimate of the central tendency of the values. Seaborn has two main ways to show this information. Importantly, the basic API for these functions is identical to that for the ones discussed above.
+
+Bar plots
+A familiar style of plot that accomplishes this goal is a bar plot. In seaborn, the barplot() function operates on a full dataset and applies a function to obtain the estimate (taking the mean by default). When there are multiple observations in each category, it also uses bootstrapping to compute a confidence interval around the estimate, which is plotted using error bars:
+
+titanic = sns.load_dataset("titanic")
+sns.catplot(data=titanic, x="sex", y="survived", hue="class", kind="bar")
+
+sns.catplot(data=titanic, x="age", y="deck", errorbar=("pi", 95), kind="bar")
+
+A special case for the bar plot is when you want to show the number of observations in each category rather than computing a statistic for a second variable. This is similar to a histogram over a categorical, rather than quantitative, variable. In seaborn, it’s easy to do so with the countplot() function:
+
+sns.catplot(data=titanic, x="deck", kind="count")
+
+Both barplot() and countplot() can be invoked with all of the options discussed above, along with others that are demonstrated in the detailed documentation for each function:
+
+sns.catplot(
+    data=titanic, y="deck", hue="class", kind="count",
+    palette="pastel", edgecolor=".6",
+)
+
+Point plots
+An alternative style for visualizing the same information is offered by the pointplot() function. This function also encodes the value of the estimate with height on the other axis, but rather than showing a full bar, it plots the point estimate and confidence interval. Additionally, pointplot() connects points from the same hue category. This makes it easy to see how the main relationship is changing as a function of the hue semantic, because your eyes are quite good at picking up on differences of slopes:
+
+sns.catplot(data=titanic, x="sex", y="survived", hue="class", kind="point")
+
+While the categorical functions lack the style semantic of the relational functions, it can still be a good idea to vary the marker and/or linestyle along with the hue to make figures that are maximally accessible and reproduce well in black and white:
+
+sns.catplot(
+    data=titanic, x="class", y="survived", hue="sex",
+    palette={"male": "g", "female": "m"},
+    markers=["^", "o"], linestyles=["-", "--"],
+    kind="point"
+)
+
+Just like relplot(), the fact that catplot() is built on a FacetGrid means that it is easy to add faceting variables to visualize higher-dimensional relationships:
+
+sns.catplot(
+    data=tips, x="day", y="total_bill", hue="smoker",
+    kind="swarm", col="time", aspect=.7,
+)
+-----------------------------------------------------------------------------------------------------------------------------------------------------

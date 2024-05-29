@@ -1,0 +1,27 @@
+14-04-2024 16:31:21.77 - INFO - Started validation of input parameters...
+14-04-2024 16:31:21.77 - INFO - Completed validation of input parameters
+14-04-2024 16:31:21.77 - INFO - Skipped handling of duplicates
+14-04-2024 16:31:21.77 - INFO - Started handling of missing values...
+14-04-2024 16:31:21.78 - INFO - Found a total of 155 missing value(s)
+14-04-2024 16:31:21.80 - INFO - Started handling of NUMERICAL missing values... Method: "MOST_FREQUENT"
+14-04-2024 16:31:21.81 - DEBUG - MOST_FREQUENT imputation of 155 value(s) succeeded for feature "BMI"
+14-04-2024 16:31:21.81 - INFO - Started handling of CATEGORICAL missing values... Method: "MOST_FREQUENT"
+14-04-2024 16:31:21.81 - INFO - Completed handling of missing values in 0.039398 seconds
+14-04-2024 16:31:21.81 - INFO - Skipped handling of outliers
+14-04-2024 16:31:21.81 - INFO - Skipped datetime feature conversion
+14-04-2024 16:31:21.81 - INFO - Started encoding categorical features... Method: "ONEHOT"
+14-04-2024 16:31:21.81 - WARNING - Encoding to ONEHOT failed for feature "NeverMarried"
+14-04-2024 16:31:21.82 - WARNING - Encoding to ONEHOT failed for feature "Gender"
+14-04-2024 16:31:21.82 - WARNING - Encoding to ONEHOT failed for feature "HasTension"
+14-04-2024 16:31:21.82 - WARNING - Encoding to ONEHOT failed for feature "SmokingStatus"
+14-04-2024 16:31:21.82 - WARNING - Encoding to ONEHOT failed for feature "AnyHeartDisease"
+14-04-2024 16:31:21.82 - WARNING - Encoding to ONEHOT failed for feature "LivesIn"
+14-04-2024 16:31:21.83 - WARNING - Encoding to ONEHOT failed for feature "Occupation"
+14-04-2024 16:31:21.83 - WARNING - Encoding to ONEHOT failed for feature "HeartAttack"
+14-04-2024 16:31:21.83 - INFO - Completed encoding of categorical features in 0.013788 seconds
+14-04-2024 16:31:21.83 - INFO - Started feature type conversion...
+14-04-2024 16:31:21.83 - DEBUG - Conversion to type FLOAT succeeded for feature "Age"
+14-04-2024 16:31:21.84 - DEBUG - Conversion to type FLOAT succeeded for feature "GlucoseLevel"
+14-04-2024 16:31:21.86 - DEBUG - Conversion to type FLOAT succeeded for feature "BMI"
+14-04-2024 16:31:21.86 - INFO - Completed feature type conversion for 3 feature(s) in 0.033283 seconds
+14-04-2024 16:31:21.86 - INFO - AutoClean process completed in 0.096883 seconds
