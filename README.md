@@ -1,11 +1,19 @@
 ## EDA GPT: Your Data Analysis Companion
 
+![EDA GPT HOME PAGE](pages/src/Database/assets/sample1.png)
+![EDA GPT STRUCTURED PAGE](pages/src/Database/assets/sample2.png)
+![EDA GPT UNSTRUCTURED PAGE](pages/src/Database/assets/sample3.png)
+
+
+
 Welcome to EDA GPT, your comprehensive solution for all your data analysis needs. Whether you're analyzing structured data in CSV, XLSX, or SQLite formats, generating insightful graphs, or conducting in-depth analysis of unstructured data such as PDFs and images, EDA GPT is here to assist you every step of the way.
 
 ### Introduction
 EDA GPT streamlines the data analysis process, allowing users to effortlessly explore, visualize, and gain insights from their data. With a user-friendly interface and powerful features, EDA GPT empowers users to make data-driven decisions with confidence.
 
 #### DEMO VIDEO : https://genny.lovo.ai/share/d6b58f0d-fc46-4aa7-a65e-fa0f9a684f01
+
+
 
 ### Getting Started
 To get started with EDA GPT, simply navigate to the app and follow the on-screen instructions. Upload your data, specify your analysis preferences, and let EDA GPT handle the rest. With its intuitive interface and powerful features, EDA GPT makes data analysis accessible to users of all skill levels.
@@ -251,19 +259,25 @@ graph TB
 
 ### Optimizations in the application?
 
--EDA GPT is optimized for maximal parallel processing. It embeds a huge list of documents and adds them to chroma parallelly.
+- EDA GPT is optimized for maximal parallel processing. It embeds a huge list of documents and adds them to chroma parallelly.
 
--It is heavily optimized for searching internet, documents and creating analysis reports from structured and unstructured data.
+- It is heavily optimized for searching internet, documents and creating analysis reports from structured and unstructured data.
 
--Advanced retrieval techniques like multiquery retrieval, emsemble retrieval combined with similarity search with a high threshold is used to get useful documents.
+- Advanced retrieval techniques like multiquery retrieval, emsemble retrieval combined with similarity search with a high threshold is used to get useful documents.
 
--A large language model with high context window like gemini-pro-1.5 works best for large volumes of data. Since llms have a limit for context, it is not recommended to feed humungous amount of data in one go. We recommend to divide a huge pdf into smaller pdfs if possible and process independent data in one session. For example a pdf of 1000 pages with over 5 * 10^6 words should be divided for efficiency.
+- A large language model with high context window like gemini-pro-1.5 works best for large volumes of data. Since llms have a limit for context, it is not recommended to feed humungous amount of data in one go. We recommend to divide a huge pdf into smaller pdfs if possible and process independent data in one session. For example a pdf of 1000 pages with over 5 * 10^6 words should be divided for efficiency.
 
--data is cached at every point for faster inference.
+- data is cached at every point for faster inference.
 
 
 ### Example Of Structured Data Analysis with EDA GPT:
 - link to notebook: https://colab.research.google.com/drive/1vqMTPWeSlF7iYG06PFkrYw9lxcnrrmaE?usp=sharing#scrollTo=9dzFcTeY53eG
+
+
+### For Indepth Understanding Of The Application Check Out [Check out the Low Level Design documentation as markdown](LLD.md) and [High Level Design pdf](pages/src/Database/assets/HLD.pdf)
+
+
+
 
 ### Feedback and Support
 We value your feedback and are constantly working to improve EDA GPT. If you encounter any issues or have suggestions for improvement, please don't hesitate to reach out to our support team. developer contact : mrpolymathematica@gmail.com
