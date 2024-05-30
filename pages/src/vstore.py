@@ -17,6 +17,7 @@ import string
 from concurrent.futures import ThreadPoolExecutor
 import nltk
 nltk.download("stopwords")
+nltk.download('wordnet')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
