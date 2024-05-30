@@ -1,7 +1,7 @@
 import os
 import streamlit as st
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 st.set_page_config(page_title="Settings", layout='wide')
 
@@ -49,7 +49,6 @@ class Settings:
             embedding=st.radio(label='Choose among 4 embeddings that best suit performance on your data',options=list(embeddings.keys()), index=[st.session_state.embeddings if st.session_state.embeddings is not None else 1][0])
             if st.button('apply embedding'):
                 st.session_state.embeddings=embeddings[embedding]
-
 
 
 

@@ -3,9 +3,13 @@ import json, os
 from datetime import datetime
 from .vstore import VectorStore
 from langchain_core.prompts import PromptTemplate, ChatPromptTemplate, MessagesPlaceholder, HumanMessagePromptTemplate,PromptTemplate
-from crewai.agent import Agent
-from crewai.task import Task
-from crewai.crew import Crew
+import sys
+# sys.path.insert(0,'/vendor/dependencies/crewAI')
+# from vendor.dependencies.crewAI.crewai.agent import Agent
+# from vendor.dependencies.crewAI.crewai.task import Task
+# from vendor.dependencies.crewAI.crewai.crew import Crew
+# sys.path.pop(0)
+from crewai import Agent,Task,Crew
 from langchain.tools import tool
 import os, inspect, types
 from streamlit_extras import colored_header
@@ -34,9 +38,9 @@ from .Tools.tools import (
 from textwrap import dedent
 from joblib import load
 from dotenv import load_dotenv
-from langchain_core.callbacks import CallbackManagerForRetrieverRun
 load_dotenv()
-
+import logging
+logging.basicConfig(level=logging.INFO)
 
 
 #tools initialization
@@ -88,7 +92,7 @@ class unstructured_Analyzer:
     def _upload_pdf(self):
         uploaded_files = st.file_uploader("Upload pdf file", type=["pdf", "mp3", "mp4", 'mpeg'],accept_multiple_files=False, key=1, label_visibility='hidden')
         if uploaded_files:
-            print('file :',uploaded_files, uploaded_files.type)
+            logging.info('file :',uploaded_files, uploaded_files.type)
         
         st.session_state['uploaded_files']=uploaded_files
         return uploaded_files
@@ -103,7 +107,7 @@ class unstructured_Analyzer:
 
         if st.session_state.vision_model:
             uploaded_image=st.file_uploader("Upload an image",type=["png", "jpg" , "jpeg"],key=2, accept_multiple_files=False, label_visibility="hidden")
-            print("name :",uploaded_image)
+            logging.info("name :",uploaded_image)
         return uploaded_image
 
     def _IsGenerator(self, obj):
@@ -116,7 +120,7 @@ class unstructured_Analyzer:
         vectorizer=load(os.path.join(self.config_data['Classification_models'],'response_sentiment_vectorizer_pretrained.joblib'))
         response_vectorized=vectorizer.transform([response])
         prediction_proba=st.session_state.response_sentiment.predict_proba(response_vectorized)[0][0]
-        print(prediction_proba)
+        logging.info(prediction_proba)
         return prediction_proba
 
 
@@ -132,17 +136,17 @@ class unstructured_Analyzer:
             if uploaded_files.type.split('/')[1] in ['pdf']:
                 with open(os.path.join(_self.unstructured_directory, uploaded_files.name), 'wb') as f:
                     f.write(uploaded_files.getbuffer())
-                    # print('saved pdf')
+                    # logging.info('saved pdf')
             elif uploaded_files.type.split('/')[1] in ['mp3','mp4','mpeg4', 'mpeg']:
-                print('audio file')
+                logging.info('audio file')
                 aai.settings.api_key = st.secrets['assemblyai_api_key']['api_key']
                 with st.spinner('collecting transcripts...'):
                     transcriber = aai.Transcriber()
                     transcript = transcriber.transcribe(uploaded_files)
                 with open(os.path.join(_self.unstructured_directory, 'transcript.txt'), 'w') as f:
-                    print(transcript.text)
+                    logging.info(transcript.text)
                     f.write(transcript.text)
-                    # print('saved transcript')
+                    # logging.info('saved transcript')
             with st.spinner('Generating Embeddings. May take some time...'):
                 st.session_state.vectorstoreretriever=st.session_state.vector_store.makevectorembeddings(embedding_num=st.session_state.embeddings)
         elif mongo:
@@ -221,17 +225,20 @@ class unstructured_Analyzer:
             for ele in extra_data:
                 extradata+=extradata+ele.page_content+'\n'
         #--------------------------------------------------------------
-        print('mqdocs',len(mqdocs))
-        print('emsemble docs',len(ensemble_docs))
-        print('extradata',len(extra_data))
+        logging.info('mqdocs',len(mqdocs))
+        logging.info('emsemble docs',len(ensemble_docs))
+        logging.info('extradata',len(extra_data))
         #--------------------------------------------------------------
         with st.spinner('extracting relevant documents'):
             combinedocs=mqdocs+[Document(page_content=extradata)]+ensemble_docs
             retrieval_chain = create_retrieval_chain(vector_embeddings_retriever, combine_docs_chain)
         with st.spinner('generating final answer'):
-            result=retrieval_chain.invoke({'input':query,'context': [context if context is not None else " "][0], 'memory':st.session_state.messages[::-1][0:int([3 if len(st.session_state.messages)>3 else len(st.session_state.messages)][0])], 'date':datetime.today().strftime('%Y-%m-%d %H:%M:%S'), 'extra_documents':combinedocs})
+            try:
+                result=retrieval_chain.invoke({'input':query,'context': [context if context is not None else " "][0], 'memory':st.session_state.messages[::-1][0:int([3 if len(st.session_state.messages)>3 else len(st.session_state.messages)][0])], 'date':datetime.today().strftime('%Y-%m-%d %H:%M:%S'), 'extra_documents':combinedocs})
+            except Exception as e:
+                return e
         #--------------------------------------------------------------
-        print(result)
+        logging.info(result)
         st.session_state.docs_found=result['context']+combinedocs
         return result['answer']
 
@@ -299,7 +306,7 @@ class unstructured_Analyzer:
         if st.button("Fetch Data and generate embeddings"):
             if uri and database_name and collection_name:
                     data = self.fetch_mongodb_data(uri, database_name, collection_name)
-                    print('generating', type(data))
+                    logging.info('generating', type(data))
 
                     vstore=self._vstore_embeddings(mongo=True,_mongo_data=data)
                     st.session_state.vectorstoreretriever=vstore
@@ -332,7 +339,7 @@ class unstructured_Analyzer:
 
                         if st.session_state.uploaded_image is not None and st.session_state.uploaded_image!=[]:
 
-                            print('image uploader')
+                            logging.info('image uploader')
 
                             with open(os.path.join(self.image_path,(st.session_state.uploaded_image).name), 'wb') as file:
                                 file.write(st.session_state.uploaded_image.read())
@@ -446,10 +453,10 @@ class unstructured_Analyzer:
                         st.write(st.session_state.docs_found, unsafe_allow_html=True)
                             
                 if prompt := st.chat_input('Ask questions', key='data_chat'):
-                    print(prompt)
+                    logging.info(prompt)
                     message=self.generateresponse(prompt=prompt)
                     st.session_state.messages.append({'role':'assistant','content':message})
-                    print(st.session_state.messages)
+                    logging.info(st.session_state.messages)
                     st.rerun()
             
 

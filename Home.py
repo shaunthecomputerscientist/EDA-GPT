@@ -1,7 +1,17 @@
 import streamlit as st
+# from pages.src.Tools.secrets import initialize_states , initialize_secrets
+
+
+
 
 def home():
+
+
     st.set_page_config(page_title="home" , layout='wide')
+    warning="This app is in dveelopment and does not have enough support to use paid models from goole, openai, antrophic,etc. We request you to use your own api keys in case of rate limit errors. "
+    st.warning(f'***{warning.upper()}***')
+
+
     st.title("Welcome to the EDA GPT App")
 
     # Overview Section
@@ -55,4 +65,4 @@ def home():
 
 
 if __name__ == "__main__":
-   home()
+    home()
