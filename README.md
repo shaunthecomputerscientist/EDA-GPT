@@ -276,6 +276,22 @@ graph TB
 
 ### For Indepth Understanding Of The Application Check Out [Check out the Low Level Design documentation as markdown](LLD.md) and [High Level Design pdf](pages/src/Database/assets/HLD.pdf)
 
+## How to start the app
+
+To use this app, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/shaunthecomputerscientist/EDA-GPT.git
+   cd EDA-GPT
+2. **Make a virtual environment and install dependencies**:
+   ```bash
+      pip install -r requirements.txt
+3. **Start the app**:
+   ```bash
+      streamlit run Home.py
+   ```
+
 
 
 
