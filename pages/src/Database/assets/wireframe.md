@@ -1,0 +1,36 @@
+```mermaid
+graph TD;
+    Home --> EDA_GPT;
+    EDA_GPT --> Structured;
+    EDA_GPT --> Unstructured;
+    EDA_GPT --> Instructions;
+    Structured --> Model_Selection;
+    Structured --> Temperature_Setting;
+    Structured --> Data_Upload_CSV;
+    Structured --> Data_Upload_XLSX;
+    Structured --> Connect_Postgres;
+    Structured --> Upload_SQLite;
+    Unstructured --> Analyze_PDF;
+    Unstructured --> Upload_Audio;
+    Unstructured --> Connect_MongoDB;
+    Edit_Data --> Edit;
+    Edit_Data --> Clean_Data;
+    Edit_Data --> Change_Rows_Columns;
+    Home[Home Page] -->|Contains basic information| EDA_GPT[EDA GPT Page];
+    EDA_GPT[EDA GPT Page] -->|Contains most features| Structured[Structured Section];
+    EDA_GPT[EDA GPT Page] -->|Contains most features| Unstructured[Unstructured Section];
+    EDA_GPT[EDA GPT Page] -->|Contains most features| Instructions[Instructions Section];
+    Edit_Data[Edit Data Page];
+    Structured[Structured Section] --> Model_Selection[Model Selection];
+    Structured[Structured Section] --> Temperature_Setting[Temperature Setting];
+    Structured[Structured Section] --> Data_Upload_CSV[Upload CSV];
+    Structured[Structured Section] --> Data_Upload_XLSX[Upload XLSX];
+    Structured[Structured Section] --> Connect_Postgres[Connect to Postgres];
+    Structured[Structured Section] --> Upload_SQLite[Upload SQLite Database];
+    Unstructured[Unstructured Section] --> Analyze_PDF[Analyze PDF];
+    Unstructured[Unstructured Section] --> Upload_Audio[Upload Audio Data];
+    Unstructured[Unstructured Section] --> Connect_MongoDB[Connect to MongoDB];
+    Edit_Data[Edit Data Page] --> Edit[Edit];
+    Edit_Data[Edit Data Page] --> Clean_Data[Clean Data];
+    Edit_Data[Edit Data Page] --> Change_Rows_Columns[Change Rows and Columns];
+    ```
