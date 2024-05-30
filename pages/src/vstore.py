@@ -14,6 +14,7 @@ import os
 from langchain_community.retrievers import BM25Retriever
 from unstructured.partition.auto import partition_pdf
 import string
+import time
 from concurrent.futures import ThreadPoolExecutor
 import nltk
 nltk.download("stopwords")
@@ -41,6 +42,7 @@ class VectorStore():
         self.directory=directory
         self.data=None
         self.key=None
+        self.chroma_db=None
         self.vector_stores_list=[]
         if self.directory is not None:
             self.unstructured_directory_path=self.directory
@@ -80,7 +82,7 @@ class VectorStore():
             # )
             ##########################
             #CHROMA INITIALIZATION
-            self.chroma_db=Chroma(embedding_function=embeddings)
+            self.chroma_db=Chroma(embedding_function=embeddings, collection_name=f"{time.time()}")
             text_splitter = RecursiveCharacterTextSplitter(
                     chunk_size=1000,
                     chunk_overlap=20,
@@ -107,9 +109,9 @@ class VectorStore():
                 length_function=len
             )
             chunks = text_splitter.split_documents(documents=self.data)
-            self.vector_stores = Chroma.from_documents(documents=chunks, embedding=embeddings)
+            print('structured chroma')
 
-            return self.vector_stores
+            return Chroma.from_documents(documents=chunks, embedding=embeddings, collection_name="structured_data")
 
 
     def _create_documents_in_parallel(self,text_chunk, text_splitter):

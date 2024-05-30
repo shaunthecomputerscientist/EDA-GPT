@@ -63,7 +63,8 @@ class EDAAnalyzer:
         self.value_counts = {}
         self.result_queue=Queue()
         self.vector_store=VectorStore(directory=self.config_data['relational_vstore'])
-        self.loaded_vstore=None
+        # if 'loaded_vstore' not in st.session_state:
+        #     st.session_state.loaded_vstore=None
         self.llm_category=kwargs['llm_category']
         init_streamlit_comm()
         # self.initialEDA= None
@@ -295,7 +296,11 @@ class EDAAnalyzer:
             # if self.loaded_vstore is None:
             #     vector_embeddings_retriever=(self.vector_store.loadvectorstores()).as_retriever(search_kwargs={'k': 2, 'fetch_k': 10})
             # else:
-            vector_embeddings_retriever=self.loaded_vstore.as_retriever(search_kwargs={'k': 2, 'fetch_k': 10})
+            try:
+                if st.session_state.loaded_vstore is not None:
+                    vector_embeddings_retriever=st.session_state.loaded_vstore.as_retriever(search_kwargs={'k': 5})
+            except Exception as e:
+                raise e
             retrieval_chain = create_retrieval_chain(vector_embeddings_retriever, combine_docs_chain)
 
             valid_code_generated = False
@@ -382,13 +387,14 @@ class EDAAnalyzer:
         with st.spinner('Generating analysis report takes some time. Please have a ☕ break...'):
             crew.kickoff()
         result= "\n\n".join([tasks.output.raw_output for tasks in task])
+
         self.initialEDA=result
         with st.spinner('Almost Done...'):
             with open(os.path.join(self.config_data['relational_vstore'],"EDAanalysis.txt"),'w', encoding='utf-8') as f:
                 f.write(result)
             self.vector_store.directory=self.config_data['relational_vstore']
-            
-            self.loaded_vstore=self.vector_store.makevectorembeddings(embedding_num=st.session_state.embeddings)
+            st.session_state.loaded_vstore=self.vector_store.makevectorembeddings(embedding_num=st.session_state.embeddings)
+            logging.info(st.session_state.loaded_vstore)
 
         return result
 
