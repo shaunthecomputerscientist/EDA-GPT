@@ -63,7 +63,7 @@ pillow_heif==0.16.0
 pikepdf==8.15.1
 ghostscript==0.7
 rank-bm25==0.2.2
-faiss-cpu==1.7.2
+faiss-cpu==1.8.0
 psycopg2-binary==2.9.9
 pysqlite3-binary
 tiktoken
