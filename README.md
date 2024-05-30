@@ -1,4 +1,4 @@
-## EDA GPT: Your Data Analysis Companion
+## EDA GPT: Your OpenSource Data Analysis Companion
 
 ![EDA GPT HOME PAGE](pages/src/Database/assets/sample1.png)
 ![EDA GPT STRUCTURED PAGE](pages/src/Database/assets/sample2.png)
