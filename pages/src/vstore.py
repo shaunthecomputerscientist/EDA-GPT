@@ -107,7 +107,7 @@ class VectorStore():
                 length_function=len
             )
             chunks = text_splitter.split_documents(documents=self.data)
-            self.vector_stores = FAISS.from_documents(documents=chunks, embedding=embeddings)
+            self.vector_stores = Chroma.from_documents(documents=chunks, embedding=embeddings)
 
             return self.vector_stores
 
