@@ -274,7 +274,7 @@ graph TB
 - link to notebook: https://colab.research.google.com/drive/1vqMTPWeSlF7iYG06PFkrYw9lxcnrrmaE?usp=sharing#scrollTo=9dzFcTeY53eG
 
 
-### For Indepth Understanding Of The Application Check Out [Check out the Low Level Design documentation as markdown](LLD.md) and [High Level Design pdf](pages/src/Database/assets/HLD.pdf)
+### For Indepth Understanding Of The Application Check Out [Check out the Low Level Design documentation as markdown](pages/src/Database/assets/LLD.md) and [High Level Design pdf](pages/src/Database/assets/HLD.pdf)
 
 ## How to start the app
 
