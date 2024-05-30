@@ -11,7 +11,7 @@ from langchain_community.embeddings.gpt4all import GPT4AllEmbeddings
 from langchain_community.vectorstores.chroma import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
-from langchain.retrievers import BM25Retriever
+from langchain_community.retrievers import BM25Retriever
 from unstructured.partition.auto import partition_pdf
 import string
 from concurrent.futures import ThreadPoolExecutor
@@ -60,7 +60,7 @@ class VectorStore():
                 self.data = loader.load()
         embedding_list=[HuggingFaceHubEmbeddings(huggingfacehub_api_token=st.secrets['HUGGINGFACEHUB_API_TOKEN']['api_token']),
                         GooglePalmEmbeddings(google_api_key=st.secrets['GOOGLE_GEMINI_API']['api_key']),
-                        GPT4AllEmbeddings(),
+                        GPT4AllEmbeddings(model_name="all-MiniLM-L6-v2.gguf2.f16.gguf"),
                         HuggingFaceInferenceAPIEmbeddings(api_key=st.secrets['HUGGINGFACEHUB_API_TOKEN']['api_token'],model_name="BAAI/bge-base-en-v1.5")]
         
         if kwargs['embedding_num']:
@@ -169,7 +169,7 @@ class VectorStore():
         batches[-1]+=list_of_docs[len(list_of_docs)-remainder:]
         return batches
     
-    def _create_vstore_in_parallel(self,db,chunks):
+    def _create_vstore_in_parallel(self,db : Chroma,chunks):
        return db.add_documents(chunks)
     
 
@@ -225,6 +225,11 @@ class VectorStore():
         return preprocessed_text
 
     def _preprocess_data_in_directory(self):
+        poppler_bin_path = r'\poppler-24.02.0\Library\bin'
+        os.environ['PATH'] += os.pathsep + poppler_bin_path
+
+        print(os.environ['PATH'])
+
         
         directory_path=self.unstructured_directory_path
         print('inside preprceess')

@@ -101,8 +101,6 @@ class EDAGPT:
             st.session_state.questions.append(question)
             for index,question in enumerate(st.session_state.questions):
                 st.write(f"{index}: {question}")
-                print(question)
-
         if st.button('load data'):
             self.extra_data={'description':question,'questions':st.session_state.questions}
             st.session_state.extra_data=self.extra_data
@@ -111,7 +109,6 @@ class EDAGPT:
 
 
     @st.cache_data(experimental_allow_widgets=True)
-    @st.experimental_fragment
     def plot_data(_self, data):
         with st.spinner('Analyzing, Please wait'):
 
@@ -128,12 +125,11 @@ class EDAGPT:
             _self.eda_analyzer.eda_sweetviz(_self.data)
             with open(os.path.join('pages','src','Database','charts','sweetviz.html')) as f:
                 html_content = f.read()
-            colored_header.colored_header("EDA GPT REPORT",description=None, color_name='blue-green-90')
+            colored_header.colored_header("EDA GPT VISUAL REPORT",description=None, color_name='blue-green-90')
             with st.expander('Analysis Visuals by EDA GPT'):
                 components.html(html_content, scrolling=True, height=2000, width=1000)
     
     @st.cache_data(experimental_allow_widgets=True)
-    @st.experimental_fragment
     def statistical_tests(_self,data):
         colored_header.colored_header("Statistical Tests",description=None, color_name='blue-green-90')
         _self.eda_analyzer._statistical_tests()
@@ -144,7 +140,6 @@ class EDAGPT:
 
 
     @st.cache_data(experimental_allow_widgets=True)
-    @st.experimental_fragment
     def generate_analysis_report(_self, data):
 
         with st.spinner(text='Generating Report, Please wait'):

@@ -7,7 +7,6 @@ from langchain_community.utils.openai_functions import (
     convert_pydantic_to_openai_function,
 )
 from langchain_core.pydantic_v1 import BaseModel, Field
-from crewai import Agent,Task, Crew
 from langchain_core.prompts import PromptTemplate
 from langchain_experimental.smart_llm import SmartLLMChain
 from queue import Queue
@@ -36,7 +35,8 @@ from scipy.stats import shapiro, kstest, ttest_ind, ttest_rel, mannwhitneyu, wil
 from scipy.stats import ttest_ind, chi2_contingency, f_oneway
 from statsmodels.formula.api import ols
 import statsmodels.api as sm
-
+import sys
+from crewai import Agent,Task,Crew
 
 class CodeFormatter(BaseModel):
     """formats llm output into proper code block removing extra text or characters"""
@@ -379,15 +379,16 @@ class EDAAnalyzer:
         verbose=0,
         
         )
-        crew.kickoff()
+        with st.spinner('Generating analysis report takes some time. Please have a ☕ break...'):
+            crew.kickoff()
         result= "\n\n".join([tasks.output.raw_output for tasks in task])
         self.initialEDA=result
-        with open(os.path.join(self.config_data['relational_vstore'],"EDAanalysis.txt"),'w', encoding='utf-8') as f:
-            f.write(result)
-        logging.info(self.initialEDA)
-        self.vector_store.directory=self.config_data['relational_vstore']
-        self.vector_store.makevectorembeddings(embedding_num=st.session_state.embeddings)
-        self.loaded_vstore=self.vector_store.loadvectorstores()
+        with st.spinner('Almost Done...'):
+            with open(os.path.join(self.config_data['relational_vstore'],"EDAanalysis.txt"),'w', encoding='utf-8') as f:
+                f.write(result)
+            self.vector_store.directory=self.config_data['relational_vstore']
+            self.vector_store.makevectorembeddings(embedding_num=st.session_state.embeddings)
+            self.loaded_vstore=self.vector_store.loadvectorstores()
 
         return result
 
@@ -442,8 +443,8 @@ class EDAAnalyzer:
             file.write(str(soup))
 
     
-    @st.experimental_fragment
-    @st.cache_data( experimental_allow_widgets=True)
+    # @st.experimental_fragment
+    # @st.cache_data( experimental_allow_widgets=True)
     def streamlitplots_numerical(_self, data):
 
         # Check if the dataframe is empty
@@ -494,7 +495,7 @@ class EDAAnalyzer:
 
 
     @st.experimental_fragment
-    @st.cache_data( experimental_allow_widgets=True)
+    # @st.cache_data( experimental_allow_widgets=True)
     def streamlitplots_categorical(_self, data):
 
         # Check if the dataframe is empty
@@ -597,7 +598,7 @@ class EDAAnalyzer:
         pyg_app_renderer.explorer(width=size,height=size, scrolling=True)
 
 
-
+    @st.experimental_fragment
     def hypothesis_test(self,data, columns, null_hypothesis, alternate_hypothesis, alpha):
         result = {}
         
@@ -658,7 +659,7 @@ class EDAAnalyzer:
         else:
             st.write("Conclusion: Fail to reject the null hypothesis")
 
-
+    @st.experimental_fragment
     def hypothesis_testing_display(self):
             # Hypothesis Testing Inputs
             st.header("Hypothesis Testing")

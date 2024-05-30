@@ -1,7 +1,10 @@
-from crewai import Agent,Task, Crew
 from textwrap import dedent
+import sys
 from pages.src.Tools.tools import Calculator
-
+# sys.path.insert(0,'../../../vendor/dependencies/crewAI')
+# from vendor.dependencies.crewAI.crewai import Agent,Crew,Task
+# sys.path.pop(0)
+from crewai import Agent,Task,Crew
 
 
 def structured_tasks(agent, table_name, formatted_data, questions):
