@@ -45,8 +45,8 @@ class Settings:
 
 
         with st.expander('choose embeddings'):
-            embeddings={'HuggingFaceHubEmbeddings':0,'GooglePalmEmbeddings':1,'GPT4AllEmbeddings':2,'HuggingFaceInferenceAPIEmbeddings':3}
-            embedding=st.radio(label='Choose among 4 embeddings that best suit performance on your data',options=list(embeddings.keys()), index=[st.session_state.embeddings if st.session_state.embeddings is not None else 1][0])
+            embeddings={'HuggingFaceHubEmbeddings':0,'GooglePalmEmbeddings':1,'HuggingFaceInferenceAPIEmbeddings':2}
+            embedding=st.radio(label='Choose among 4 embeddings that best suit performance on your data',options=list(embeddings.keys()), index=[st.session_state.embeddings if st.session_state.embeddings is not None else 2][0])
             if st.button('apply embedding'):
                 st.session_state.embeddings=embeddings[embedding]
 

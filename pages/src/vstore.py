@@ -61,15 +61,18 @@ class VectorStore():
                 self.data = merged_data_loader.load()
             else:
                 self.data = loader.load()
+        # embedding_list=[HuggingFaceHubEmbeddings(huggingfacehub_api_token=st.secrets['HUGGINGFACEHUB_API_TOKEN']['api_token']),
+        #                 GooglePalmEmbeddings(google_api_key=st.secrets['GOOGLE_GEMINI_API']['api_key']),
+        #                 GPT4AllEmbeddings(model_name="all-MiniLM-L6-v2.gguf2.f16.gguf"),
+        #                 HuggingFaceInferenceAPIEmbeddings(api_key=st.secrets['HUGGINGFACEHUB_API_TOKEN']['api_token'],model_name="BAAI/bge-base-en-v1.5")]
         embedding_list=[HuggingFaceHubEmbeddings(huggingfacehub_api_token=st.secrets['HUGGINGFACEHUB_API_TOKEN']['api_token']),
                         GooglePalmEmbeddings(google_api_key=st.secrets['GOOGLE_GEMINI_API']['api_key']),
-                        GPT4AllEmbeddings(model_name="all-MiniLM-L6-v2.gguf2.f16.gguf"),
                         HuggingFaceInferenceAPIEmbeddings(api_key=st.secrets['HUGGINGFACEHUB_API_TOKEN']['api_token'],model_name="BAAI/bge-base-en-v1.5")]
         
         if kwargs['embedding_num']:
             embeddings = embedding_list[kwargs['embedding_num']]
         else:
-            embeddings = embedding_list[3]
+            embeddings = embedding_list[2]
 
         if self.directory is None:
             # text_splitter = SemanticChunker(
