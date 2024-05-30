@@ -2,4 +2,3 @@ libgl1-mesa-glx
 sqlite3
 ghostscript
 libc6
-GLIBC
