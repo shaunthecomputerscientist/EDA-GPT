@@ -26,7 +26,7 @@ numpy==1.26.4
 pandas==2.2.2
 plotly==5.22.0
 # protobuf==5.27.0
-psycopg2==2.9.9
+# psycopg2==2.9.9
 pygwalker==0.4.8.7
 pymongo==4.7.2
 python-dotenv==1.0.1
@@ -64,7 +64,7 @@ pikepdf==8.15.1
 ghostscript==0.7
 rank-bm25==0.2.2
 faiss-cpu==1.7.4
-psycopg2-binary
+psycopg2-binary==2.9.9
 tiktoken
 async-lru==2.0.4
 nest-asyncio==1.6.0
