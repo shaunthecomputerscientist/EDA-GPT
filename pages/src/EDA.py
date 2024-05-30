@@ -292,10 +292,10 @@ class EDAAnalyzer:
             combine_docs_chain = create_stuff_documents_chain(
             llm=self.llm, prompt=retrieval_qa_chat_prompt
             )
-            if self.loaded_vstore is None:
-                vector_embeddings_retriever=(self.vector_store.loadvectorstores()).as_retriever(search_kwargs={'k': 2, 'fetch_k': 10})
-            else:
-                vector_embeddings_retriever=self.loaded_vstore.as_retriever(search_kwargs={'k': 2, 'fetch_k': 10})
+            # if self.loaded_vstore is None:
+            #     vector_embeddings_retriever=(self.vector_store.loadvectorstores()).as_retriever(search_kwargs={'k': 2, 'fetch_k': 10})
+            # else:
+            vector_embeddings_retriever=self.loaded_vstore.as_retriever(search_kwargs={'k': 2, 'fetch_k': 10})
             retrieval_chain = create_retrieval_chain(vector_embeddings_retriever, combine_docs_chain)
 
             valid_code_generated = False
@@ -387,8 +387,8 @@ class EDAAnalyzer:
             with open(os.path.join(self.config_data['relational_vstore'],"EDAanalysis.txt"),'w', encoding='utf-8') as f:
                 f.write(result)
             self.vector_store.directory=self.config_data['relational_vstore']
-            self.vector_store.makevectorembeddings(embedding_num=st.session_state.embeddings)
-            self.loaded_vstore=self.vector_store.loadvectorstores()
+            
+            self.loaded_vstore=self.vector_store.makevectorembeddings(embedding_num=st.session_state.embeddings)
 
         return result
 
