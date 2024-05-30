@@ -102,7 +102,7 @@ def SEARCH_API(query: str, num_results=3)->str:
     for key in results:
         results[key]={field:"" for field in fields}
     count=0
-    tavily=TavilySearchAPIWrapper(tavily_api_key=st.secrets['Tavily_api_key']['api_key'])
+    tavily=TavilySearchAPIWrapper(tavily_api_key=st.secrets['TAVILY_API_KEY']['api_key'])
     bing=BingSearchAPIWrapper(bing_subscription_key=st.secrets['BING_API_KEY']['api_key'],bing_search_url="https://api.bing.microsoft.com/v7.0/search")
     duckduckgonews =DuckDuckGoSearchAPIWrapper()
     with st.spinner('searching duckduckgo'):

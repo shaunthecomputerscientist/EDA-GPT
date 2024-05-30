@@ -196,7 +196,8 @@ class unstructured_Analyzer:
             
         else:
             vector_embeddings_retriever=st.session_state.vectorstoreretriever[0].as_retriever(search_kwargs={'k' : 5})
-            st.write(st.session_state.vectorstoreretriever[0])
+        
+        st.write(st.session_state.vectorstoreretriever)
 
         
         #docs
@@ -213,6 +214,8 @@ class unstructured_Analyzer:
         except Exception as e:
             mqdocs=[Document('')]
         #--------------------------------------------------------------
+        # with st.expander("mqdocs"):
+        #     st.write(mqdocs)
         ensemble_retriever = EnsembleRetriever(retrievers=[st.session_state.vectorstoreretriever[1], vector_embeddings_retriever], weights=[0.7, 0.3])
         with st.spinner('extracting documents (ensemble retriever)'):
             ensemble_docs=ensemble_retriever.invoke(input=query)
