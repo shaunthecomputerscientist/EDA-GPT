@@ -239,7 +239,6 @@ python-magic==0.4.27
 python-multipart==0.0.9
 pytube==15.0.0
 pytz==2024.1
-pywin32==306
 PyYAML==6.0.1
 rank-bm25==0.2.2
 rapidfuzz==3.9.1
