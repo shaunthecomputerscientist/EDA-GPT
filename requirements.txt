@@ -71,7 +71,7 @@ ghostscript==0.7
 rank-bm25==0.2.2
 faiss-cpu
 psycopg2-binary==2.9.9
-# pysqlite3-binary
+pysqlite3-binary
 tiktoken
 async-lru==2.0.4
 nest-asyncio==1.6.0
