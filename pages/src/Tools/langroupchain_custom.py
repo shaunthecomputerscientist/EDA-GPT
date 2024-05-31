@@ -342,7 +342,7 @@ class LangGroupChain:
       for key, value in self.langmodelgroups.items():
         questions=[node.question+f" This is question no {index} " for index,node in enumerate(value.group)]
         task = Task(
-        description=dedent(f"Original question:{query} ---> Generated User subquestion List : {questions}\n Answer These Sub Questions in Sequence.\n Useful Data : {cumulative_data}\n.Tools given give you access to the internet. If you can reason the answer then do not use tools."),
+        description=dedent(f"Original question:{query} ---> Generated User subquestion List : {questions}\n. GOAL : Answer These Sub Questions in Sequence.\n Useful Data : {cumulative_data}\n.Tools given give you access to the internet. If you can reason the answer then do not use tools."),
         agent=Searcher,
         async_execution=False,
         expected_output=dedent("Answer all questions in sequence"),
