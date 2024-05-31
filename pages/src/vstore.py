@@ -110,8 +110,10 @@ class VectorStore():
             )
             chunks = text_splitter.split_documents(documents=self.data)
             print('structured chroma')
+            print(f"The vector store contains {self.vector_stores} documents.")
+            self.vector_stores=Chroma.from_documents(documents=chunks, embedding=embeddings, collection_name="structured_data")
 
-            return Chroma.from_documents(documents=chunks, embedding=embeddings, collection_name="structured_data")
+            return self.vector_stores
 
 
     def _create_documents_in_parallel(self,text_chunk, text_splitter):

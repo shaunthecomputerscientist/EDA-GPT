@@ -1,4 +1,8 @@
 assemblyai==0.19.0
+duckdb==0.10.3
+duckduckgo_search==6.1.4
+wikipedia==1.4.0
+arxiv==2.1.0
 beautifulsoup4==4.12.3
 crewai==0.30.11
 crewai-tools==0.2.6
