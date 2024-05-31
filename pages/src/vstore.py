@@ -8,7 +8,7 @@ from langchain_community.embeddings.huggingface import HuggingFaceInferenceAPIEm
 # from langchain_community.embeddings.voyageai import VoyageEmbeddings
 # from langchain_community.embeddings.openai import OpenAIEmbeddings
 from langchain_community.embeddings.gpt4all import GPT4AllEmbeddings
-from langchain_community.vectorstores.chroma import Chroma
+from langchain.vectorstores.chroma import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 from langchain_community.retrievers import BM25Retriever
@@ -111,7 +111,7 @@ class VectorStore():
             chunks = text_splitter.split_documents(documents=self.data)
             print('structured chroma')
             print(f"The vector store contains {self.vector_stores} documents.")
-            self.vector_stores=Chroma.from_documents(documents=chunks, embedding=embeddings, collection_name="structured_data")
+            self.vector_stores=Chroma.from_documents(documents=chunks, embedding=embeddings, collection_name=f"{time.time()}")
 
             return self.vector_stores
 
