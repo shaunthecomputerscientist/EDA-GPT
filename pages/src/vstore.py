@@ -83,23 +83,16 @@ class VectorStore():
             ##########################
             #CHROMA INITIALIZATION
             self.chroma_db=Chroma(embedding_function=embeddings, collection_name=f"{time.time()}")
-            text_splitter = RecursiveCharacterTextSplitter(
-                    chunk_size=1000,
-                    chunk_overlap=20,
-                    length_function=len
-                )
             with st.spinner('creating chunks'):
-                chunks = self.create_chunks_for_parallel_processing(self.data,text_splitter)
-                list_of_docs=self.documents_from_chunks(text_splitter=text_splitter,text_chunks=chunks)
+                chunks = self.create_chunks_for_parallel_processing(self.data)
+                list_of_docs=self.documents_from_chunks(text_chunks=chunks)
 
             with st.spinner('creating embeddings'):
             
                 self._parallel_embeddings(db=self.chroma_db,list_of_docs=list_of_docs)
             with st.spinner('storing embeddings to Chroma'):
                 bm25_retriever=BM25Retriever.from_documents(list_of_docs)
-            print(bm25_retriever)
             self.vector_stores=self.chroma_db
-            print(self.chroma_db)
             return (self.vector_stores,bm25_retriever)
 
         else:
@@ -119,7 +112,7 @@ class VectorStore():
     def _create_documents_in_parallel(self,text_chunk, text_splitter):
         # print(text_chunk,text_splitter)
         return text_splitter.create_documents([text_chunk])
-    def documents_from_chunks(self,text_splitter,text_chunks):
+    def documents_from_chunks(self,text_chunks):
         text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=len(text_chunks[0]),
                 chunk_overlap=20,
@@ -130,7 +123,7 @@ class VectorStore():
                 chunks = [chunk for future in futures for chunk in future.result()]
         return chunks
     
-    def create_chunks_for_parallel_processing(self,data,text_splitter):
+    def create_chunks_for_parallel_processing(self,data):
         text=''
         for doc in data:
             text+=doc.page_content+'\n'
