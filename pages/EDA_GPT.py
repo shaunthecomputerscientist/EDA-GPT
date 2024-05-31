@@ -5,7 +5,7 @@ from pages.src.Instructions.instructions import instructions
 from pages.src.Tools.scraper import extractollamamodels
 from pages.src.structured_data import EDAGPT
 from pages.src.Tools.secrets import initialize_secrets, initialize_states
-import os, json
+import os, json, time
 from streamlit_option_menu import option_menu
 
 st.set_page_config(page_title="Analyze data", layout='wide')
@@ -28,9 +28,9 @@ pages=['Instructions','Structured','Unstructured']
 if __name__ == "__main__":
     initialize_states()
     initialize_secrets()
-    select_dcategory=option_menu(menu_title=None,icons=['question','database','folder'],options=pages,menu_icon="robot",orientation="horizontal", default_index=1, styles={"container":{"background":"transparent", "font-size":"1rem", "border":"1px solid gray"}, "icon":{"color":"gray"}})
-    st.write(f"**{messages[select_dcategory]}**", unsafe_allow_html=True)
-    st.session_state.current_page=select_dcategory
+    st.session_state.current_page=option_menu(menu_title=None,icons=['question','database','folder'],options=pages,menu_icon="robot",orientation="horizontal", styles={"container":{"background":"transparent", "font-size":"1rem", "border":"1px solid gray"}, "icon":{"color":"gray"}})
+    st.write(f"**{messages[st.session_state.current_page]}**", unsafe_allow_html=True)
+    # st.session_state.current_page=select_dcategory
     if st.session_state.current_page.lower()=='instructions':
         instructions()   
     if st.session_state.current_page.lower()=='structured':

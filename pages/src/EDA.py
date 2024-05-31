@@ -298,7 +298,7 @@ class EDAAnalyzer:
             # else:
             try:
                 if st.session_state.loaded_vstore is not None:
-                    vector_embeddings_retriever=st.session_state.loaded_vstore.as_retriever(search_kwargs={'k': 5})
+                    vector_embeddings_retriever=st.session_state.loaded_vstore.as_retriever(search_kwargs={'k': 2})
             except Exception as e:
                 raise e
             retrieval_chain = create_retrieval_chain(vector_embeddings_retriever, combine_docs_chain)

@@ -95,7 +95,9 @@ class BingSchema(BaseModel):
 
 @tool("SEARCH_API",return_direct=False)
 def SEARCH_API(query: str, num_results=3)->str:
-    """searches for latest news, technology, events, politics, etc.Takes in query and num_reults. Returns json of results with title, sources and main_content as fields."""
+    """searches for latest news, technology, events, politics, etc.Takes in query and num_reults(<10). Returns json of results with title, sources and main_content as fields."""
+    if num_results>=10:
+        num_results=5
     max_search_results=math.ceil(num_results/3)
     fields=['\ntitle','\nsources','\nmain_content']
     results={f'RESULT {i+1}':"" for i in range(max_search_results*3)}
@@ -115,20 +117,20 @@ def SEARCH_API(query: str, num_results=3)->str:
     for i in range(len(result_bing)):
         current_ele_bing=BingSchema.parse_raw(str(result_bing[i]).replace("'",'"')).dict()
         count=count+1
-        results[f'RESULT {count}']['\ntitle']=current_ele_bing['title']
-        results[f'RESULT {count}']['\nsources']=current_ele_bing['link']
-        results[f'RESULT {count}']['main_content']=current_ele_bing['snippet']
+        results[f'RESULT {count}']['\ntitle']=current_ele_bing['title']+'\n'
+        results[f'RESULT {count}']['\nsources']=current_ele_bing['link']+'\n'
+        results[f'RESULT {count}']['main_content']=current_ele_bing['snippet']+'\n'
     
     for ele in result_tavily:
         count=count+1
-        results[f'RESULT {count}']['\nsources']=ele['url']
-        results[f'RESULT {count}']['\nmain_content']=ele['content']
+        results[f'RESULT {count}']['\nsources']=ele['url']+'\n'
+        results[f'RESULT {count}']['\nmain_content']=ele['content']+'\n'
 
     for ele in result_ddgs_news:
         count=count+1
-        results[f'RESULT {count}']['\nsources']=ele['url']
-        results[f'RESULT {count}']['\nmain_content']=ele['body']
-        results[f'RESULT {count}']['\ntitle']=ele['title']
+        results[f'RESULT {count}']['\nsources']=ele['url']+'\n'
+        results[f'RESULT {count}']['\nmain_content']=ele['body']+'\n'
+        results[f'RESULT {count}']['\ntitle']=ele['title']+'\n'
 
 
     return results
@@ -187,6 +189,4 @@ class Vision:
             file_path=os.path.join(self.config_data['QnA_img'],img)
         image_content=self._input_image_setup(file_path)
         result = self._answer_image(query,image_content=image_content)
-        os.remove(file_path)
-
         return result

@@ -135,4 +135,4 @@ class Automl:
                 automl.feature_engineer(feature_engineering_option, target, n_components_pca, k_best, degree)
                 
                 st.write("Processed Data:")
-                st.write(automl.ml_data.head())
+                st.data_editor(automl.ml_data)

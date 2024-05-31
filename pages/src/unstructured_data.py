@@ -3,7 +3,7 @@ import json, os
 from datetime import datetime
 from .vstore import VectorStore
 from langchain_core.prompts import PromptTemplate, ChatPromptTemplate, MessagesPlaceholder, HumanMessagePromptTemplate,PromptTemplate
-import sys
+import sys , re
 # sys.path.insert(0,'/vendor/dependencies/crewAI')
 # from vendor.dependencies.crewAI.crewai.agent import Agent
 # from vendor.dependencies.crewAI.crewai.task import Task
@@ -97,8 +97,8 @@ class unstructured_Analyzer:
         st.session_state['uploaded_files']=uploaded_files
         return uploaded_files
     def _upload_image(self):
-        for file in os.listdir(self.image_path):
-            os.remove(os.path.join(self.image_path,file))
+        # for file in os.listdir(self.image_path):
+        #     os.remove(os.path.join(self.image_path,file))
 
         if 'vision_model' not in st.session_state:
             st.session_state['vision_model']=''
@@ -162,7 +162,13 @@ class unstructured_Analyzer:
                     
 
         
-
+    def check_for_url(self,text):
+        pattern=r'https://\S+'
+        matches=re.findall(pattern,text)
+        if len(matches)>0:
+            return True
+        else:
+            return False
     def _promptformatter(self):
         input_variables = ['context', 'input' , 'memory','extra_documents', 'date']
         variables = """\nQUESTION: {input},\n
@@ -343,6 +349,8 @@ class unstructured_Analyzer:
                         if st.session_state.uploaded_image is not None and st.session_state.uploaded_image!=[]:
 
                             logging.info('image uploader')
+                            for ele in os.listdir(self.image_path):
+                                os.remove(os.path.join(self.image_path,ele))
 
                             with open(os.path.join(self.image_path,(st.session_state.uploaded_image).name), 'wb') as file:
                                 file.write(st.session_state.uploaded_image.read())
@@ -357,6 +365,9 @@ class unstructured_Analyzer:
 
     def generateresponse(self, prompt):
         predict=self._decision(prompt)
+        url_check=self.check_for_url(prompt)
+        if url_check:
+            predict="search"
         st.session_state.messages.append({'role':'user','content':prompt})
         
 
