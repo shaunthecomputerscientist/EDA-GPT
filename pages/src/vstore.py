@@ -104,8 +104,8 @@ class VectorStore():
 
         else:
             text_splitter = RecursiveCharacterTextSplitter(
-                chunk_size=1000,
-                chunk_overlap=500,
+                chunk_size=2000,
+                chunk_overlap=100,
                 length_function=len
             )
             chunks = text_splitter.split_documents(documents=self.data)
