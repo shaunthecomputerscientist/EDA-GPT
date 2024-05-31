@@ -8,7 +8,7 @@ from langchain_community.embeddings.huggingface import HuggingFaceInferenceAPIEm
 # from langchain_community.embeddings.voyageai import VoyageEmbeddings
 # from langchain_community.embeddings.openai import OpenAIEmbeddings
 from langchain_community.embeddings.gpt4all import GPT4AllEmbeddings
-from langchain.vectorstores.chroma import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 from langchain_community.retrievers import BM25Retriever
