@@ -1,6 +1,9 @@
 # Ignore virtual environment directory
 analyst/
 
+# Ignore streamlit secrets
+.streamlit/secrets.toml
+
 # Ignore .env file
 .env
 
