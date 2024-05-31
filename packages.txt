@@ -1,4 +1,3 @@
 libgl1-mesa-glx
-sqlite3>=3.35.0
 ghostscript
 libc6
