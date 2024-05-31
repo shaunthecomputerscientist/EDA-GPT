@@ -1,8 +1,6 @@
 # Ignore virtual environment directory
 analyst/
 
-.streamlit/secrets.toml
-
 # Ignore .env file
 .env
 
