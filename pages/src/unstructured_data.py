@@ -139,7 +139,7 @@ class unstructured_Analyzer:
                     # logging.info('saved pdf')
             elif uploaded_files.type.split('/')[1] in ['mp3','mp4','mpeg4', 'mpeg']:
                 logging.info('audio file')
-                aai.settings.api_key = st.secrets['assemblyai_api_key']['api_key']
+                aai.settings.api_key = st.secrets['ASSEMBLYAI_API_KEY']['api_key']
                 with st.spinner('collecting transcripts...'):
                     transcriber = aai.Transcriber()
                     transcript = transcriber.transcribe(uploaded_files)
