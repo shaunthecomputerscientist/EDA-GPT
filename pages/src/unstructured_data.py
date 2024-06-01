@@ -142,7 +142,7 @@ class unstructured_Analyzer:
                 aai.settings.api_key = st.secrets['ASSEMBLYAI_API_KEY']['api_key']
                 with st.spinner('collecting transcripts...'):
                     transcriber = aai.Transcriber()
-                    transcript = transcriber.transcribe(uploaded_files)
+                    transcript = transcriber.transcribe(uploaded_files.getbuffer())
                 with open(os.path.join(_self.unstructured_directory, 'transcript.txt'), 'w') as f:
                     logging.info(transcript.text)
                     f.write(transcript.text)
