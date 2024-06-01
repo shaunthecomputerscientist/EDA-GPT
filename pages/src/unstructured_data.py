@@ -137,15 +137,25 @@ class unstructured_Analyzer:
                 with open(os.path.join(_self.unstructured_directory, uploaded_files.name), 'wb') as f:
                     f.write(uploaded_files.getbuffer())
                     # logging.info('saved pdf')
-            elif uploaded_files.type.split('/')[1] in ['mp3','mp4','mpeg4', 'mpeg']:
-                logging.info('audio file')
-                aai.settings.api_key = st.secrets['ASSEMBLYAI_API_KEY']['api_key']
-                with st.spinner('collecting transcripts...'):
-                    transcriber = aai.Transcriber()
-                    transcript = transcriber.transcribe(uploaded_files.getbuffer())
-                with open(os.path.join(_self.unstructured_directory, 'transcript.txt'), 'w') as f:
-                    logging.info(transcript.text)
-                    f.write(transcript.text)
+            elif uploaded_files.type.split('/')[1] in ['mp3', 'mp4', 'mpeg4', 'mpeg']:
+                    logging.info('audio file')
+                    aai.settings.api_key = st.secrets['ASSEMBLYAI_API_KEY']['api_key']
+                    with st.spinner('collecting transcripts...'):
+                        audio_dir = os.path.join(_self.unstructured_directory, 'audio')
+                        if not os.path.exists(audio_dir):
+                            os.makedirs(audio_dir)
+                        audio_file_path = os.path.join(audio_dir, uploaded_files.name)
+                        with open(audio_file_path, "wb") as f:
+                            f.write(uploaded_files.getbuffer())
+                        transcriber = aai.Transcriber()
+                        with open(audio_file_path, 'rb') as audio_file:
+                            transcript = transcriber.transcribe(audio_file)
+                        
+                    # Save the transcript to a text file
+                    with open(os.path.join(_self.unstructured_directory, 'transcript.txt'), 'w') as f:
+                        logging.info(transcript.text)
+                        f.write(transcript.text)
+        # logging.info('saved transcript')
                     # logging.info('saved transcript')
             with st.spinner('Generating Embeddings. May take some time...'):
                 st.session_state.vectorstoreretriever=st.session_state.vector_store.makevectorembeddings(embedding_num=st.session_state.embeddings)
