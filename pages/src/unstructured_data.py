@@ -130,8 +130,7 @@ class unstructured_Analyzer:
         if 'vectorstoreretriever' not in st.session_state:
             st.session_state['vectorstoreretriever']=None
         for file in os.listdir(_self.unstructured_directory):
-            os.remove(os.path.join(_self.unstructured_directory,file))        
-
+            os.remove(os.path.join(_self.unstructured_directory,file))
         if uploaded_files:
             if uploaded_files.type.split('/')[1] in ['pdf']:
                 with open(os.path.join(_self.unstructured_directory, uploaded_files.name), 'wb') as f:
