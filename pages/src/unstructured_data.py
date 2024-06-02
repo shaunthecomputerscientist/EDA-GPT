@@ -142,19 +142,18 @@ class unstructured_Analyzer:
                     aai.settings.api_key = st.secrets['ASSEMBLYAI_API_KEY']['api_key']
                     with st.spinner('collecting transcripts...'):
                         audio_dir = os.path.join(_self.unstructured_directory.split('/preprocessed')[0], 'audio')
-                        for ele in os.listdir(audio_dir):
-                            os.remove(os.path.join(audio_dir,ele))
                         audio_file_path = os.path.join(audio_dir, uploaded_files.name)
                         with open(audio_file_path, "wb") as f:
                             f.write(uploaded_files.getbuffer())
                         transcriber = aai.Transcriber()
-                        with st.spinner('collecting transcripts'):
-                            transcript = transcriber.transcribe(audio_file_path)
+                        transcript = transcriber.transcribe(audio_file_path)
                         
                     # Save the transcript to a text file
                     with open(os.path.join(_self.unstructured_directory, 'transcript.txt'), 'w') as f:
                         logging.info(transcript.text)
                         f.write(transcript.text)
+                    for ele in os.listdir(audio_dir):
+                        os.remove(os.path.join(audio_dir,ele))
         # logging.info('saved transcript')
                     # logging.info('saved transcript')
             with st.spinner('Generating Embeddings. May take some time...'):
