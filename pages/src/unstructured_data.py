@@ -128,6 +128,7 @@ class unstructured_Analyzer:
     @st.cache_resource
     def _vstore_embeddings(_self, uploaded_files=None, mongo=False, _mongo_data=None):
         if 'vectorstoreretriever' not in st.session_state:
+            
             st.session_state['vectorstoreretriever']=None
         for file in os.listdir(_self.unstructured_directory):
             os.remove(os.path.join(_self.unstructured_directory,file))
