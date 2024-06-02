@@ -151,10 +151,8 @@ class unstructured_Analyzer:
                     with open(os.path.join(_self.unstructured_directory, 'transcript.txt'), 'w') as f:
                         logging.info(transcript.text)
                         f.write(transcript.text)
-                    for ele in os.listdir(audio_dir):
-                        os.remove(os.path.join(audio_dir,ele))
-        # logging.info('saved transcript')
-                    # logging.info('saved transcript')
+                    for file in os.listdir(audio_dir):
+                        os.remove(os.path.join(audio_dir,file))
             with st.spinner('Generating Embeddings. May take some time...'):
                 st.session_state.vectorstoreretriever=st.session_state.vector_store.makevectorembeddings(embedding_num=st.session_state.embeddings)
         elif mongo:
