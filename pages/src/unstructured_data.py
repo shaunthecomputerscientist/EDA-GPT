@@ -128,7 +128,7 @@ class unstructured_Analyzer:
     @st.cache_resource
     def _vstore_embeddings(_self, uploaded_files=None, mongo=False, _mongo_data=None):
         if 'vectorstoreretriever' not in st.session_state:
-            
+
             st.session_state['vectorstoreretriever']=None
         for file in os.listdir(_self.unstructured_directory):
             os.remove(os.path.join(_self.unstructured_directory,file))
@@ -210,11 +210,7 @@ class unstructured_Analyzer:
         else:
             vector_embeddings_retriever=st.session_state.vectorstoreretriever[0].as_retriever(search_kwargs={'k' : 5})
         
-        st.write(st.session_state.vectorstoreretriever)
-
-        
         #docs
-
         multi_query_retriever_from_llm = MultiQueryRetriever.from_llm(retriever=st.session_state.vectorstoreretriever[0].as_retriever(search_kwargs={'k' : 5}), llm=llm, prompt=PromptTemplate(input_variables=[], template=self.prompt_data['Unstructured Prompts']['analystool']['mqr_prompt']+f"\nDescription : {context}"+f"\nuser question : {query}"), include_original=True)
         # queries=multi_query_retriever_from_llm.generate_queries(query)
         # filtered_queries=[ele for ele in queries if ele!='']
