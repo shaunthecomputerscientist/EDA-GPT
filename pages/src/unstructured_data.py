@@ -141,7 +141,7 @@ class unstructured_Analyzer:
                     logging.info('audio file')
                     aai.settings.api_key = st.secrets['ASSEMBLYAI_API_KEY']['api_key']
                     with st.spinner('collecting transcripts...'):
-                        audio_dir = os.path.join(_self.unstructured_directory.split('/preprocessed')[0], 'audio')
+                        audio_dir = _self.config_data['audio_dir']
                         audio_file_path = os.path.join(audio_dir, uploaded_files.name)
                         with open(audio_file_path, "wb") as f:
                             f.write(uploaded_files.getbuffer())
