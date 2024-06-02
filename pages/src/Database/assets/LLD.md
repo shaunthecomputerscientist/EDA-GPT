@@ -1,6 +1,7 @@
 # EDA GPT App Documentation
 
 ## Contents
+- [Project Folder Structure](#project-folder-structure)
 - [Introduction and Use](#introduction-and-use)
 - [Features](#features)
 - [Understanding the Code](#understanding-the-code)
@@ -10,6 +11,68 @@
   - [Specific File Descriptions](#specific-file-descriptions)
   - [Diving Into Codebase](#classes-and-functions)
 
+
+
+
+# Project Folder Structure
+
+## Root Directory
+- Pages/
+  - Home.py
+  - README.md
+  - packages.txt
+  - requirements.txt
+  - license.txt
+  - .gitignore
+  - test-data/
+  - .streamlit/
+    - config.toml
+    - secrets.toml
+
+## Pages Directory
+- Pages/
+  - Home.py
+  - README.md
+  - packages.txt
+  - requirements.txt
+  - license.txt
+  - .gitignore
+  - test-data/
+  - src/
+    - EDA_GPT.py
+    - EDIT_DATA.py
+    - SETTINGS.py
+    - src/
+      - EDA.py
+      - setup.py
+      - connector.py
+      - data.py
+      - unstructured_data.py
+      - structured_data.py
+      - vstore.py
+      - Tools/
+        - langroupchain_custom.py
+        - llms.py
+        - scraper.py
+        - secrets.py
+        - tasks.py
+        - tools.py
+      - Database/
+        - assets/
+        - charts/
+        - csvdata/
+        - Plots/
+        - Prompts/
+        - sqlite/
+        - structured/
+        - unstructured/
+        - userdata/
+        - xlsxdata/
+        - config.json
+      - Models/
+        - Classification-models...
+      - Instructions/
+        - instruction.py
 
 ## Introduction and Use
 The EDA GPT App utilizes machine learning and language models to automate and simplify the EDA process. It allows users to upload data in various formats (CSV, XLSX, SQLite, PostgreSQL) and perform comprehensive analysis with interactive visualizations and a chat interface.
