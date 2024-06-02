@@ -139,7 +139,7 @@
     "unstructured_data": "pages/src/Database/unstructured/preprocessed",
     "relational_vstore": "pages/src/Database/structured/preprocessed",
     "audio_dir": "pages/src/Database/unstructured/audio",
-    "QnA_img": "pages/src/Database/unstructured/Images",
+    "QnA_img": "pages/src/Database/unstructured/images",
     "Classification_models": "pages/src/Models",
     "pygwalker_config": "",
     "pygwalker_table": "T124OPPE2_Preprocessing_V2",
