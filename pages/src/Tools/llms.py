@@ -32,4 +32,4 @@ def get_llm(llm_name, temperature, config_data, llm_category):
         return llm
     
     except Exception as e:
-        raise {e}
+        raise e
