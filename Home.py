@@ -1,6 +1,6 @@
 import streamlit as st
 # from pages.src.Tools.secrets import initialize_states , initialize_secrets
-from .pages.src.Tools.secrets import initialize_secrets, initialize_states
+from pages.src.Tools.secrets import initialize_secrets, initialize_states
 
 __import__('pysqlite3')
 import sys
