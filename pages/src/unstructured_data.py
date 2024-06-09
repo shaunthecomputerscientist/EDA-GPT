@@ -9,6 +9,7 @@ import sys , re
 # from vendor.dependencies.crewAI.crewai.task import Task
 # from vendor.dependencies.crewAI.crewai.crew import Crew
 # sys.path.pop(0)
+from concurrent.futures import ThreadPoolExecutor
 from crewai import Agent,Task,Crew
 from langchain.tools import tool
 import os, inspect, types
@@ -197,6 +198,34 @@ class unstructured_Analyzer:
         return get_llm(st.session_state.selected_llm,st.session_state.model_temperature, self.config_data, self.llm_category)
     
    
+
+
+    def extract_multiquery_documents(self,multi_query_retriever_from_llm, query):
+        try:
+            with st.spinner('extracting documents (multiquery)'):
+                mqdocs = multi_query_retriever_from_llm.invoke(query)
+                if len(mqdocs) > 5:
+                    mqdocs = mqdocs[:5]
+        except Exception as e:
+            mqdocs = [Document('')]
+        return mqdocs
+    
+    def extract_ensemble_documents(self,ensemble_retriever, query):
+        with st.spinner('extracting documents (ensemble retriever)'):
+            ensemble_docs = ensemble_retriever.invoke(input=query)
+            if len(ensemble_docs) >= 5:
+                ensemble_docs = ensemble_docs[:5]
+        return ensemble_docs
+    
+    def extract_high_similarity_documents(self,vector_store_retriever, query):
+        with st.spinner('searching for docs with high similarity threshold (0.7)'):
+            extra_data = vector_store_retriever.as_retriever(
+                search_type="similarity_score_threshold",
+                search_kwargs={'score_threshold': 0.7, 'k': 5}
+            ).invoke(input=query)
+            extradata = ''.join(ele.page_content + '\n' for ele in extra_data)
+        return extradata
+
     def datanalystbot(self, query : str, context=" "):
         llm=self._get_llm()
         combine_docs_chain = create_stuff_documents_chain(
@@ -210,37 +239,23 @@ class unstructured_Analyzer:
         else:
             vector_embeddings_retriever=st.session_state.vectorstoreretriever[0].as_retriever(search_kwargs={'k' : 5})
         
-        #docs
+        #retrievers
         multi_query_retriever_from_llm = MultiQueryRetriever.from_llm(retriever=st.session_state.vectorstoreretriever[0].as_retriever(search_kwargs={'k' : 5}), llm=llm, prompt=PromptTemplate(input_variables=[], template=self.prompt_data['Unstructured Prompts']['analystool']['mqr_prompt']+f"\nDescription : {context}"+f"\nuser question : {query}"), include_original=True)
-        # queries=multi_query_retriever_from_llm.generate_queries(query)
-        # filtered_queries=[ele for ele in queries if ele!='']
-        # mqdocs=multi_query_retriever_from_llm.retrieve_documents(filtered_queries)
-        try:
-            with st.spinner('extracting documents (multiquery)'):
-                mqdocs=multi_query_retriever_from_llm.invoke(query)
-                if len(mqdocs)>5:
-                    mqdocs=mqdocs[:5]
-        except Exception as e:
-            mqdocs=[Document('')]
-        #--------------------------------------------------------------
-        # with st.expander("mqdocs"):
-        #     st.write(mqdocs)
         ensemble_retriever = EnsembleRetriever(retrievers=[st.session_state.vectorstoreretriever[1], vector_embeddings_retriever], weights=[0.7, 0.3])
-        with st.spinner('extracting documents (ensemble retriever)'):
-            ensemble_docs=ensemble_retriever.invoke(input=query)
-            if len(ensemble_docs)>=5:
-                ensemble_docs=ensemble_docs[:5]
+        with ThreadPoolExecutor() as executor:
+            mqdocs_future = executor.submit(self.extract_multiquery_documents, multi_query_retriever_from_llm, query)
+            ensemble_docs_future = executor.submit(self.extract_ensemble_documents, ensemble_retriever, query)
+            extra_data_future = executor.submit(self.extract_high_similarity_documents, st.session_state.vectorstoreretriever[0], query)
         #--------------------------------------------------------------
-        with st.spinner('searching for docs with high similarity threshold (0.7)'):
-            extra_data=(st.session_state.vectorstoreretriever)[0].as_retriever(search_type="similarity_score_threshold",search_kwargs={'score_threshold': 0.7, 'k' : 5}).invoke(input=query)
-            extradata=''
-            for ele in extra_data:
-                extradata+=extradata+ele.page_content+'\n'
+        mqdocs = mqdocs_future.result()
+        ensemble_docs = ensemble_docs_future.result()
+        extradata = extra_data_future.result()
         #--------------------------------------------------------------
-        logging.info('mqdocs',len(mqdocs))
-        logging.info('emsemble docs',len(ensemble_docs))
-        logging.info('extradata',len(extra_data))
+        print('mqdocs',len(mqdocs))
+        print('emsemble docs',len(ensemble_docs))
+        print('extradata',len(extradata))
         #--------------------------------------------------------------
+       
         with st.spinner('extracting relevant documents'):
             combinedocs=mqdocs+[Document(page_content=extradata)]+ensemble_docs
             retrieval_chain = create_retrieval_chain(vector_embeddings_retriever, combine_docs_chain)
@@ -251,6 +266,7 @@ class unstructured_Analyzer:
                 return e
         #--------------------------------------------------------------
         logging.info(result)
+        print(len(result['context']))
         st.session_state.docs_found=result['context']+combinedocs
         return result['answer']
 
@@ -262,10 +278,10 @@ class unstructured_Analyzer:
             verbose=True,
             allow_delegation=False,
             memory=True,
-            max_iter=7,
+            max_iter=10,
             llm = self._get_llm(),
             goal=dedent(self.prompt_data['Unstructured Prompts']['crewaiagent']['goal']),
-            tools=[vision, datanalystbotwrapper,SEARCH_API, Scraper, arxiv, wikipedia, datetimee,YoutubeVideoTranscript]
+            tools=[vision,SEARCH_API, Scraper, arxiv, wikipedia, datetimee,YoutubeVideoTranscript]
             )
         task = Task(
             description=dedent(f"user question: {query}\n\n INSTRUCTIONS : {self.prompt_data['Unstructured Prompts']['crewaiagent']['description']}\n\n CONVERSATION HISTORY : {st.session_state.messages[::-1][0:int([3 if len(st.session_state.messages)>3 else len(st.session_state.messages)][0])]}"),
@@ -371,7 +387,7 @@ class unstructured_Analyzer:
         url_check=self.check_for_url(prompt)
         if url_check:
             predict="search"
-        st.session_state.messages.append({'role':'user','content':prompt})
+        st.session_state.messages.append({'role':'user','question':prompt})
         
 
         if st.session_state.internet_access:
@@ -456,15 +472,20 @@ class unstructured_Analyzer:
             #     self._vstore_embeddings(uploaded_files=st.session_state['uploaded_files'])
         st.write(st.session_state.vectorstoreretriever)
         if st.session_state.vectorstoreretriever is not None:
+                # st.write(st.session_state.messages)
                 for message in st.session_state.messages:
                     with st.chat_message(message['role']):
-                        if self._IsGenerator(message['content']):
-                            st.write(message['content'], unsafe_allow_html=True)
-                        elif isinstance(message['content'],pd.DataFrame):
-                            st.dataframe(message['content'])
+                        if message['role']=='user':
+                            st.write(message['question'], unsafe_allow_html=True)
+                        elif message['role']=='assistant':
+                            if self._IsGenerator(message['reply']):
+                                st.write_stream(message['reply'])
+                            elif isinstance(message['reply'],pd.DataFrame):
+                                st.dataframe(message['reply'])
 
-                        else:
-                            st.write(message['content'], unsafe_allow_html=True)
+                            else:
+                                st.write(message['reply'], unsafe_allow_html=True)
+                        
                 if st.session_state.docs_found:
                     with st.expander('retrived docs'):
                         st.write(st.session_state.docs_found, unsafe_allow_html=True)
@@ -472,7 +493,7 @@ class unstructured_Analyzer:
                 if prompt := st.chat_input('Ask questions', key='data_chat'):
                     logging.info(prompt)
                     message=self.generateresponse(prompt=prompt)
-                    st.session_state.messages.append({'role':'assistant','content':message})
+                    st.session_state.messages.append({'role':'assistant','reply':message})
                     logging.info(st.session_state.messages)
                     st.rerun()
             

@@ -19,6 +19,24 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from langchain_core.pydantic_v1 import BaseModel, Field
 import streamlit as st
 import math
+import functools
+
+
+TOOL_USAGE_LIMIT={'SEARCH_API':3}
+tool_usage_counter={'SEARCH_API':0}
+
+def limit_tool_usage(tool_name):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            if tool_usage_counter[tool_name] >= TOOL_USAGE_LIMIT[tool_name]:
+                tool_usage_counter[tool_name]=0
+                raise RuntimeError(f"Usage limit exceeded for tool: {tool_name}. Use previously acquired answers for response.")
+            tool_usage_counter[tool_name] += 1
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+            
 
 
 
@@ -94,6 +112,7 @@ class BingSchema(BaseModel):
 
 
 @tool("SEARCH_API",return_direct=False)
+@limit_tool_usage('SEARCH_API')
 def SEARCH_API(query: str, num_results=3)->str:
     """searches for latest news, technology, events, politics, etc.Takes in query and num_reults(<10). Returns json of results with title, sources and main_content as fields."""
     if num_results>=10:
