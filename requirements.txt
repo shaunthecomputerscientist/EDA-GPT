@@ -70,6 +70,7 @@ pikepdf==8.15.1
 ghostscript==0.7
 rank-bm25==0.2.2
 faiss-cpu
+pypdf2
 psycopg2-binary==2.9.9
 pysqlite3-binary
 tiktoken
