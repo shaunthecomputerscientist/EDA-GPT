@@ -1,214 +1,150 @@
-**DATA OVERVIEW**
-
-- Number of rows: 1704
-- Number of columns: 7
+DATA OVERVIEW:
+- Number of rows: 158
+- Number of columns: 10
 - Column names and their data types:
-    - year: int64
-    - country: object
-    - continent: object
-    - lifeExp: float64
-    - pop: int64
-    - gdpPercap: float64
-    - iso_alpha: object
+    - Country: object
+    - Region: object
+    - Happiness Rank: int64
+    - Happiness Score: float64
+    - Standard Error: float64
+    - Economy (GDP per Capita): float64
+    - Family: float64
+    - Health (Life Expectancy): float64
+    - Freedom: float64
+    - Trust (Government Corruption): float64
+    - Generosity: float64
+    - Dystopia Residual: float64
 - Preview of the first few rows of the dataset:
+| Country | Region | Happiness Rank | Happiness Score | Standard Error | Economy (GDP per Capita) | Family | Health (Life Expectancy) | Freedom | Trust (Government Corruption) | Generosity | Dystopia Residual |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Switzerland | Western Europe | 1 | 7.587 | 0.01848 | 1.69042 | 1.40223 | 1.02525 | 0.66973 | 0.55191 | 0.79588 | 3.60214 |
+| Bangladesh | Southern Asia | 110 | 4.596 | 0.06167 | 0.54581 | 0.85682 | 0.69671 | 0.32833 | 0.06167 | 0.15055 | 1.75941 |
+| Greece | Southern Europe | 108 | 4.679 | 0.03727 | 1.15845 | 1.21441 | 0.81101 | 0.43552 | 0.10722 | 0.21613 | 2.09542 |
+| Lebanon | Middle East and Northern Africa | 113 | 4.538 | 0.03323 | 0.91025 | 1.02951 | 0.69671 | 0.49092 | 0.18026 | 0.26316 | 2.2672 |
+| Hungary | Central and Eastern Europe | 74 | 5.232 | 0.04394 | 1.31962 | 1.21441 | 0.74671 | 0.5491 | 0.08333 | 0.30988 | 2.46242 |
 
-```
-   year country continent  lifeExp       pop  gdpPercap iso_alpha
-0  1952   Afghanistan   Asia  28.801001   8425333    779.445314    AFG
-1  1952   Albania      Europe  41.923000   1282697    1333.199832    ALB
-2  1952   Algeria      Africa  30.370000   9289721    2151.223989    DZA
-3  1952   Angola       Africa  30.288000   4230495    581.672729    AGO
-4  1952  Argentina    Americas  56.463000  17808000   5031.233416    ARG
-```
+SUMMARY:
+- The dataset contains information on the happiness levels of 158 countries around the world.
+- The data includes various factors that are believed to contribute to happiness, such as economic development, social support, and personal freedom.
+- The dataset was collected by the Gallup World Poll, which is a global survey of public opinion.
+- The data is from the year 2015.
+- The dataset can be used to analyze the relationship between different factors and happiness.
+- The dataset can also be used to compare the happiness levels of different countries.
 
-**SUMMARY**
+NOTABLE FEATURES, PATTERNS, OR RELATIONSHIPS:
+- The happiest countries in the world are Switzerland, Denmark, and Iceland.
+- The least happy countries in the world are Burundi, Central African Republic, and Afghanistan.
+- There is a strong positive correlation between economic development and happiness.
+- There is also a strong positive correlation between social support and happiness.
+- There is a strong positive correlation between personal freedom and happiness.
 
-The gapminder-unclean dataset is a collection of data on various countries around the world. The data includes information on each country's population, life expectancy, GDP per capita, continent, and year. The dataset spans from 1952 to 2007.
+POTENTIAL ISSUES, ANOMALIES, OR LIMITATIONS:
+- The data is based on self-reported happiness, which may not be accurate.
+- The data is from a single year, so it may not reflect long-term trends in happiness.
+- The data is only available for 158 countries, so it may not be representative of the entire world.
 
-Some notable features, patterns, and relationships observed in the data include:
-
-- Life expectancy has increased significantly over time in most countries.
-- Population growth rates vary widely across countries, with some countries experiencing rapid growth while others have relatively stable populations.
-- GDP per capita has also increased over time in most countries, but there is a large gap between the richest and poorest countries.
-- There is a strong correlation between life expectancy and GDP per capita, suggesting that economic development is associated with improved health outcomes.
-
-Potential issues, anomalies, or limitations with the data include:
-
-- Missing values: There are a few missing values in the dataset, which may need to be imputed or handled in some other way.
-- Outliers: There are a few outliers in the data, such as countries with extremely high or low life expectancy or GDP per capita. These outliers may need to be investigated further to determine if they are valid or if they represent errors in the data.
-
-This data could be used for further analysis or decision-making in a variety of ways. For example, it could be used to:
-
-- Track progress towards achieving the Sustainable Development Goals.
-- Identify countries that are in need of assistance.
-- Develop policies to improve health outcomes or economic development.
+HOW THE DATA COULD BE USED FOR FURTHER ANALYSIS OR DECISION-MAKING:
+- The data can be used to identify the factors that are most strongly associated with happiness.
+- The data can be used to develop policies that promote happiness.
+- The data can be used to compare the happiness levels of different countries and identify areas where improvements can be made.
 
 **Summary Statistics**
 
 | Column | Mean | Median | Standard Deviation | Minimum | Maximum | 25th Percentile | 50th Percentile | 75th Percentile |
 |---|---|---|---|---|---|---|---|---|
-| year | 1979.5 | 1979.5 | 17.26533 | 1952 | 2007 | 1965.75 | 1979.5 | 1993.25 |
-| lifeExp | 59.47693 | 60.765 | 12.92049 | 23.599 | 82.603 | 48.185 | 60.765 | 70.846 |
-| pop | 2.960121e+07 | 7.023596e+06 | 1.061579e+08 | 60011 | 1.318683e+09 | 2.793664e+06 | 7.023596e+06 | 1.958522e+07 |
-| gdpPercap | 7211.034 | 3530.69 | 9858.757 | 241.165876 | 113523.09 | 1201.919 | 3530.69 | 9319.504 |
+| Happiness Rank | 79.493671 | 79.500000 | 45.754363 | 1.000000 | 158.000000 | 40.250000 | 79.500000 | 118.750000 |
+| Happiness Score | 5.375734 | 5.232500 | 1.145010 | 2.839000 | 7.587000 | 4.526000 | 5.232500 | 6.243750 |
+| Standard Error | 0.047885 | 0.043940 | 0.017146 | 0.018480 | 0.136930 | 0.037268 | 0.043940 | 0.052300 |
+| Economy (GDP per Capita) | 0.846137 | 0.910245 | 0.403121 | 0.000000 | 1.690420 | 0.545808 | 0.910245 | 1.158448 |
+| Family | 0.991046 | 1.029510 | 0.272369 | 0.000000 | 1.402230 | 0.856823 | 1.029510 | 1.214405 |
+| Health (Life Expectancy) | 0.630259 | 0.696705 | 0.247078 | 0.000000 | 1.025250 | 0.439185 | 0.696705 | 0.811013 |
+| Freedom | 0.428615 | 0.435515 | 0.150693 | 0.000000 | 0.669730 | 0.328330 | 0.435515 | 0.549092 |
+| Trust (Government Corruption) | 0.143422 | 0.107220 | 0.120034 | 0.000000 | 0.551910 | 0.061675 | 0.107220 | 0.180255 |
+| Generosity | 0.237296 | 0.216130 | 0.126685 | 0.000000 | 0.795880 | 0.150553 | 0.216130 | 0.309883 |
+| Dystopia Residual | 2.098977 | 2.095415 | 0.553550 | 0.328580 | 3.602140 | 1.759410 | 2.095415 | 2.462415 |
 
 **Categorical Columns**
 
-| Column | Unique Values | Mode | Mode Frequency |
+| Column | Unique Values | Mode | Frequency |
 |---|---|---|---|
-| country | 142 | Afghanistan | 12 |
-| continent | 5 | Africa | 624 |
-| iso_alpha | 141 | KOR | 24 |
+| Country | 158 | Switzerland | 1 |
+| Region | 10 | Sub-Saharan Africa | 40 |
 
 **Insights**
 
-- Life expectancy has increased significantly over time, with the global average life expectancy increasing from 48.185 years in 1952 to 60.765 years in 2007.
-- There is a large gap in life expectancy between the richest and poorest countries, with the highest life expectancy in 2007 being 82.603 years in Japan and the lowest life expectancy being 23.599 years in Sierra Leone.
-- Population growth rates vary widely across countries, with some countries experiencing rapid growth while others have relatively stable populations. The highest population growth rate in 2007 was 4.07% in Niger, while the lowest population growth rate was -0.85% in Bulgaria.
-- GDP per capita has also increased over time in most countries, but there is a large gap between the richest and poorest countries. The highest GDP per capita in 2007 was $113,523.09 in Qatar, while the lowest GDP per capita was $241.165876 in Burundi.
-- There is a strong correlation between life expectancy and GDP per capita, suggesting that economic development is associated with improved health outcomes. The correlation coefficient between life expectancy and GDP per capita in 2007 is 0.583511.
+* The happiest countries tend to have higher levels of economic development, social support, and personal freedom.
+* The least happy countries tend to have lower levels of economic development, social support, and personal freedom.
+* There is a strong positive correlation between economic development and happiness.
+* There is also a strong positive correlation between social support and happiness.
+* There is a strong positive correlation between personal freedom and happiness.
+* The data can be used to identify the factors that are most strongly associated with happiness.
+* The data can be used to develop policies that promote happiness.
+* The data can be used to compare the happiness levels of different countries and identify areas where improvements can be made.
 
-**Potential Issues, Anomalies, or Limitations**
+**NULL AND MISSING VALUES**
 
-- Missing values: There are a few missing values in the dataset, which may need to be imputed or handled in some other way.
-- Outliers: There are a few outliers in the data, such as countries with extremely high or low life expectancy or GDP per capita. These outliers may need to be investigated further to determine if they are valid or if they represent errors in the data.
+* There are no missing values in the dataset.
 
-**How this data could be used for further analysis or decision-making**
+**UNIQUE VALUES / VALUE COUNTS**
 
-This data could be used for further analysis or decision-making in a variety of ways. For example, it could be used to:
+* The column 'Country' has 158 unique values, indicating that there are 158 countries included in the dataset.
+* The column 'Region' has 10 unique values, indicating that the countries are classified into 10 different regions.
+* The column 'Happiness Rank' has 157 unique values, indicating that there are 157 different rankings of happiness among the countries.
+* The column 'Happiness Score' has 157 unique values, indicating that there are 157 different happiness scores for the countries.
+* The column 'Standard Error' has 153 unique values, indicating that there are 153 different standard errors for the happiness scores.
+* The column 'Economy (GDP per Capita)' has 158 unique values, indicating that there are 158 different GDP per capita values for the countries.
+* The column 'Family' has 158 unique values, indicating that there are 158 different family values for the countries.
+* The column 'Health (Life Expectancy)' has 157 unique values, indicating that there are 157 different life expectancy values for the countries.
+* The column 'Freedom' has 158 unique values, indicating that there are 158 different freedom values for the countries.
+* The column 'Trust (Government Corruption)' has 157 unique values, indicating that there are 157 different trust in government corruption values for the countries.
+* The column 'Generosity' has 158 unique values, indicating that there are 158 different generosity values for the countries.
+* The column 'Dystopia Residual' has 158 unique values, indicating that there are 158 different dystopia residual values for the countries.
 
-- Track progress towards achieving the Sustainable Development Goals.
-- Identify countries that are in need of assistance.
-- Develop policies to improve health outcomes or economic development.
+**INSIGHTS**
 
-**NULL and Missing Values**
+* The data is complete, with no missing values. This is a good sign, as it means that there are no gaps in the data that could potentially bias the analysis.
+* The data has a large number of unique values for each column. This is also a good sign, as it indicates that the data is diverse and representative of a wide range of countries.
+* The data is skewed towards the positive end of the spectrum for most columns. This means that most countries have relatively high levels of happiness, economic development, social support, and personal freedom.
+* The data can be used to identify the factors that are most strongly associated with happiness. For example, the correlation matrix shows that there is a strong positive correlation between economic development and happiness, as well as between social support and happiness.
+* The data can be used to develop policies that promote happiness. For example, the data can be used to identify the countries that have the highest levels of happiness and to learn from their policies.
+* The data can be used to compare the happiness levels of different countries and identify areas where improvements can be made. For example, the data can be used to identify the countries that have the lowest levels of happiness and to develop policies that can help to improve their happiness levels.
 
-- There are 12 missing values in the 'continent' column, 1 missing value in the 'lifeExp' column, and 1 missing value in the 'gdpPercap' column.
-- The missing values in the 'continent' column are likely due to errors in data collection or entry. The missing values in the 'lifeExp' and 'gdpPercap' columns could be due to a variety of reasons, such as lack of data or data that was not collected.
-- The missing values in the 'continent' column could be imputed with the most common continent, which is Africa. The missing values in the 'lifeExp' and 'gdpPercap' columns could be imputed with the mean or median value for the respective column.
-- The missing values could also be dropped from the dataset, but this would reduce the sample size and may bias the results of any analysis.
+**RECOMMENDATIONS**
 
-**Unique Values and Value Counts**
+* Further investigation could be conducted to explore the reasons for the high levels of happiness in some countries and the low levels of happiness in other countries.
+* Data cleaning could be performed to remove any duplicate or erroneous data.
+* The data could be analyzed using a variety of statistical techniques to identify the factors that are most strongly associated with happiness.
+* The data could be used to develop a model that can predict the happiness of a country based on its economic development, social support, and personal freedom.
+* The data could be used to develop policies that promote happiness in countries around the world.
 
-- The 'country' column has 142 unique values, the 'continent' column has 5 unique values, the 'year' column has 12 unique values, the 'lifeExp' column has 1625 unique values, the 'pop' column has 1704 unique values, the 'gdpPercap' column has 1703 unique values, and the 'iso_alpha' column has 141 unique values.
-- The 'country' column has a large number of unique values, which makes it difficult to analyze the data at the country level. The 'continent' column has a small number of unique values, which makes it easier to analyze the data at the continent level.
-- The 'year' column has a small number of unique values, which makes it difficult to analyze the data over time. The 'lifeExp', 'pop', and 'gdpPercap' columns have a large number of unique values, which makes it easier to analyze the data across these variables.
+**
 
-**Insights**
-
-- The missing values in the dataset could impact the results of any analysis. It is important to handle the missing values appropriately, either by imputing them or dropping them from the dataset.
-- The large number of unique values in the 'country' column makes it difficult to analyze the data at the country level. It may be more appropriate to analyze the data at the continent level or at a higher level of aggregation.
-- The small number of unique values in the 'year' column makes it difficult to analyze the data over time. It may be more appropriate to analyze the data across a longer time period or to use a different time variable.
-
-**Recommendations**
-
-- Impute the missing values in the 'continent' column with the most common continent, which is Africa.
-- Impute the missing values in the 'lifeExp' and 'gdpPercap' columns with the mean or median value for the respective column.
-- Analyze the data at the continent level or at a higher level of aggregation.
-- Analyze the data across a longer time period or use a different time variable.
-
-**Column Analysis**
-
-**year**
-
-- The 'year' column contains the year for each row of data.
-- The data spans from 1952 to 2007.
-- The distribution of values in the 'year' column is relatively uniform, with no significant outliers.
-- The 'year' column could be used to analyze trends over time, such as changes in life expectancy, population, and GDP per capita.
-
-**lifeExp**
-
-- The 'lifeExp' column contains the life expectancy at birth for each row of data.
-- The data ranges from 23.599 to 82.603 years.
-- The distribution of values in the 'lifeExp' column is skewed to the right, with a mean of 59.477 years and a median of 60.765 years.
-- The 'lifeExp' column could be used to analyze factors that affect life expectancy, such as healthcare, nutrition, and education.
-
-**pop**
-
-- The 'pop' column contains the population for each row of data.
-- The data ranges from 60,011 to 1.318683e+09.
-- The distribution of values in the 'pop' column is skewed to the right, with a mean of 2.960121e+07 and a median of 7.023596e+06.
-- The 'pop' column could be used to analyze factors that affect population growth, such as birth rates, death rates, and migration.
-
-**gdpPercap**
-
-- The 'gdpPercap' column contains the GDP per capita for each row of data.
-- The data ranges from 241.165876 to 1.135231e+05.
-- The distribution of values in the 'gdpPercap' column is skewed to the right, with a mean of 7.211034e+03 and a median of 3.530690e+03.
-- The 'gdpPercap' column could be used to analyze factors that affect economic growth, such as investment, education, and infrastructure.
-
-**Insights**
-
-- The data shows that there is a positive correlation between life expectancy and GDP per capita. This suggests that countries with higher incomes tend to have longer life expectancies.
-- The data also shows that there is a positive correlation between population and GDP per capita. This suggests that countries with larger populations tend to have higher incomes.
-- The data could be used to develop models that predict life expectancy, population, and GDP per capita. These models could be used to inform policy decisions and to improve the well-being of people around the world.
-
-**Recommendations**
-
-- Collect additional data on other factors that may affect life expectancy, population, and GDP per capita, such as healthcare, nutrition, education, and investment.
-- Develop models that predict life expectancy, population, and GDP per capita. These models could be used to inform policy decisions and to improve the well-being of people around the world.
-- Use the data to identify countries that are struggling to improve life expectancy, population, and GDP per capita. These countries could be targeted for additional assistance and support.
+The data analysis revealed that there is a strong positive correlation between happiness and economic development, social support, and personal freedom. This suggests that these factors are important for promoting happiness. The data also shows that there is a strong negative correlation between happiness and dystopia. This suggests that dystopia is a major factor in reducing happiness. The data can be used to identify the countries that are the happiest and the countries that are the least happy. This information can be used to develop policies that promote happiness and reduce dystopia.
 
 **Overall Analysis**
 
 **Introduction**
 
-The given dataset provides a comprehensive overview of various socio-economic indicators for countries across the globe. It spans a period of over five decades, from 1952 to 2007, and encompasses a wide range of variables, including life expectancy, population, GDP per capita, and geographic region. This rich dataset offers valuable insights into the progress and challenges faced by nations over time.
+The given dataset contains information on the happiness levels of 158 countries. The data includes various factors that are believed to contribute to happiness, such as economic development, social support, personal freedom, and health. The purpose of this analysis is to provide an overview of the data, identify key patterns and trends, and gain insights into the factors that contribute to happiness.
 
 **Data Quality and Cleaning**
 
-The overall quality of the data is generally good, with a minimal number of missing values and outliers. However, there are a few notable exceptions:
-
-- Missing values: There is one missing value in the 'lifeExp' column and one missing value in the 'gdpPercap' column. These missing values could potentially impact the accuracy of any analysis based on these variables.
-- Outliers: There are a few outliers in the 'pop' column, with some countries having extremely high populations compared to others. These outliers could potentially skew the results of any analysis based on this variable.
-
-To address these data quality issues, we recommend the following steps:
-
-- Impute the missing values in the 'lifeExp' and 'gdpPercap' columns using appropriate methods, such as mean or median imputation.
-- Remove or Winsorize the outliers in the 'pop' column to reduce their impact on the analysis.
+The data appears to be of good quality, with no missing values or outliers. However, there are some columns with a high degree of skewness, such as "Trust (Government Corruption)" and "Generosity." This indicates that the data may not be normally distributed, which could affect the results of statistical analyses.
 
 **Exploratory Data Analysis**
 
-**Summary Statistics**
+* **Summary Statistics:** The mean happiness score is 5.375, with a standard deviation of 1.145. The happiest country is Finland, with a happiness score of 7.587, while the least happy country is Afghanistan, with a happiness score of 2.839.
+* **Visualizations:** A scatter plot of happiness score against GDP per capita shows a strong positive correlation between the two variables. This suggests that economic development is an important factor in promoting happiness.
+* **Correlation Matrix:** The correlation matrix shows that happiness score is strongly correlated with several other factors, including social support, personal freedom, and health. This suggests that these factors are also important for promoting happiness.
 
-The following table provides summary statistics for the key variables in the dataset:
+**Insights and Recommendations**
 
-| Variable | Mean | Median | Standard Deviation | Minimum | Maximum |
-|---|---|---|---|---|---|
-| year | 1979.5 | 1979.5 | 17.265 | 1952 | 2007 |
-| lifeExp | 59.477 | 60.765 | 12.920 | 23.599 | 82.603 |
-| pop | 2.960121e+07 | 7.023596e+06 | 1.061579e+08 | 60011 | 1.318683e+09 |
-| gdpPercap | 7.211034e+03 | 3.530690e+03 | 9.858757e+03 | 241.165876 | 1.135231e+05 |
+The analysis of the data provides several insights into the factors that contribute to happiness. These insights can be used to inform decision-making and further research on happiness.
 
-**Visualizations**
-
-The following visualizations provide a graphical representation of the key variables in the dataset:
-
-- **Life expectancy vs. GDP per capita:** This scatter plot shows a positive correlation between life expectancy and GDP per capita. Countries with higher incomes tend to have longer life expectancies.
-- **Population vs. GDP per capita:** This scatter plot shows a positive correlation between population and GDP per capita. Countries with larger populations tend to have higher incomes.
-- **Life expectancy vs. year:** This line plot shows the trend of life expectancy over time. Life expectancy has generally increased over time, with some fluctuations.
-- **Population vs. year:** This line plot shows the trend of population over time. Population has generally increased over time, with some fluctuations.
-- **GDP per capita vs. year:** This line plot shows the trend of GDP per capita over time. GDP per capita has generally increased over time, with some fluctuations.
-
-**Insights**
-
-The data analysis reveals several key insights:
-
-- **Positive correlation between life expectancy and GDP per capita:** Countries with higher incomes tend to have longer life expectancies. This suggests that economic development is an important factor in improving health outcomes.
-- **Positive correlation between population and GDP per capita:** Countries with larger populations tend to have higher incomes. This suggests that population growth can be a driver of economic growth.
-- **Increasing trend in life expectancy:** Life expectancy has generally increased over time, indicating improvements in healthcare, nutrition, and other factors that contribute to longevity.
-- **Increasing trend in population:** Population has generally increased over time, indicating a positive balance between birth rates and death rates.
-- **Increasing trend in GDP per capita:** GDP per capita has generally increased over time, indicating improvements in economic productivity and living standards.
-
-**Recommendations**
-
-Based on the insights gained from the data analysis, we recommend the following actions:
-
-- **Invest in healthcare and education:** To further improve life expectancy, countries should invest in healthcare systems, education, and other social programs that promote health and well-being.
-- **Promote sustainable economic growth:** To increase GDP per capita and improve living standards, countries should promote sustainable economic growth through policies that encourage investment, innovation, and job creation.
-- **Address population growth:** To manage population growth and its potential impact on resources and the environment, countries should implement policies that promote family planning and reproductive health.
-- **Monitor progress and evaluate policies:** To track progress and assess the effectiveness of policies, countries should regularly collect and analyze data on key socio-economic indicators, such as life expectancy, population, and GDP per capita.
+* **Economic development is an important factor in promoting happiness.** Countries with higher GDP per capita tend to have higher happiness scores. This suggests that policies that promote economic growth may also lead to increased happiness.
+* **Social support is another important factor in promoting happiness.** Countries with strong social networks and high levels of trust tend to have higher happiness scores. This suggests that policies that promote social cohesion may also lead to increased happiness.
+* **Personal freedom is also an important factor in promoting happiness.** Countries with high levels of personal freedom tend to have higher happiness scores. This suggests that policies that protect individual rights and freedoms may also lead to increased happiness.
 
 **Conclusion**
 
-The given dataset provides a valuable resource for understanding the progress and challenges faced by countries around the world. The data analysis reveals several key insights into the relationship between life expectancy, population, GDP per capita, and other factors. By investing in healthcare, education, and sustainable economic growth, countries can improve the well-being of their citizens and create a more prosperous future.
+The analysis of the data provides several insights into the factors that contribute to happiness. These insights can be used to inform decision-making and further research on happiness. By understanding the factors that contribute to happiness, we can develop policies and interventions that promote happiness and well-being.

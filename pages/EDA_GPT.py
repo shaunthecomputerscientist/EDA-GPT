@@ -26,6 +26,8 @@ messages = {
 }
 pages=['Instructions','Structured','Unstructured']
 if __name__ == "__main__":
+    initialize_secrets()
+    initialize_states()
     st.session_state.current_page=option_menu(menu_title=None,icons=['question','database','folder'],options=pages,menu_icon="robot",orientation="horizontal", styles={"container":{"background":"transparent", "font-size":"1rem", "border":"1px solid gray"}, "icon":{"color":"gray"}})
     st.write(f"**{messages[st.session_state.current_page]}**", unsafe_allow_html=True)
     # st.session_state.current_page=select_dcategory
