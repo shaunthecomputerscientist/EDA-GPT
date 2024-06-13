@@ -30,7 +30,7 @@ import camelot.io as camelot
 import streamlit as st
 from dotenv import load_dotenv
 import pandas as pd
-import pypdf as PyPDF2
+import PyPDF2
 from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 import tempfile
