@@ -29,6 +29,11 @@ import pickle
 import camelot.io as camelot
 import streamlit as st
 from dotenv import load_dotenv
+import pandas as pd
+import pypdf as PyPDF2
+from concurrent.futures import ThreadPoolExecutor
+from io import BytesIO
+import tempfile
 load_dotenv()
 
 class VectorStore():
@@ -226,6 +231,63 @@ class VectorStore():
         preprocessed_text = ' '.join(tokens)
         
         return preprocessed_text
+    
+    
+    def split_pdf_in_memory(self,input_pdf_path):
+        pdf_reader = PyPDF2.PdfReader(input_pdf_path)
+        num_pages = len(pdf_reader.pages)
+        num_cores = os.cpu_count()
+
+        # Calculate the number of pages per part
+        pages_per_part = num_pages // num_cores
+        remainder_pages = num_pages % num_cores
+
+        pdf_parts = []
+        pdf_writer = None
+        current_part_pages = 0
+
+        for i in range(num_pages):
+            if len(pdf_parts) < num_cores:
+                if current_part_pages == 0:
+                    pdf_writer = PyPDF2.PdfWriter()
+
+                pdf_writer.add_page(pdf_reader.pages[i])
+                current_part_pages += 1
+
+                # Check if current part is filled or it's the last page
+                if current_part_pages == pages_per_part or i == num_pages - 1:
+                    part_stream = BytesIO()
+                    pdf_writer.write(part_stream)
+                    part_stream.seek(0)
+                    pdf_parts.append(part_stream)
+                    current_part_pages = 0  # Reset current part page count
+
+        return pdf_parts
+
+    def process_pdf_part(self,pdf_stream):
+        pdf_stream.seek(0)
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf:
+            temp_pdf.write(pdf_stream.read())
+            temp_pdf_path = temp_pdf.name
+
+        try:
+            tables = camelot.read_pdf(temp_pdf_path, pages='all')
+            data_frames = [table.df for table in tables]
+        finally:
+            os.remove(temp_pdf_path)
+
+        return data_frames
+    def extract_tables_from_pdf_parallel_processing(self, pdf_path):
+        pdf_parts = self.split_pdf_in_memory(pdf_path)
+
+        with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
+            results = list(executor.map(self.process_pdf_part, pdf_parts))
+
+        combined_results = []
+        for result in results:
+            combined_results.extend(result)
+
+        return combined_results
 
     def _preprocess_data_in_directory(self):
         poppler_bin_path = r'\poppler-24.02.0\Library\bin'
@@ -235,7 +297,7 @@ class VectorStore():
 
         
         directory_path=self.unstructured_directory_path
-        print('inside preprceess')
+        print('inside preprocess')
 
 
         preprocessed_texts = []
@@ -250,18 +312,24 @@ class VectorStore():
                 with open(file_path, 'rb') as file:
                     element=partition_pdf(file_path)
                     elements.append(ele.text for ele in element)
-                    print(elements)
+                
+                data_frames=self.extract_tables_from_pdf_parallel_processing(pdf_path=file_path)
+                current_columns=[]
+                i=0
+                for table in data_frames:
+                        df=table
+                        # df.columns=df.iloc[0]
+                        if not list(df.iloc[0])==list(current_columns):
+                            current_columns=df.iloc[0]
+                            i+=1
+                            with open(os.path.join(directory_path, f'table_{i}.csv'), 'w', encoding='utf-8') as file:
+                                file.write(df.to_csv(header=False))
+                        elif list(current_columns)==list(df.iloc[0]):
+                            # df=df.iloc[1:]
+                            df=df.iloc[1:]
+                            with open(os.path.join(directory_path, f'table_{i}.csv'), 'a', encoding='utf-8') as file:
+                                file.write(df.to_csv(header=False))
 
-                #table extraction:
-
-                pdf=camelot.read_pdf(file_path)
-
-                for i,tables in enumerate(pdf):
-                    df=tables.df
-                    df['Table Number'] = f'Table no {i + 1}'
-                    print(df)
-                    with open(os.path.join(directory_path, f'table_{i}.csv'), 'w', encoding='utf-8') as file:
-                        file.write(df.to_csv())
             elif filename.endswith('.txt'):
                 audio=True
 

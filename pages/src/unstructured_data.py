@@ -225,6 +225,7 @@ class unstructured_Analyzer:
             ).invoke(input=query)
             extradata = ''.join(ele.page_content + '\n' for ele in extra_data)
         return extradata
+    
 
     def datanalystbot(self, query : str, context=" "):
         llm=self._get_llm()
@@ -307,7 +308,13 @@ class unstructured_Analyzer:
 
     
 
-
+    def show_extracted_tables_from_pdf(self):
+        dataframes = []
+        for filename in os.listdir(self.unstructured_directory):
+            if filename.endswith('.csv'):
+                df = pd.read_csv(os.path.join(self.unstructured_directory, filename))
+                dataframes.append(df)
+        return dataframes
     def fetch_mongodb_data(self, uri, database_name, collection_name):
         client = pymongo.MongoClient(uri)
         db = client[database_name]
@@ -473,6 +480,19 @@ class unstructured_Analyzer:
         st.write(st.session_state.vectorstoreretriever)
         if st.session_state.vectorstoreretriever is not None:
                 # st.write(st.session_state.messages)
+                with st.expander('Extracted Tables From Docs'):
+                    tables=self.show_extracted_tables_from_pdf()
+                    if tables:
+                        if len(tables)>10 or len(tables[0])>100:
+                            st.warning('Looks like we found a lot of table structures in the pdf, note that large volume of structured data is meant to be analyzed by structured section.')
+                        st.warning('Note : You can use these tables for analysis in structured section')
+
+                        for i,table in enumerate(tables):
+                            st.subheader(f'Table {i+1}', divider=True)
+                            st.data_editor(table)
+                    else:
+                        st.warning('No Tables Found')
+
                 for message in st.session_state.messages:
                     with st.chat_message(message['role']):
                         if message['role']=='user':
