@@ -265,17 +265,17 @@ class VectorStore():
         return pdf_parts
 
     def process_pdf_part(self, pdf_path):
-        try:
-            tables = camelot.read_pdf(pdf_path, pages='all')
-            data_frames = [table.df for table in tables]
+        # try:
+        #     tables = camelot.read_pdf(pdf_path, pages='all')
+        #     data_frames = [table.df for table in tables]
 
-        except Exception:
-            data_frames = []
-            try:
-                with pdfplumber.open(pdf_path) as pdf:
-                    for page in pdf.pages:
-                        tables = page.extract_tables()
-                        for table in tables:
+        # except Exception:
+        data_frames = []
+        try:
+            with pdfplumber.open(pdf_path) as pdf:
+                for page in pdf.pages:
+                    tables = page.extract_tables()
+                    for table in tables:
                             data_frames.append(pd.DataFrame(table))
         finally:
             os.remove(pdf_path)
