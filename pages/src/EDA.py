@@ -407,8 +407,9 @@ class EDAAnalyzer:
     
     def _clean_charts(self):
         files = os.listdir(os.path.join('pages','src','Database','Plots'))
-        for file in files:
-            os.remove(os.path.join('pages','src','Database','Plots',file))
+        if files:
+            for file in files:
+                os.remove(os.path.join('pages','src','Database','Plots',file))
     
     def _clear_EDA_and_chats(self):
         folder=os.path.join('pages','src','Database','userdata')
