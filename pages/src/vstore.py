@@ -233,7 +233,7 @@ class VectorStore():
         return preprocessed_text
     
     
-    def split_pdf_in_memory(self,input_pdf_path):
+    def split_pdf_in_memory(self, input_pdf_path):
         pdf_reader = PyPDF2.PdfReader(input_pdf_path)
         num_pages = len(pdf_reader.pages)
         num_cores = os.cpu_count()
@@ -256,27 +256,23 @@ class VectorStore():
 
                 # Check if current part is filled or it's the last page
                 if current_part_pages == pages_per_part or i == num_pages - 1:
-                    part_stream = BytesIO()
-                    pdf_writer.write(part_stream)
-                    part_stream.seek(0)
-                    pdf_parts.append(part_stream)
+                    # Create a temporary file for each part
+                    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf:
+                        pdf_writer.write(temp_pdf)
+                        pdf_parts.append(temp_pdf.name)
                     current_part_pages = 0  # Reset current part page count
 
         return pdf_parts
 
-    def process_pdf_part(self,pdf_stream):
-        pdf_stream.seek(0)
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf:
-            temp_pdf.write(pdf_stream.read())
-            temp_pdf_path = temp_pdf.name
-
+    def process_pdf_part(self, pdf_path):
         try:
-            tables = camelot.read_pdf(temp_pdf_path, pages='all')
+            tables = camelot.read_pdf(pdf_path, pages='all')
             data_frames = [table.df for table in tables]
         finally:
-            os.remove(temp_pdf_path)
+            os.remove(pdf_path)  # Clean up the temporary file
 
         return data_frames
+
     def extract_tables_from_pdf_parallel_processing(self, pdf_path):
         pdf_parts = self.split_pdf_in_memory(pdf_path)
 
