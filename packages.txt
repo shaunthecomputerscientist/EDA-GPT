@@ -1,3 +1,2 @@
 libgl1-mesa-glx
-ghostscript
 libc6
