@@ -82,6 +82,8 @@ class unstructured_Analyzer:
             st.session_state['internet_access']=False
         if 'LangGroupChain' not in st.session_state:
             st.session_state['LangGroupChain']=False
+        if 'extracted_tables' not in st.session_state:
+            st.session_state['extracted_tables']=[]
 
         classification_model_path=self.config_data['Classification_models']
         st.session_state.tfidf=load(os.path.join(classification_model_path,'tfidf_pretrained.joblib'))
@@ -307,12 +309,13 @@ class unstructured_Analyzer:
             return "Try again"
 
     
-
-    def show_extracted_tables_from_pdf(self):
+    
+    @st.cache_data
+    def show_extracted_tables_from_pdf(_self,files):
         dataframes = []
-        for filename in os.listdir(self.unstructured_directory):
+        for filename in os.listdir(_self.unstructured_directory):
             if filename.endswith('.csv'):
-                df = pd.read_csv(os.path.join(self.unstructured_directory, filename))
+                df = pd.read_csv(os.path.join(_self.unstructured_directory, filename))
                 dataframes.append(df)
         return dataframes
     def fetch_mongodb_data(self, uri, database_name, collection_name):
@@ -481,7 +484,7 @@ class unstructured_Analyzer:
         if st.session_state.vectorstoreretriever is not None:
                 # st.write(st.session_state.messages)
                 with st.expander('Extracted Tables From Docs'):
-                    tables=self.show_extracted_tables_from_pdf()
+                    tables=self.show_extracted_tables_from_pdf(files)
                     if tables:
                         if len(tables)>10 or len(tables[0])>100:
                             st.warning('Looks like we found a lot of table structures in the pdf, note that large volume of structured data is meant to be analyzed by structured section.')
