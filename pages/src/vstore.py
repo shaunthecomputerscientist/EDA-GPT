@@ -323,12 +323,12 @@ class VectorStore():
                             current_columns=df.iloc[0]
                             i+=1
                             with open(os.path.join(directory_path, f'table_{i}.csv'), 'w', encoding='utf-8') as file:
-                                file.write(df.to_csv(header=False))
+                                file.write(df.to_csv(header=False, index=False))
                         elif list(current_columns)==list(df.iloc[0]):
                             # df=df.iloc[1:]
                             df=df.iloc[1:]
                             with open(os.path.join(directory_path, f'table_{i}.csv'), 'a', encoding='utf-8') as file:
-                                file.write(df.to_csv(header=False))
+                                file.write(df.to_csv(header=False, index=False))
 
             elif filename.endswith('.txt'):
                 audio=True
