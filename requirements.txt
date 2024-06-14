@@ -6,7 +6,7 @@ arxiv
 beautifulsoup4==4.12.3
 crewai==0.30.11
 crewai-tools==0.2.6
-camelot-py[cv]==0.10.1
+camelot-py==0.10.1
 py-AutoClean==1.1.3
 joblib==1.3.2
 langchain==0.1.20
