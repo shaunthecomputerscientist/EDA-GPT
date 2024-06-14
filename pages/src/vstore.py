@@ -34,6 +34,7 @@ import PyPDF2
 from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 import tempfile
+import pdfplumber
 load_dotenv()
 
 class VectorStore():
