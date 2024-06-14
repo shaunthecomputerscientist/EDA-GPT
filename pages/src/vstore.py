@@ -268,8 +268,17 @@ class VectorStore():
         try:
             tables = camelot.read_pdf(pdf_path, pages='all')
             data_frames = [table.df for table in tables]
+
+        except Exception:
+            data_frames = []
+            try:
+                with pdfplumber.open(pdf_path) as pdf:
+                    for page in pdf.pages:
+                        tables = page.extract_tables()
+                        for table in tables:
+                            data_frames.append(pd.DataFrame(table))
         finally:
-            os.remove(pdf_path)  # Clean up the temporary file
+            os.remove(pdf_path)
 
         return data_frames
 
