@@ -287,6 +287,11 @@ To use this app, follow these steps:
 2. **Make a virtual environment and install dependencies**:
    ```bash
       pip install -r requirements.txt
+3. **Set Up secrets.toml inside .streamlit folder**:
+
+   ![Api Keys](pages/src/Database/assets/secrets.toml.png)
+
+   ### You can refer to all the documentations for creating api keys for all services.
 3. **Start the app**:
    ```bash
       streamlit run Home.py
