@@ -121,7 +121,7 @@ class unstructured_Analyzer:
         return prediction[0]
     def response_sentiment(self,response):
         vectorizer=load(os.path.join(self.config_data['Classification_models'],'response_sentiment_vectorizer_pretrained.joblib'))
-        response_vectorized=vectorizer.transform([response])
+        response_vectorized=vectorizer.transform([str(response)])
         prediction_proba=st.session_state.response_sentiment.predict_proba(response_vectorized)[0][0]
         logging.info(prediction_proba)
         return prediction_proba
@@ -287,11 +287,13 @@ class unstructured_Analyzer:
             tools=[vision,SEARCH_API, Scraper, arxiv, wikipedia, datetimee,YoutubeVideoTranscript]
             )
         task = Task(
-            description=dedent(f"user question: {query}\n\n INSTRUCTIONS : {self.prompt_data['Unstructured Prompts']['crewaiagent']['description']}\n\n CONVERSATION HISTORY : {st.session_state.messages[::-1][0:int([3 if len(st.session_state.messages)>3 else len(st.session_state.messages)][0])]}"),
+            description=dedent(f"user question: {query}\n\n INSTRUCTIONS : {self.prompt_data['Unstructured Prompts']['crewaiagent']['description']} \n\n {['do not use' if st.session_state.uploaded_image is not None else 'use'][0]} Vision for this question\n\n CONVERSATION HISTORY : {st.session_state.messages[::-1][0:int([3 if len(st.session_state.messages)>3 else len(st.session_state.messages)][0])]}"),
             agent=Multimodal,
             async_execution=False,
             expected_output=dedent(self.prompt_data['Unstructured Prompts']['crewaiagent']['expected_output']),
             result=dedent(self.prompt_data['Unstructured Prompts']['crewaiagent']['result']),
+            # human_input=True
+
             )
         crew = Crew(
         agents=[Multimodal],

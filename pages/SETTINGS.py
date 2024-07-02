@@ -11,18 +11,18 @@ class Settings:
         # self.google_gemini_api = os.getenv("GOOGLE_GEMINI_API")
         # self.openai_api_key = os.getenv("OPENAI_API_KEY")
         # self.groq_api_key = os.getenv("GROQ_API_KEY")
-        # self.antrophic_api_key = os.getenv("ANTROPHIC_API_KEY")
+        # self.anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
 
         self.huggingfacehub_api_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]['api_token']
         self.google_gemini_api = st.secrets["GOOGLE_GEMINI_API"]['api_key']
         self.openai_api_key = st.secrets["OPENAI_API_KEY"]['api_key']
         self.groq_api_key = st.secrets["GROQ_API_KEY"]['api_key']
-        self.antrophic_api_key = st.secrets["ANTROPHIC_API_KEY"]['api_key']
+        self.anthropic_api_key = st.secrets["ANTHROPIC_API_KEY"]['api_key']
         st.session_state.huggingfacehub_api_token = self.huggingfacehub_api_token
         st.session_state.google_gemini_api = self.google_gemini_api
         st.session_state.openai_api_key = self.openai_api_key
         st.session_state.groq_api_key = self.groq_api_key
-        st.session_state.antrophic_api_key = self.antrophic_api_key
+        st.session_state.anthropic_api_key = self.anthropic_api_key
 
 
 
@@ -33,14 +33,14 @@ class Settings:
             self.google_gemini_api_input = st.text_input("Google Gemini API Key")
             self.openai_api_key_input = st.text_input("OpenAI API Key")
             self.groq_api_key_input = st.text_input("Groq API Key")
-            self.antrophic_api_key_input = st.text_input("Antrophic api key")
+            self.anthropic_api_key_input = st.text_input("ANTHROPIC api key")
 
             if st.button('apply'):
 
                 st.session_state.huggingfacehub_api_token = self.huggingfacehub_api_token_input if self.huggingfacehub_api_token_input else self.huggingfacehub_api_token
                 st.session_state.google_gemini_api = self.google_gemini_api_input if self.google_gemini_api_input else self.google_gemini_api
                 st.session_state.openai_api_key = self.openai_api_key_input if self.openai_api_key_input else self.openai_api_key
-                st.session_state.antrophic_api_key = self.antrophic_api_key_input if self.antrophic_api_key_input else self.antrophic_api_key
+                st.session_state.anthropic_api_key = self.anthropic_api_key_input if self.anthropic_api_key_input else self.anthropic_api_key
                 st.session_state.groq_api_key = self.groq_api_key_input if self.groq_api_key_input else self.groq_api_key
 
 

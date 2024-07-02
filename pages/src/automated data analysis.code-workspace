@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "automated data analysis",
+			"path": "../.."
+		},
+		{
+			"name": "poppler-24.02.0",
+			"path": "../../../../../../../Downloads/poppler-24.02.0"
+		}
+	],
+	"settings": {}
+}

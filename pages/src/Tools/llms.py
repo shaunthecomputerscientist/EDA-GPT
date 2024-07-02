@@ -26,7 +26,7 @@ def get_llm(llm_name, temperature, config_data, llm_category):
         elif "groq" in llm_category:
             llm = ChatGroq(api_key=st.session_state.groq_api_key, temperature=temperature, model=llm_name)
         elif "antrophic" in llm_category:
-            llm = Anthropic(model_name=llm_name, temperature=temperature, anthropic_api_key=st.session_state.antrophic_api_token)
+            llm = Anthropic(model_name=llm_name, temperature=temperature, anthropic_api_key=st.session_state.anthropic_api_key)
         elif "ollama" in llm_category:
             llm = Ollama(model=llm_name, temperature=temperature)
         return llm
