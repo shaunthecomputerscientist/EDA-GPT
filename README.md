@@ -292,7 +292,7 @@ To use this app, follow these steps:
    ![Api Keys](pages/src/Database/assets/secrets.toml.png)
 
    ### You can refer to all the documentations for creating api keys for all services.
-3. **Start the app**:
+4. **Start the app**:
    ```bash
       streamlit run Home.py
    ```
