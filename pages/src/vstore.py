@@ -77,10 +77,12 @@ class VectorStore():
                         GooglePalmEmbeddings(google_api_key=st.secrets['GOOGLE_GEMINI_API']['api_key']),
                         HuggingFaceInferenceAPIEmbeddings(api_key=st.secrets['HUGGINGFACEHUB_API_TOKEN']['api_token'],model_name="BAAI/bge-base-en-v1.5")]
         
-        if kwargs['embedding_num']:
+        if kwargs['embedding_num'] is not None:
             embeddings = embedding_list[kwargs['embedding_num']]
+            print("embs",embeddings)
         else:
-            embeddings = embedding_list[2]
+            embeddings = embedding_list[1]
+            print(embeddings)
 
         if self.directory is None:
             # text_splitter = SemanticChunker(
@@ -108,9 +110,11 @@ class VectorStore():
                 length_function=len
             )
             chunks = text_splitter.split_documents(documents=self.data)
+            print(embeddings)
             print('structured chroma')
             print(f"The vector store contains {self.vector_stores} documents.")
             self.vector_stores=Chroma.from_documents(documents=chunks, embedding=embeddings, collection_name=f"{time.time()}")
+            print(f"The vector store contains {self.vector_stores} documents.")
 
             return self.vector_stores
 
@@ -328,13 +332,19 @@ class VectorStore():
                         if not list(df.iloc[0])==list(current_columns):
                             current_columns=df.iloc[0]
                             i+=1
-                            with open(os.path.join(directory_path, f'table_{i}.csv'), 'w', encoding='utf-8') as file:
-                                file.write(df.to_csv(header=False, index=False))
+                            try:
+                                with open(os.path.join(directory_path, f'table_{i}.csv'), 'w', encoding='utf-8') as file:
+                                    file.write(df.to_csv(header=False, index=False))
+                            except Exception as e:
+                                file.write('')
                         elif list(current_columns)==list(df.iloc[0]):
                             # df=df.iloc[1:]
                             df=df.iloc[1:]
-                            with open(os.path.join(directory_path, f'table_{i}.csv'), 'a', encoding='utf-8') as file:
-                                file.write(df.to_csv(header=False, index=False))
+                            try:
+                                with open(os.path.join(directory_path, f'table_{i}.csv'), 'a', encoding='utf-8') as file:
+                                    file.write(df.to_csv(header=False, index=False))
+                            except Exception as e:
+                                file.write('')
 
             elif filename.endswith('.txt'):
                 audio=True

@@ -42,16 +42,11 @@ scikit_learn==1.2.2
 scipy==1.13.1
 seaborn==0.13.2
 statsmodels==0.14.2
-streamlit
-streamlit-camera-input-live
-streamlit-card
-streamlit==1.34.0
+streamlit==1.37.1
 streamlit-camera-input-live==0.2.0
 streamlit-card==1.0.2
 streamlit-embedcode==0.1.2
 streamlit-extras==0.4.2
-# chroma-hnswlib==0.7.3
-# chromadb==0.4.24
 streamlit-faker==0.0.3
 streamlit-image-coordinates==0.1.6
 streamlit-keyup==0.2.4
@@ -59,6 +54,8 @@ streamlit-option-menu==0.3.12
 streamlit-server-state==0.17.1
 streamlit-toggle-switch==1.0.2
 streamlit-vertical-slider==2.5.5
+# chroma-hnswlib==0.7.3
+# chromadb==0.4.24
 sweetviz==2.3.1
 youtube_transcript_api==0.6.2
 unstructured==0.14.2

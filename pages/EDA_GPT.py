@@ -11,7 +11,7 @@ from streamlit_option_menu import option_menu
 st.set_page_config(page_title="Analyze data", layout='wide')
 
 config_file = os.path.join('pages', 'src', 'Database', 'config.json')
-with open(config_file, 'r') as file:
+with open(config_file, 'r') as file: 
     config_data = json.load(file)
 
 prompts_config_file = os.path.join('pages', 'src', 'Database', 'Prompts','prompts.json')

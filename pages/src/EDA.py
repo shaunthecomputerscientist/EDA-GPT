@@ -33,6 +33,7 @@ from pygwalker.api.streamlit import init_streamlit_comm,StreamlitRenderer
 from pages.src.Tools.tasks import structured_tasks
 from scipy.stats import shapiro, kstest, ttest_ind, ttest_rel, mannwhitneyu, wilcoxon, f_oneway, kruskal
 from scipy.stats import ttest_ind, chi2_contingency, f_oneway
+from scipy import stats
 from statsmodels.formula.api import ols
 import statsmodels.api as sm
 import sys
@@ -282,13 +283,11 @@ class EDAAnalyzer:
 
 
 
-    @st.experimental_fragment
     def pandasaichattool(self,query, initialeda):
         logging.info('query',query)
         self._clean_charts()
         query=query+f"NOTE: FOLLOW INSTRUCTIONS/GUIDELINES FOR CODE BLOCK/ SENTENCE GENERATION.Do not return variables as string inside result. df is dataframe."
         try:
-
             retrieval_qa_chat_prompt = self._promptformatter()
             combine_docs_chain = create_stuff_documents_chain(
             llm=self.llm, prompt=retrieval_qa_chat_prompt
@@ -450,8 +449,7 @@ class EDAAnalyzer:
             file.write(str(soup))
 
     
-    # @st.experimental_fragment
-    # @st.cache_data( experimental_allow_widgets=True)
+    @st.fragment
     def streamlitplots_numerical(_self, data):
 
         # Check if the dataframe is empty
@@ -501,8 +499,7 @@ class EDAAnalyzer:
 
 
 
-    @st.experimental_fragment
-    # @st.cache_data( experimental_allow_widgets=True)
+    @st.fragment
     def streamlitplots_categorical(_self, data):
 
         # Check if the dataframe is empty
@@ -535,26 +532,93 @@ class EDAAnalyzer:
                                 fig = px.pie(values=_self.data[column].value_counts().values, names=_self.data[column].value_counts().index)
                                 st.plotly_chart(fig)
 
-    @st.experimental_fragment
-    def heatmap_section(self, data):
-        all_columns = data.columns.tolist()
 
-        # Allow user to select columns to include in the heatmap
-        selected_columns = st.multiselect("Select columns for heatmap", all_columns, default=all_columns)
 
-        # Filter dataframe based on selected columns
-        filtered_df = data[selected_columns]
 
-        # Encode categorical columns
-        df_encoded = pd.get_dummies(filtered_df, drop_first=True)
+    @st.fragment
+    def statistical_tests(self):
+        st.subheader("Normality tests")
+        numerical_columns = self.data.select_dtypes(include=[np.number]).columns.tolist()
 
-        # Combine numerical and encoded categorical columns
-        combined_df = pd.concat([filtered_df.select_dtypes(include='number'), df_encoded], axis=1)
+        with st.expander('Kolmogorov-Smirnov Test And Shapiro-Wilk Test'):
+            results = []
+            for col in numerical_columns:
+                data = self.data[col].dropna()  # Remove NaN values
+                print(data)
+                if len(data) < 3:
+                    results.append({
+                        'Column': col,
+                        'Shapiro-Wilk Stat': 'N/A',
+                        'Shapiro-Wilk p-value': 'N/A',
+                        'K-S Stat': 'N/A',
+                        'K-S p-value': 'N/A',
+                        'Notes': 'Insufficient data'
+                    })
+                    continue
 
+                # Shapiro-Wilk test
+                try:
+                    shapiro_stat, shapiro_p = stats.shapiro(data)
+                except Exception as e:
+                    shapiro_stat, shapiro_p = 'Error', str(e)
+
+                # Kolmogorov-Smirnov test
+                try:
+                    ks_stat, ks_p = stats.kstest(data, 'norm', args=(np.mean(data), np.std(data, ddof=1)))
+                except Exception as e:
+                    ks_stat, ks_p = 'Error', str(e)
+
+                # Format p-values
+                shapiro_p_formatted = f"{shapiro_p:.2e}" if isinstance(shapiro_p, float) else shapiro_p
+                ks_p_formatted = f"{ks_p:.2e}" if isinstance(ks_p, float) else ks_p
+
+                results.append({
+                    'Column': col,
+                    'Shapiro-Wilk Stat': shapiro_stat if isinstance(shapiro_stat, float) else 'N/A',
+                    'Shapiro-Wilk p-value': shapiro_p_formatted,
+                    'K-S Stat': ks_stat if isinstance(ks_stat, float) else 'N/A',
+                    'K-S p-value': ks_p_formatted,
+                    'Sample Size': len(data),
+                    'Notes': 'Large sample size, interpret with caution' if len(data) > 5000 else ''
+                })
+
+            results_df = pd.DataFrame(results)
+            st.write("Normality Test Results:")
+            st.dataframe(results_df)
+
+            st.write("""
+            Note:
+            - 'N/A' indicates that the test could not be performed, usually due to insufficient data.
+            - Very small p-values are displayed in scientific notation (e.g., 1e-10).
+            - For large sample sizes (>5000), even small deviations from normality can result in very small p-values.
+            - Interpret results with caution, especially for large datasets.
+            """)
+
+    @st.fragment
+    def heatmap_section(self,data):
+        def heatmap_section_cache(data):
+            all_columns = data.columns.tolist()
+
+            # Allow user to select columns to include in the heatmap
+            selected_columns = st.multiselect("Select columns for heatmap", all_columns, default=all_columns[:2])
+
+            # Filter dataframe based on selected columns
+            filtered_df = data[selected_columns]
+
+            # Encode categorical columns
+            df_encoded = pd.get_dummies(filtered_df, drop_first=True)
+
+            # Combine numerical and encoded categorical columns
+            combined_df = pd.concat([filtered_df.select_dtypes(include='number'), df_encoded], axis=1)
+            return combined_df
+        
+        
+        
+        
         # Generate correlation matrix
         select_style=st.selectbox('Color Scales',options=['aggrnyl', 'agsunset', 'algae', 'amp', 'armyrose', 'balance', 'blackbody', 'bluered', 'blues', 'blugrn', 'bluyl', 'brbg', 'brwnyl', 'bugn', 'bupu', 'burg', 'burgyl', 'cividis', 'curl', 'darkmint', 'deep', 'delta', 'dense', 'earth', 'edge', 'electric', 'emrld', 'fall', 'geyser', 'gnbu', 'gray', 'greens', 'greys', 'haline', 'hot', 'hsv', 'ice', 'icefire', 'inferno', 'jet', 'magenta', 'magma', 'matter', 'mint', 'mrybm', 'mygbm', 'oranges', 'orrd', 'oryel', 'oxy', 'peach', 'phase', 'picnic', 'pinkyl', 'piyg', 'plasma', 'plotly3', 'portland', 'prgn', 'pubu', 'pubugn', 'puor', 'purd', 'purp', 'purples', 'purpor', 'rainbow', 'rdbu', 'rdgy', 'rdpu', 'rdylbu', 'rdylgn', 'redor', 'reds', 'solar', 'spectral', 'speed', 'sunset', 'sunsetdark', 'teal', 'tealgrn', 'tealrose', 'tempo', 'temps', 'thermal', 'tropic', 'turbid', 'turbo', 'twilight', 'viridis', 'ylgn', 'ylgnbu', 'ylorbr', 'ylorrd'],
         )
-        corr_matrix = combined_df.corr()
+        corr_matrix = heatmap_section_cache(data).corr()
         fig = px.imshow(corr_matrix,
                         labels=dict(x="Features", y="Features", color="Correlation"),
                         color_continuous_scale=select_style,
@@ -562,31 +626,8 @@ class EDAAnalyzer:
 
         fig.update_layout(title='Customizable Heatmap for Numerical and Categorical Data')
         st.plotly_chart(fig)
-    
-    def _statistical_tests(self):
 
-        st.subheader("Normality tests")
-
-        numerical_columns=(self.data.select_dtypes(include=[np.number]).columns).to_list()
-
-        with st.expander('Kolmogorov Srimov Test And Shapiro Wilk Test'):
-            results = []
-            for col in numerical_columns:
-                shapiro_stat, shapiro_p = shapiro(self.data[col])
-                ks_stat, ks_p = kstest(self.data[col], 'norm', args=(self.data[col].mean(), self.data[col].std()))
-                results.append({
-                    'Column': col,
-                    'Shapiro-Wilk Stat': shapiro_stat,
-                    'Shapiro-Wilk p-value': shapiro_p,
-                    'K-S Stat': ks_stat,
-                    'K-S p-value': ks_p
-                })
-            
-            results_df = pd.DataFrame(results)
-            st.write("Normality Test Results:")
-            st.dataframe(results_df)
-
-    @st.experimental_fragment
+    @st.fragment
     def data_interface(self):
         
         st.subheader('EDA Playgroud', help='Analyze data using drag and drop tools before putting ai to work.')
@@ -605,7 +646,7 @@ class EDAAnalyzer:
         pyg_app_renderer.explorer(width=size,height=size, scrolling=True)
 
 
-    @st.experimental_fragment
+    @st.fragment
     def hypothesis_test(self,data, columns, null_hypothesis, alternate_hypothesis, alpha):
         result = {}
         
@@ -666,7 +707,7 @@ class EDAAnalyzer:
         else:
             st.write("Conclusion: Fail to reject the null hypothesis")
 
-    @st.experimental_fragment
+    @st.fragment
     def hypothesis_testing_display(self):
             # Hypothesis Testing Inputs
             st.header("Hypothesis Testing")

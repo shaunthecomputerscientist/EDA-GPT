@@ -16,7 +16,7 @@ class DataFrameModifier:
         st.session_state.inplace=None
     
 
-    @st.experimental_fragment
+    @st.fragment
     def display(self):
         if self.data is not None:
             if st.session_state.modified_data is not None:

@@ -46,7 +46,7 @@ class EDAGPT:
         self.df_env=dataframe_environment
         
 
-    @st.experimental_fragment
+    @st.fragment
     def model_interface_initializer(self):
         colored_header.colored_header("LLM Category",description=None, color_name='blue-green-90')
         llm_category=st.selectbox(label='choose llm category',options=self.config_data["llm_category"], label_visibility='collapsed')
@@ -92,7 +92,7 @@ class EDAGPT:
         st.session_state.data=self.data
 
 
-    @st.experimental_fragment
+    @st.fragment
     def create_context(self):
         st.session_state.description=st.text_area('Give brief description about the data')
         question=st.text_input('What questions do you want answered from the analysis?')
@@ -107,8 +107,7 @@ class EDAGPT:
             return self.extra_data
         return None
 
-
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.fragment
     def plot_data(_self, data):
         with st.spinner('Analyzing, Please wait'):
 
@@ -129,39 +128,42 @@ class EDAGPT:
             with st.expander('Analysis Visuals by EDA GPT'):
                 components.html(html_content, scrolling=True, height=2000, width=1000)
     
-    @st.cache_data(experimental_allow_widgets=True)
     def statistical_tests(_self,data):
         colored_header.colored_header("Statistical Tests",description=None, color_name='blue-green-90')
-        _self.eda_analyzer._statistical_tests()
+        _self.eda_analyzer.statistical_tests()
         st.subheader("Hypothesis Testing")
         with st.expander('Hypothesis Testing'):
             _self.eda_analyzer.hypothesis_testing_display()
 
 
 
-    @st.cache_data(experimental_allow_widgets=True)
-    def generate_analysis_report(_self, data):
-
+    def generate_analysis_report(self, data):
         with st.spinner(text='Generating Report, Please wait'):
+            @st.cache_data
+            def generate_report(_eda_analyzer,data):
 
-            _self.eda_analyzer.perform_eda()
-            if st.session_state.extra_data is not None:
-                logging.info(st.session_state.extra_data)
-                eda_report = _self.eda_analyzer.EDAAgent(extra_questions=st.session_state.extra_data)
-            else:
-                eda_report = _self.eda_analyzer.EDAAgent()
+        
 
+                _eda_analyzer.perform_eda()
+                if st.session_state.extra_data is not None:
+                    logging.info(st.session_state.extra_data)
+                    eda_report = _eda_analyzer.EDAAgent(extra_questions=st.session_state.extra_data)
+                else:
+                    eda_report = _eda_analyzer.EDAAgent()
 
+                return eda_report
+
+            eda_report = generate_report(self.eda_analyzer,data)
             colored_header.colored_header("Analysis Report",description=None, color_name='blue-green-90')
-           
+
             with st.expander('Analysis'):
                 st.write_stream(StringIO(eda_report))
             st.session_state.analysis_done = True
-            st.session_state.eda_analyzer = _self.eda_analyzer
+            st.session_state.eda_analyzer = self.eda_analyzer
             st.session_state.initialEDA=eda_report
             st.session_state.extra_data=None
 
-    @st.experimental_fragment
+    @st.fragment
     def messagesinterface(self):
         def checkgraphpresence(tupledata):
             for ele in tupledata:
@@ -205,7 +207,7 @@ class EDAGPT:
                 
 
 
-    @st.experimental_fragment
+    @st.fragment
     def chat_interface(self):
         self.messagesinterface()
        
@@ -229,7 +231,7 @@ class EDAGPT:
                     st.rerun()
 
 
-    # @st.experimental_fragment
+    # @st.fragment
     # def dataframe_viewer(self):
     #     if self.data is not None:
     #         show_dataframe=option_menu(None,options=['DATAFRAME VIEW','INTERACTIVE IFRAME VIEW'], orientation="horizontal", styles={"container":{"background":"transparent", "font-size":"0.7rem", "width":"90%", "border":"1px solid black"}, "icon":{"color":"gray"}})
@@ -238,7 +240,6 @@ class EDAGPT:
     #         elif 'interactive iframe'  in show_dataframe.lower():
     #             st.session_state.eda_analyzer.data_interface()
     
-    @st.experimental_fragment
     def workflow(self):
             llm_category=self.model_interface_initializer()
             self._initializer(llm_category=llm_category)
@@ -254,7 +255,7 @@ class EDAGPT:
                     if st.button('Regenerate result'):
                         self.plot_data(self.data)
                         self.statistical_tests(self.data)
-                        self.generate_analysis_report.clear()
+                        # self.generate_analysis_report.clear()
                         self.generate_analysis_report(self.data)
                     if len(st.session_state.chat_history) > 3:
                         st.write("<i style=color:cyan>Beta Feature</i>", unsafe_allow_html=True)

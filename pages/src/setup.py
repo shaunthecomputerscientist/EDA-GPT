@@ -17,7 +17,7 @@ class DataFrameEnvironment:
 
     def load_data(self, dataframe):
         self.data = dataframe
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.fragment
     def display(_self, data):
         if _self.data is not None:
             filtered_df=dataframe_explorer(_self.data)

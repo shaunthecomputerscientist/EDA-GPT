@@ -337,7 +337,7 @@ class unstructured_Analyzer:
         return data
     
     
-    @st.experimental_fragment
+    @st.fragment
     def mongoviewer(self):
         uri = st.text_input("MongoDB URI", "mongodb://localhost:27017/")
         database_name = st.text_input("Database Name")

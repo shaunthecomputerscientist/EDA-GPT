@@ -1,3 +1,8 @@
+[server]
+maxUploadSize = 1000
+maxMessageSize = 1000
+port = 8501
+
 [theme]
 base="dark"
 primaryColor="#3bc1c7"
