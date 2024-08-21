@@ -297,9 +297,82 @@ To use this app, follow these steps:
       streamlit run Home.py
    ```
 
+## Docker Support:
 
+## Prerequisites
 
+Before you begin, ensure you have the following installed on your local system:
 
+- [Docker](https://www.docker.com/get-started) (Make sure Docker Desktop is running if you're on Windows or macOS)
+
+## How to Use the App
+
+### Step 1: Pull the Docker Image
+
+To get started, pull the Docker image from Docker Hub. Open your terminal and run:
+
+```bash
+docker pull mrpoldockeroperator123/eda-gpt:v1
+```
+### Step 2: Run the Docker Container
+
+```bash
+docker run -d -p 8501:8501 mrpoldockeroperator123/eda-gpt:v1
+```
+This command will:
+
+Run the container in detached mode (-d).
+Map port 8501 on your local machine to port 8501 on the container.
+
+### Step 3: Access the application
+After the container is running, you can access the EDA-GPT application by navigating to http://localhost:8501 in your web browser.
+
+### Step 4 : Stop the Container
+stop the container when done
+```bash
+docker ps
+```
+This command will list all running containers. Find the CONTAINER ID of the EDA-GPT container and stop it using:
+```bash
+docker stop <CONTAINER_ID>
+```
+### step 5 : Remove the container and image
+If you no longer need the container, you can remove it with:
+```bash
+docker rm <CONTAINER_ID>
+```
+If you want to free up space, you can also remove the Docker image from your local system:
+
+```bash
+docker rmi mrpoldockeroperator123/eda-gpt:v1
+```
+Troubleshooting
+If you encounter issues while running the container, consider the following steps:
+
+Check Docker Installation: Ensure Docker is installed and running correctly.
+Port Availability: Make sure port 8501 is not being used by another application.
+Logs: Check container logs to diagnose issues by running:
+
+```bash
+docker logs <CONTAINER_ID>
+```
+
+### What is <CONTAINER_ID>?
+
+When you run the command:
+
+```bash
+docker ps
+#you get 
+CONTAINER ID   IMAGE                               COMMAND                  CREATED        STATUS        PORTS                    NAMES
+e9f8c9b5b86c   mrpoldockeroperator123/eda-gpt:v1   "streamlit run home.py"  10 minutes ago Up 10 minutes 0.0.0.0:8501->8501/tcp   charming_mendel
+```
+The CONTAINER ID is the e9f8c9b5b86c in this case
+- mrpoldockeroperator123/eda-gpt:v1 is the name of the Docker image.
+- 0.0.0.0:8501->8501/tcp indicates that port 8501 on the host is forwarded to port - - 8501 in the container.
+- charming_mendel is the name automatically assigned to the container by Docker   (you  can also specify a name using the --name flag when you run the container).
+
+-------------------------------------------------------------------------------------
 ### Feedback and Support
 We value your feedback and are constantly working to improve EDA GPT. If you encounter any issues or have suggestions for improvement, please don't hesitate to reach out to our support team. developer contact : mrpolymathematica@gmail.com
 
