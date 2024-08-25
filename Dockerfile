@@ -22,4 +22,4 @@ RUN pip install -r /app/requirements.txt
 EXPOSE 8501
 
 # Command to run the app
-CMD ["streamlit", "run", "home.py"]
+CMD ["streamlit", "run", "Home.py"]

@@ -342,9 +342,9 @@ If you no longer need the container, you can remove it with:
 docker rm <CONTAINER_ID>
 ```
 If you want to free up space, you can also remove the Docker image from your local system:
-
+#### current version ----> v2
 ```bash
-docker rmi mrpoldockeroperator123/eda-gpt:v1
+docker rmi mrpoldockeroperator123/eda-gpt:v2
 ```
 Troubleshooting
 If you encounter issues while running the container, consider the following steps:
@@ -365,7 +365,7 @@ When you run the command:
 docker ps
 #you get 
 CONTAINER ID   IMAGE                               COMMAND                  CREATED        STATUS        PORTS                    NAMES
-e9f8c9b5b86c   mrpoldockeroperator123/eda-gpt:v1   "streamlit run home.py"  10 minutes ago Up 10 minutes 0.0.0.0:8501->8501/tcp   charming_mendel
+e9f8c9b5b86c   mrpoldockeroperator123/eda-gpt:v2   "streamlit run home.py"  10 minutes ago Up 10 minutes 0.0.0.0:8501->8501/tcp   charming_mendel
 ```
 The CONTAINER ID is the e9f8c9b5b86c in this case
 - mrpoldockeroperator123/eda-gpt:v1 is the name of the Docker image.

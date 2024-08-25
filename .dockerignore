@@ -1,0 +1,29 @@
+# Ignore the following files and directories
+.git
+__pycache__
+*.pyc
+*.pyo
+.env
+venv
+.DS_Store
+# Ignore virtual environment directory
+analyst/
+
+# Ignore .env file
+.env
+
+# Ignore miscellaneous folder
+miscellaneous/
+
+# Ignore typical OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+trained_agents_data.pkl
