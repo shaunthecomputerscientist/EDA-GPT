@@ -312,12 +312,12 @@ Before you begin, ensure you have the following installed on your local system:
 To get started, pull the Docker image from Docker Hub. Open your terminal and run:
 
 ```bash
-docker pull mrpoldockeroperator123/eda-gpt:v1
+docker pull mrpoldockeroperator123/eda-gpt:v2
 ```
 ### Step 2: Run the Docker Container
 
 ```bash
-docker run -d -p 8501:8501 mrpoldockeroperator123/eda-gpt:v1
+docker run -d -p 8501:8501 mrpoldockeroperator123/eda-gpt:v2
 ```
 This command will:
 
